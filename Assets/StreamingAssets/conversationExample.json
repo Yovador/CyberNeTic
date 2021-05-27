@@ -1,0 +1,111 @@
+{
+    "Parameters" : {
+        "id" : "chapitre1",
+        "startingBranch": "C1Start",
+        "medium": "sms",
+        "playerCharacter": "angélique",
+        "npCharacter": "sophie",
+        "nextConversation" : "chapitre2"
+    },
+
+    "Branches" : [
+
+        {
+            "id":"C1Start",
+            "messagesList" : [  
+                {"side":true, "content": { "type": "text", "data":"salut" }, "sendTime":60 },
+                {"side":true, "content": { "type": "text", "data":"ca va" }, "sendTime":65 },
+                {"side":true, "content": { "type": "text", "data":"quoi de neuf" }, "sendTime":70 }
+            ],
+            "branchingPoint" : {
+                "type" : "choice",
+                "possibilities": [
+                    {"branch": "C1A", "possible": true, "confidenceMod" : 1, "message" : { "side":true, "content": { "type": "text", "data":"Oui et toi ?" }, "sendTime":75} },
+                    {"branch": "C1B", "possible": true, "confidenceMod" : -1, "message" : { "side":true, "content": { "type": "text", "data":"Je suis entrain de te parler donc nope" }, "sendTime":75} },
+                    {"branch": "C1C", "possible": true, "confidenceMod" : 0, "message" : { "side":true, "content": { "type": "image", "data":"/thumbs_up.png" }, "sendTime":75}},
+                    {"branch": "", "possible": false, "confidenceMod" : 0, "message" : { "side":true, "content": { "type": "text", "data":"Voldemort" }, "sendTime":75}}
+                ]
+            } 
+        },
+
+        {
+            "id":"C1A",
+            "messagesList" : [
+                {"side":true, "content": { "type": "text", "data":"Ca va bien !" }, "sendTime":85 }
+            ],
+            "branchingPoint" : {
+                "type" : "test",
+                "possibilities": [   
+                    {"branch":"C1AA", "thresholds":[3, 200]},
+                    {"branch":"C1AB", "thresholds":[0, 2]}
+                ]
+            } 
+        },
+
+        {
+            "id":"C1B",
+            "messagesList" : [
+                {"side":true, "content": { "type": "text", "data":"Va te faire cuire un oeuf" }, "sendTime":85 }
+            ],
+            "branchingPoint" : {
+                "type" : "stop",
+                "possibilities": []
+            } 
+        },
+
+        {
+            "id":"C1C",
+            "messagesList" : [
+                {"side":true, "content": { "type": "text", "data":"Cool !" }, "sendTime":85 }
+            ],
+
+            "branchingPoint" : {
+                "type" : "change",
+                "possibilities": [
+                    {"branch": "C1X"}
+                ]
+            } 
+        },
+
+        
+        {
+            "id":"C1AA",
+            "messagesList" : [
+                {"side":true, "content": { "type": "text", "data":"Ta maman est sympa" }, "sendTime":85 }
+            ],
+            "branchingPoint" : {
+                "type" : "change",
+                "possibilities": [   
+                    {"branch":"C1X"}
+                ]
+            } 
+        },
+
+        
+        {
+            "id":"C1AB",
+            "messagesList" : [
+                {"side":true, "content": { "type": "text", "data":"J'aime les pates" }, "sendTime":85 }
+            ],
+            "branchingPoint" : {
+                "type" : "change",
+                "possibilities": [   
+                    {"branch":"C1X"}
+                ]
+            } 
+        },
+
+        {
+            "id":"C1X",
+            "messagesList" : [
+                {"side":true, "content": { "type": "text", "data":"Je dois y aller" }, "sendTime":85 }
+            ],
+            "branchingPoint" : {
+                "type" : "stop",
+                "possibilities": []
+            } 
+        }
+        
+
+    ]
+}
