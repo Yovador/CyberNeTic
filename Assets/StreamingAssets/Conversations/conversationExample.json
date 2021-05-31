@@ -20,10 +20,10 @@
             "branchingPoint" : {
                 "type" : "choice",
                 "possibilities": [
-                    {"branch": "C1A", "possible": true, "confidenceMod" : 1, "message" : { "side":true, "content": { "type": "text", "data":"Oui et toi ?" }, "sendTime":75} },
-                    {"branch": "C1B", "possible": true, "confidenceMod" : -1, "message" : { "side":true, "content": { "type": "text", "data":"Je suis entrain de te parler donc nope" }, "sendTime":75} },
-                    {"branch": "C1C", "possible": true, "confidenceMod" : 0, "message" : { "side":true, "content": { "type": "image", "data":"/thumbs_up.png" }, "sendTime":75}},
-                    {"branch": "", "possible": false, "confidenceMod" : 0, "message" : { "side":true, "content": { "type": "text", "data":"Voldemort" }, "sendTime":75}}
+                    {"branch": "C1A", "possible": true, "confidenceMod" : 1, "message" : { "side":false, "content": { "type": "text", "data":"Oui et toi ?" }, "sendTime":75} },
+                    {"branch": "C1B", "possible": true, "confidenceMod" : -1, "message" : { "side":false, "content": { "type": "text", "data":"Je suis entrain de te parler donc nope" }, "sendTime":75} },
+                    {"branch": "C1C", "possible": true, "confidenceMod" : 0, "message" : { "side":false, "content": { "type": "image", "data":"/thumbs_up.png" }, "sendTime":75}},
+                    {"branch": "", "possible": false, "confidenceMod" : 0, "message" : { "side":false, "content": { "type": "text", "data":"Voldemort" }, "sendTime":75}}
                 ]
             } 
         },

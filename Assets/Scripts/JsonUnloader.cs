@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 
 
-public class JsonUnloader : MonoBehaviour
+public class JsonUnloader
 {
     //Classes permettant l'extraction du fichier JSON
     [System.Serializable]
@@ -19,7 +19,7 @@ public class JsonUnloader : MonoBehaviour
     }
 
     [System.Serializable]
-    class Content
+    class ContentJSON
     {
         public string type;
         public string data;
@@ -30,7 +30,7 @@ public class JsonUnloader : MonoBehaviour
     class Message
     {
         public bool side;
-        public Content content;
+        public ContentJSON content;
         public int sendTime;
     }
 
@@ -73,18 +73,51 @@ public class JsonUnloader : MonoBehaviour
 
     }
 
-    //Fonction retournant un objet de classe Conversation à partir d'un chemin vers un .json
+    [System.Serializable]
+    class CharacterJson
+    {
+        public string id;
+        public string profilePicture;
+        public string firstName;
+        public string lastName;
 
+    }
+
+    [System.Serializable]
+    class Relationship
+    {
+        public string me;
+        public string them;
+        public int confidenceMeToThem;
+
+    }
+
+    [System.Serializable]
+    class JsonCharacterSetObject
+    {
+        public CharacterJson[] Characters; 
+        public Relationship[] Relationships;
+    }
+
+    //Fonction retournant un objet de classe Conversation à partir d'un chemin vers un .json
     public Conversation LoadConversationFromJson(string jsonPath)
     {
 
         Conversation.Message CreateMessage(Message message)
         {
             Conversation.Message newMessage = new Conversation.Message();
-            newMessage.side = message.side;
+            newMessage.isNPC = message.side;
             newMessage.sendTime = message.sendTime;
-            Conversation.Content newContent = new Conversation.Content();
-            newContent.type = message.content.type;
+            Content newContent;
+            switch (message.content.type)
+            {
+                case "image":
+                    newContent = new Image();
+                    break;
+                default:
+                    newContent = new Content();
+                    break;
+            }
             newContent.data = message.content.data;
             newMessage.content = newContent;
             return newMessage;
@@ -153,5 +186,45 @@ public class JsonUnloader : MonoBehaviour
 
 
         return conversationFinal;
+    }
+
+    public List<Character> LoadCharacterListFromJson(string jsonPath)
+    {
+        List<Character> listFinal = new List<Character>();
+
+        JsonCharacterSetObject jsonCharacterSet = JsonUtility.FromJson<JsonCharacterSetObject>(File.ReadAllText(jsonPath));
+
+
+        foreach (var characterJson in jsonCharacterSet.Characters)
+        {
+            Character character = new Character();
+
+            character.id = characterJson.id;
+            character.firstName = characterJson.firstName;
+            character.lastName = characterJson.lastName;
+            character.profilePicture = characterJson.profilePicture;
+
+            List<Character.Relationship> relationships = new List<Character.Relationship>();
+
+            foreach (var relationshipJson in jsonCharacterSet.Relationships)
+            {
+                if (relationshipJson.me == character.id)
+                {
+                    Character.Relationship relationship = new Character.Relationship();
+                    relationship.them = relationshipJson.them;
+                    relationship.confidenceMeToThem = relationshipJson.confidenceMeToThem;
+                    relationships.Add(relationship);
+                }
+                
+
+            }
+
+            character.relationships = relationships;
+
+            listFinal.Add(character);
+        }
+
+
+        return listFinal;
     }
 }

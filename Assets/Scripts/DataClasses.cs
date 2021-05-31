@@ -1,24 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 
 //Ce fichier contient toutes les classes stockant des données à propos de l'histoire
 
 
 //Classe contenant les informations d'une conversation
+public class Content
+{
+    public string data { get; set; }
+
+}
+public class Image : Content
+{
+    public string GetPath()
+    {
+        string path;
+
+        path = Path.Combine(Application.streamingAssetsPath, "Pictures" ,this.data);
+
+        return path;
+    }
+}
+
 public class Conversation
 {
-    public class Content
-    {
-        public string type{ get; set; }
-        public string data{ get; set; }
-
-    }
 
     public class Message
     {
-        public bool side{ get; set; }
+        public bool isNPC{ get; set; }
         public Content content{ get; set; }
         public int sendTime{ get; set; }
     }
@@ -68,6 +80,7 @@ public class Conversation
 
     public List<Branche> branches { get; set; } = new List<Branche>();
 
+    //Fonction affichant dans la console les informations de la conversation
     public void DebugLogConversation()
     {
         string logString = "Conversation : \n";
@@ -80,7 +93,7 @@ public class Conversation
             logString += $"\t \tMessages : \n";
             foreach (Message message in branch.messagesList)
             {
-                logString += $"\t \t \tSide: {message.side}, type : {message.content.type}, data : {message.content.data}, sendTime :{message.sendTime}\n ";
+                logString += $"\t \t \tSide: {message.isNPC}, type : {message.content.GetType()}, data : {message.content.data}, sendTime :{message.sendTime}\n ";
             }
 
 
@@ -93,7 +106,7 @@ public class Conversation
                     case "choice":
                         var choicePoss = (ChoicePossibility)possibility;
                         logString += $"Possible ? {choicePoss.possible}, confidenceMod : {choicePoss.possible}, message :\n";
-                        logString += $"\t \t \t \tSide: {choicePoss.message.side}, type : {choicePoss.message.content.type}, data : {choicePoss.message.content.data}, sendTime :{choicePoss.message.sendTime}\n ";
+                        logString += $"\t \t \t \tSide: {choicePoss.message.isNPC}, type : {choicePoss.message.content.GetType()}, data : {choicePoss.message.content.data}, sendTime :{choicePoss.message.sendTime}\n ";
 
                         break;
                     case "test":
@@ -111,6 +124,7 @@ public class Conversation
         Debug.Log(logString);
     }
 
+
 }
 
 //Class contenant les informations d'un personnage
@@ -118,13 +132,33 @@ public class Character
 {
     public class Relationship
     {
-        public string myId { get; set; }
-        public string theirId { get; set; }
-        public int confidenceMetoThem { get; set; }
+        public string them { get; set; }
+        public int confidenceMeToThem { get; set; }
     }
 
     public string id {get; set;}
+    public string profilePicture { get; set; }
+    public string firstName { get; set; }
+    public string lastName { get; set; }
     public List<Relationship> relationships { get; set; } = new List<Relationship>();
+
+    //Fonction affichant dans la console les informations du personnage
+    public void DebugLogCharacter()
+    {
+        string logData = $"Character : \n";
+
+        logData += $"\t id : {this.id}, pfp: {this.profilePicture}, firstName: {this.firstName}, lastName: {this.lastName}\n";
+
+        logData += $"\t Relationship : \n";
+
+        foreach (var relationship in this.relationships)
+        {
+            logData += $"\t\t them : {relationship.them}, confidenceMeToThem : {relationship.confidenceMeToThem}\n";
+        }
+
+        Debug.Log(logData);
+    }
+
 }
 
 //ScriptableObject contenant les informations d'un medium de communication
@@ -132,9 +166,16 @@ public class Character
 public class Medium : ScriptableObject
 {
     [SerializeField]
-    public string id;
-    [SerializeField]
     public GameObject playerMessageBox;
+    [SerializeField]
+    public GameObject npcMessageBox;
+    private string id;
+
+    private void Awake()
+    {
+        id = name;
+    }
+
 
 }
 
