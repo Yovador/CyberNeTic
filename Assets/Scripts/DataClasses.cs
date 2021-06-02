@@ -23,6 +23,37 @@ public class Image : Content
 
         return path;
     }
+
+    public Sprite LoadNewSprite(float PixelsPerUnit = 100.0f)
+    {
+
+        // Load a PNG or JPG image from disk to a Texture2D, assign this texture to a new sprite and return its reference
+
+        Sprite NewSprite;
+        Texture2D SpriteTexture = LoadTexture(GetPath());
+        NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0), PixelsPerUnit);
+
+        return NewSprite;
+    }
+
+    public Texture2D LoadTexture(string FilePath)
+    {
+
+        // Load a PNG or JPG file from disk to a Texture2D
+        // Returns null if load fails
+
+        Texture2D Tex2D;
+        byte[] FileData;
+
+        if (File.Exists(FilePath))
+        {
+            FileData = File.ReadAllBytes(FilePath);
+            Tex2D = new Texture2D(2, 2);           // Create new "empty" texture
+            if (Tex2D.LoadImage(FileData))           // Load the imagedata into the texture (size is set automatically)
+                return Tex2D;                 // If data = readable -> return texture
+        }
+        return null;                     // Return null if load failed
+    }
 }
 
 public class Conversation
@@ -30,7 +61,7 @@ public class Conversation
 
     public class Message
     {
-        public bool isNPC{ get; set; }
+        public bool isNpc{ get; set; }
         public Content content{ get; set; }
         public int sendTime{ get; set; }
     }
@@ -93,7 +124,7 @@ public class Conversation
             logString += $"\t \tMessages : \n";
             foreach (Message message in branch.messagesList)
             {
-                logString += $"\t \t \tSide: {message.isNPC}, type : {message.content.GetType()}, data : {message.content.data}, sendTime :{message.sendTime}\n ";
+                logString += $"\t \t \tisNPC: {message.isNpc}, type : {message.content.GetType()}, data : {message.content.data}, sendTime :{message.sendTime}\n ";
             }
 
 
@@ -106,7 +137,7 @@ public class Conversation
                     case "choice":
                         var choicePoss = (ChoicePossibility)possibility;
                         logString += $"Possible ? {choicePoss.possible}, confidenceMod : {choicePoss.possible}, message :\n";
-                        logString += $"\t \t \t \tSide: {choicePoss.message.isNPC}, type : {choicePoss.message.content.GetType()}, data : {choicePoss.message.content.data}, sendTime :{choicePoss.message.sendTime}\n ";
+                        logString += $"\t \t \t \tisNPC: {choicePoss.message.isNpc}, type : {choicePoss.message.content.GetType()}, data : {choicePoss.message.content.data}, sendTime :{choicePoss.message.sendTime}\n ";
 
                         break;
                     case "test":
@@ -137,7 +168,7 @@ public class Character
     }
 
     public string id {get; set;}
-    public string profilePicture { get; set; }
+    public Image profilePicture { get; set; }
     public string firstName { get; set; }
     public string lastName { get; set; }
     public List<Relationship> relationships { get; set; } = new List<Relationship>();
@@ -169,6 +200,9 @@ public class Medium : ScriptableObject
     public GameObject playerMessageBox;
     [SerializeField]
     public GameObject npcMessageBox;
+    [SerializeField]
+    public GameObject background;
+
     private string id;
 
     private void Awake()

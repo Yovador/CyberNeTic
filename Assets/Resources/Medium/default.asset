@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Medium
   playerMessageBox: {fileID: 7272966043441959420, guid: cb9192e44195eee40883f830ed88ee8b, type: 3}
   npcMessageBox: {fileID: 5532616446848884718, guid: cd71845fba422f840b4ce9ae60cb9799, type: 3}
+  background: {fileID: 848058901730201712, guid: c57eac5e1074c554593e32e22a1450c0, type: 3}

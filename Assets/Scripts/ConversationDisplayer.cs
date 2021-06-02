@@ -17,6 +17,8 @@ public class ConversationDisplayer : MonoBehaviour
     private Conversation conversation;
     private JsonUnloader jsonUnloader = new JsonUnloader();
     private GameObject conversationFlux;
+    public static Character npCharacter { get; set; }
+    private List<Character> characterList;
 
     private void Start()
     {
@@ -24,7 +26,15 @@ public class ConversationDisplayer : MonoBehaviour
         conversation.DebugLogConversation();
         conversationFlux = GameObject.Find("ConversationFlux");
         medium = LoadMedium(conversation.medium);
+        characterList = jsonUnloader.LoadCharacterListFromJson(Path.Combine(Application.streamingAssetsPath, "Characters", "characterSetExample.json"));
 
+        foreach (var character in characterList)
+        {
+            if(character.id == conversation.npCharacter)
+            {
+                npCharacter = character;
+            }
+        }
 
         StartCoroutine(LoadBranches(conversation.branches[0]));
 
@@ -48,6 +58,8 @@ public class ConversationDisplayer : MonoBehaviour
             medium = Resources.Load<Medium>(mediumPath);
         }
 
+        Instantiate(medium.background, transform).transform.SetSiblingIndex(0);
+
         return medium;
     }
 
@@ -55,9 +67,9 @@ public class ConversationDisplayer : MonoBehaviour
     {
         GameObject messageBoxPrefab;
 
-        Debug.Log(message.isNPC);
+        Debug.Log(message.isNpc);
 
-        if (message.isNPC)
+        if (message.isNpc)
         {
             messageBoxPrefab = medium.npcMessageBox;
         }
@@ -84,10 +96,7 @@ public class ConversationDisplayer : MonoBehaviour
             conversationFlux.transform.position = newPos;
             yield return new WaitForSecondsRealtime(waitTime);
             newMessage.transform.SetParent(conversationFlux.transform);
-
         }
-
-
     }
 
 }

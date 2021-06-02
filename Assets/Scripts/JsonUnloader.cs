@@ -29,7 +29,7 @@ public class JsonUnloader
     [System.Serializable]
     class Message
     {
-        public bool side;
+        public bool isNpc;
         public ContentJSON content;
         public int sendTime;
     }
@@ -106,7 +106,7 @@ public class JsonUnloader
         Conversation.Message CreateMessage(Message message)
         {
             Conversation.Message newMessage = new Conversation.Message();
-            newMessage.isNPC = message.side;
+            newMessage.isNpc = message.isNpc;
             newMessage.sendTime = message.sendTime;
             Content newContent;
             switch (message.content.type)
@@ -202,7 +202,8 @@ public class JsonUnloader
             character.id = characterJson.id;
             character.firstName = characterJson.firstName;
             character.lastName = characterJson.lastName;
-            character.profilePicture = characterJson.profilePicture;
+            character.profilePicture = new Image();
+            character.profilePicture.data = characterJson.profilePicture;
 
             List<Character.Relationship> relationships = new List<Character.Relationship>();
 
