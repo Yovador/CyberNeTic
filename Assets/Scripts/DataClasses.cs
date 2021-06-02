@@ -13,7 +13,7 @@ public class Content
     public string data { get; set; }
 
 }
-public class Image : Content
+public class ImageContent : Content
 {
     public string GetPath()
     {
@@ -168,7 +168,7 @@ public class Character
     }
 
     public string id {get; set;}
-    public Image profilePicture { get; set; }
+    public ImageContent profilePicture { get; set; }
     public string firstName { get; set; }
     public string lastName { get; set; }
     public List<Relationship> relationships { get; set; } = new List<Relationship>();
@@ -192,25 +192,7 @@ public class Character
 
 }
 
-//ScriptableObject contenant les informations d'un medium de communication
-[CreateAssetMenu(fileName = "New Medium", menuName = "Medium", order = 51)]
-public class Medium : ScriptableObject
-{
-    [SerializeField]
-    public GameObject playerMessageBox;
-    [SerializeField]
-    public GameObject npcMessageBox;
-    [SerializeField]
-    public GameObject background;
-
-    private string id;
-
-    private void Awake()
-    {
-        id = name;
-    }
 
 
-}
 
 

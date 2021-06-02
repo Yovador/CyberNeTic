@@ -17,12 +17,14 @@ public class ConversationDisplayer : MonoBehaviour
     private Conversation conversation;
     private JsonUnloader jsonUnloader = new JsonUnloader();
     private GameObject conversationFlux;
-    public static Character npCharacter { get; set; }
+    private Character npCharacter { get; set; }
+    private Character playerCharacter { get; set; }
     private List<Character> characterList;
+    private Character.Relationship npcToPlayerRelationhship;
 
     private void Start()
     {
-        conversation = jsonUnloader.LoadConversationFromJson(Path.Combine(Application.streamingAssetsPath, "Conversations", "conversationExample.json"));
+        conversation = jsonUnloader.LoadConversationFromJson(Path.Combine(Application.streamingAssetsPath, "Conversations", "ChangeTest.json"));
         conversation.DebugLogConversation();
         conversationFlux = GameObject.Find("ConversationFlux");
         medium = LoadMedium(conversation.medium);
@@ -34,10 +36,21 @@ public class ConversationDisplayer : MonoBehaviour
             {
                 npCharacter = character;
             }
+            if (character.id == conversation.playerCharacter)
+            {
+                playerCharacter = character;
+            }
         }
-
+        Debug.Log(playerCharacter.id);
         StartCoroutine(LoadBranches(conversation.branches[0]));
 
+        foreach (var relationship in npCharacter.relationships)
+        {
+            if (relationship.them == playerCharacter.id)
+            {
+                npcToPlayerRelationhship = relationship;
+            }
+        }
     }
 
 
@@ -59,6 +72,8 @@ public class ConversationDisplayer : MonoBehaviour
         }
 
         Instantiate(medium.background, transform).transform.SetSiblingIndex(0);
+        Instantiate(medium.navBar, transform);
+        Instantiate(medium.footer, transform);
 
         return medium;
     }
@@ -92,10 +107,84 @@ public class ConversationDisplayer : MonoBehaviour
         {
             GameObject newMessage = LoadMessage(message);
             RectTransform rectTransform = newMessage.GetComponent<RectTransform>();
+
+            //Monter des messages sans animation **TEMPORAIRE**
             Vector2 newPos = new Vector2(conversationFlux.transform.position.x, conversationFlux.transform.position.y + spaceBetweenMessages + rectTransform.sizeDelta.y );
             conversationFlux.transform.position = newPos;
+            //**TEMPORAIRE**
+
             yield return new WaitForSecondsRealtime(waitTime);
             newMessage.transform.SetParent(conversationFlux.transform);
+        }
+
+        LoadBranchingPoint(branche.branchingPoint);
+
+    }
+
+    private Conversation.Branche GetBrancheByID (string id)
+    {
+        Conversation.Branche foundBranch = null;
+        foreach (var branche in conversation.branches)
+        {
+            if(branche.id == id)
+            {
+                foundBranch = branche;
+            }
+        }
+        return foundBranch;
+    }
+
+    private void LoadBranchingPoint(Conversation.BranchingPoint branchingPoint)
+    {
+        switch (branchingPoint.type)
+        {
+            case "choice":
+                break;
+            case "test":
+
+                Conversation.Branche branch = GetBrancheByID(branchingPoint.possibilities[0].branch);
+                foreach (Conversation.TestPossibility poss in branchingPoint.possibilities)
+                {
+                    if (npcToPlayerRelationhship.confidenceMeToThem >= poss.thresholds[0] && npcToPlayerRelationhship.confidenceMeToThem <= poss.thresholds[0])
+                    {
+                        branch = GetBrancheByID(poss.branch);
+                    }
+                }
+                StartCoroutine(LoadBranches(branch));
+
+                break;
+            case "change":
+
+                StartCoroutine(LoadBranches(GetBrancheByID(branchingPoint.possibilities[0].branch)));
+
+                break;
+            case "stop":
+                Debug.LogWarning("Conversation End");
+                break;
+            default:
+                Debug.LogError("Type de branching Point Inconnue");
+                break;
+        }
+    }
+
+    public void LoadProfilePicture(Image imageComponent, string character)
+    {
+        Sprite newSprite;
+        switch (character)
+        {
+            case "npc":
+                newSprite = npCharacter.profilePicture.LoadNewSprite();
+                break;
+            case "player":
+                newSprite = playerCharacter.profilePicture.LoadNewSprite();
+                break;
+            default:
+                newSprite = null;
+                break;
+        }
+        if(newSprite != null)
+        {
+            imageComponent.sprite = newSprite;
         }
     }
 

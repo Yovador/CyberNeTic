@@ -112,7 +112,7 @@ public class JsonUnloader
             switch (message.content.type)
             {
                 case "image":
-                    newContent = new Image();
+                    newContent = new ImageContent();
                     break;
                 default:
                     newContent = new Content();
@@ -202,7 +202,7 @@ public class JsonUnloader
             character.id = characterJson.id;
             character.firstName = characterJson.firstName;
             character.lastName = characterJson.lastName;
-            character.profilePicture = new Image();
+            character.profilePicture = new ImageContent();
             character.profilePicture.data = characterJson.profilePicture;
 
             List<Character.Relationship> relationships = new List<Character.Relationship>();
