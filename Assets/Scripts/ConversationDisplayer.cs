@@ -24,11 +24,12 @@ public class ConversationDisplayer : MonoBehaviour
     public bool isInChoice { get; set; } = false;
     [HideInInspector]
     public Conversation.Branche nextBranch {get; set;}
+    private SaveManager saveManager = new SaveManager();
+    private List<string> branchList = new List<string>();
 
 private void Start()
     {
         conversation = jsonUnloader.LoadConversationFromJson(Path.Combine(Application.streamingAssetsPath, "Conversations", "olivier-sophie.json"));
-        conversation.DebugLogConversation();
         conversationFlux = GameObject.Find("ConversationFlux");
         medium = LoadMedium(conversation.medium);
         characterList = jsonUnloader.LoadCharacterListFromJson(Path.Combine(Application.streamingAssetsPath, "Characters", "characterSet2.json"));
@@ -44,12 +45,9 @@ private void Start()
                 playerCharacter = character;
             }
         }
-        StartCoroutine(LoadBranches(conversation.branches[0]));
 
-        foreach (var item in characterList)
-        {
-            item.DebugLogCharacter();
-        }
+
+        StartCoroutine(LoadBranches(conversation.branches[0]));
 
 
         foreach (var relationship in npCharacter.relationships)
@@ -59,6 +57,9 @@ private void Start()
                 npcToPlayerRelationhship = relationship;
             }
         }
+
+        saveManager.SaveGame(conversation.id, branchList, characterList);
+
     }
 
 
@@ -127,8 +128,8 @@ private void Start()
             yield return new WaitForSecondsRealtime(waitTime);
         }
 
+        branchList.Add(branche.id);
         LoadBranchingPoint(branche.branchingPoint);
-
     }
 
     private Conversation.Branche GetBrancheByID (string id)
@@ -152,7 +153,7 @@ private void Start()
         float upValue = rectTransform.sizeDelta.y - medium.footerHeigth;
         MoveFlux(upValue);
         rectTransform.position += new Vector3(0, upValue, 0);
-        Dictionary<GameObject, Conversation.Message> buttonList = new Dictionary<GameObject, Conversation.Message>();
+        Dictionary<GameObject, Conversation.ChoicePossibility> buttonList = new Dictionary<GameObject, Conversation.ChoicePossibility>();
         for (int i = 0; i < choicePossibilities.Count; i++)
         {
             Conversation.ChoicePossibility poss = (Conversation.ChoicePossibility)choicePossibilities[i];
@@ -174,14 +175,11 @@ private void Start()
                 newButton.GetComponent<ChoiceButton>().branche = GetBrancheByID(poss.branch);
             }
             newButton.name = "choiceButton";
-            buttonList.Add(newButton, poss.message);
+            buttonList.Add(newButton, poss);
         }
 
         //yield return new WaitForSecondsRealtime(waitTime);
         yield return new WaitWhile(() => isInChoice);
-
-
-
 
         float downValue = -rectTransform.sizeDelta.y + medium.footerHeigth;
         MoveFlux(downValue);
@@ -190,10 +188,25 @@ private void Start()
         foreach (var newButton in buttonList)
         {
             ChoiceButton choiceButton = newButton.Key.GetComponent<ChoiceButton>();
-            if (choiceButton.branche == nextBranch)
+            if(choiceButton != null)
             {
-                LoadMessage(newButton.Value);
+                if (choiceButton.branche == nextBranch)
+                {
+                    LoadMessage(newButton.Value.message);
+
+
+                    foreach (var relationship in npCharacter.relationships)
+                    {
+                        if (relationship.them == playerCharacter.id)
+                        {
+                            relationship.confidenceMeToThem += newButton.Value.confidenceMod;
+
+                        }
+                    }
+
+                }
             }
+
 
             Destroy(newButton.Key);
         }
@@ -229,12 +242,18 @@ private void Start()
 
                 break;
             case "stop":
-                Debug.LogWarning("Conversation End");
+                EndConversation();
                 break;
             default:
                 Debug.LogError("Type de branching Point Inconnue");
                 break;
         }
+    }
+
+    private void EndConversation()
+    {
+        Debug.LogWarning("Conversation End");
+        saveManager.SaveGame(conversation.id, branchList, characterList);
     }
 
     public void LoadProfilePicture(Image imageComponent, string character)
@@ -258,4 +277,5 @@ private void Start()
         }
     }
 
+    
 }

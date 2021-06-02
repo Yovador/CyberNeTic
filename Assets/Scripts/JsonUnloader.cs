@@ -84,7 +84,7 @@ public class JsonUnloader
     }
 
     [System.Serializable]
-    class Relationship
+    public class Relationship
     {
         public string me;
         public string them;
