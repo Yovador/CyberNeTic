@@ -179,8 +179,6 @@ GameObject:
   - component: {fileID: 3366399287130150607}
   - component: {fileID: 3012804379353435888}
   - component: {fileID: 4862242650491974133}
-  - component: {fileID: 914340607669139033}
-  - component: {fileID: -8603535113930883310}
   m_Layer: 5
   m_Name: npcMessageBox
   m_TagString: Untagged
@@ -247,34 +245,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &914340607669139033
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5532616446848884718}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 62f8466446c44f9458a87bdd9ba8ceec, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-8603535113930883310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5532616446848884718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fea816169c180774a9008694d1be4324, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
