@@ -17,7 +17,6 @@ public class ProfilePicture : MonoBehaviour
     {
         imageComponent = GetComponent<Image>();
         conversationDisplayer = GameObject.FindGameObjectWithTag("ConversationDisplayer").GetComponent<ConversationDisplayer>();
-        Debug.Log(profilesPictureCharacter.ToString());
         conversationDisplayer.LoadProfilePicture(imageComponent, profilesPictureCharacter.ToString());
     }
 

@@ -10,25 +10,28 @@ public class ConversationDisplayer : MonoBehaviour
     [SerializeField]
     private string defaultMedium;
     [SerializeField]
-    private float spaceBetweenMessages;
-    [SerializeField]
     private float waitTime;
     private Medium medium;
     private Conversation conversation;
     private JsonUnloader jsonUnloader = new JsonUnloader();
     private GameObject conversationFlux;
-    private Character npCharacter { get; set; }
-    private Character playerCharacter { get; set; }
+    private Character npCharacter;
+    private Character playerCharacter;
     private List<Character> characterList;
     private Character.Relationship npcToPlayerRelationhship;
+    private GameObject footer;
+    [HideInInspector]
+    public bool isInChoice { get; set; } = false;
+    [HideInInspector]
+    public Conversation.Branche nextBranch {get; set;}
 
-    private void Start()
+private void Start()
     {
-        conversation = jsonUnloader.LoadConversationFromJson(Path.Combine(Application.streamingAssetsPath, "Conversations", "ChangeTest.json"));
+        conversation = jsonUnloader.LoadConversationFromJson(Path.Combine(Application.streamingAssetsPath, "Conversations", "olivier-sophie.json"));
         conversation.DebugLogConversation();
         conversationFlux = GameObject.Find("ConversationFlux");
         medium = LoadMedium(conversation.medium);
-        characterList = jsonUnloader.LoadCharacterListFromJson(Path.Combine(Application.streamingAssetsPath, "Characters", "characterSetExample.json"));
+        characterList = jsonUnloader.LoadCharacterListFromJson(Path.Combine(Application.streamingAssetsPath, "Characters", "characterSet2.json"));
 
         foreach (var character in characterList)
         {
@@ -41,8 +44,13 @@ public class ConversationDisplayer : MonoBehaviour
                 playerCharacter = character;
             }
         }
-        Debug.Log(playerCharacter.id);
         StartCoroutine(LoadBranches(conversation.branches[0]));
+
+        foreach (var item in characterList)
+        {
+            item.DebugLogCharacter();
+        }
+
 
         foreach (var relationship in npCharacter.relationships)
         {
@@ -67,13 +75,12 @@ public class ConversationDisplayer : MonoBehaviour
         if(medium == null)
         {
             mediumPath = $"Medium/{defaultMedium}";
-            Debug.Log(Resources.Load<Medium>(mediumPath));
             medium = Resources.Load<Medium>(mediumPath);
         }
 
         Instantiate(medium.background, transform).transform.SetSiblingIndex(0);
         Instantiate(medium.navBar, transform);
-        Instantiate(medium.footer, transform);
+        footer = Instantiate(medium.footer, transform);
 
         return medium;
     }
@@ -81,8 +88,6 @@ public class ConversationDisplayer : MonoBehaviour
     private GameObject LoadMessage(Conversation.Message message)
     {
         GameObject messageBoxPrefab;
-
-        Debug.Log(message.isNpc);
 
         if (message.isNpc)
         {
@@ -98,23 +103,28 @@ public class ConversationDisplayer : MonoBehaviour
         Text textComponent = messageBox.GetComponentsInChildren<Text>()[0];
         textComponent.text = message.content.data;
 
+        RectTransform rectTransform = messageBox.GetComponent<RectTransform>();
+        MoveFlux(medium.spaceBetweenMessages + rectTransform.sizeDelta.y );
+
+        messageBox.transform.SetParent(conversationFlux.transform);
+
         return messageBox;
+    }
+
+    private void MoveFlux(float value)
+    {
+        //Monter des messages sans animation **TEMPORAIRE**
+        Vector2 newPos = new Vector2(conversationFlux.transform.position.x, conversationFlux.transform.position.y +  value);
+        conversationFlux.transform.position = newPos;
+        //**TEMPORAIRE**
     }
 
     private IEnumerator LoadBranches(Conversation.Branche branche )
     {
         foreach (var message in branche.messagesList)
         {
-            GameObject newMessage = LoadMessage(message);
-            RectTransform rectTransform = newMessage.GetComponent<RectTransform>();
-
-            //Monter des messages sans animation **TEMPORAIRE**
-            Vector2 newPos = new Vector2(conversationFlux.transform.position.x, conversationFlux.transform.position.y + spaceBetweenMessages + rectTransform.sizeDelta.y );
-            conversationFlux.transform.position = newPos;
-            //**TEMPORAIRE**
-
+            LoadMessage(message);
             yield return new WaitForSecondsRealtime(waitTime);
-            newMessage.transform.SetParent(conversationFlux.transform);
         }
 
         LoadBranchingPoint(branche.branchingPoint);
@@ -134,28 +144,88 @@ public class ConversationDisplayer : MonoBehaviour
         return foundBranch;
     }
 
+    private IEnumerator LoadChoiceBranch(List<Conversation.Possibility> choicePossibilities)
+    {
+        Conversation.Branche branch = GetBrancheByID(choicePossibilities[0].branch);
+        RectTransform rectTransform = footer.GetComponent<RectTransform>();
+        isInChoice = true;
+        float upValue = rectTransform.sizeDelta.y - medium.footerHeigth;
+        MoveFlux(upValue);
+        rectTransform.position += new Vector3(0, upValue, 0);
+        Dictionary<GameObject, Conversation.Message> buttonList = new Dictionary<GameObject, Conversation.Message>();
+        for (int i = 0; i < choicePossibilities.Count; i++)
+        {
+            Conversation.ChoicePossibility poss = (Conversation.ChoicePossibility)choicePossibilities[i];
+            GameObject newButton;
+            if (poss.possible)
+            {
+                newButton = Instantiate(medium.choiceButton, footer.transform);
+            }
+            else
+            {
+                newButton = Instantiate(medium.impossibleChoiceButton, footer.transform);
+
+            }
+            RectTransform rectTransformButton = newButton.GetComponent<RectTransform>();
+            rectTransformButton.position -= new Vector3(0, i * (medium.spaceBetweenChoices + (rectTransformButton.sizeDelta.y/2)) , 0 );
+            newButton.GetComponentInChildren<Text>().text = poss.message.content.data;
+            if (poss.possible)
+            {
+                newButton.GetComponent<ChoiceButton>().branche = GetBrancheByID(poss.branch);
+            }
+            newButton.name = "choiceButton";
+            buttonList.Add(newButton, poss.message);
+        }
+
+        //yield return new WaitForSecondsRealtime(waitTime);
+        yield return new WaitWhile(() => isInChoice);
+
+
+
+
+        float downValue = -rectTransform.sizeDelta.y + medium.footerHeigth;
+        MoveFlux(downValue);
+        rectTransform.position += new Vector3(0, downValue, 0);
+
+        foreach (var newButton in buttonList)
+        {
+            ChoiceButton choiceButton = newButton.Key.GetComponent<ChoiceButton>();
+            if (choiceButton.branche == nextBranch)
+            {
+                LoadMessage(newButton.Value);
+            }
+
+            Destroy(newButton.Key);
+        }
+        
+        yield return new WaitForSecondsRealtime(waitTime);
+        StartCoroutine(LoadBranches(nextBranch));
+
+    }
+
     private void LoadBranchingPoint(Conversation.BranchingPoint branchingPoint)
     {
         switch (branchingPoint.type)
         {
             case "choice":
+                StartCoroutine(LoadChoiceBranch((branchingPoint.possibilities)));
                 break;
             case "test":
-
-                Conversation.Branche branch = GetBrancheByID(branchingPoint.possibilities[0].branch);
+                nextBranch = GetBrancheByID(branchingPoint.possibilities[0].branch);
                 foreach (Conversation.TestPossibility poss in branchingPoint.possibilities)
                 {
-                    if (npcToPlayerRelationhship.confidenceMeToThem >= poss.thresholds[0] && npcToPlayerRelationhship.confidenceMeToThem <= poss.thresholds[0])
+                    if (npcToPlayerRelationhship.confidenceMeToThem >= poss.thresholds[0] && npcToPlayerRelationhship.confidenceMeToThem <= poss.thresholds[1])
                     {
-                        branch = GetBrancheByID(poss.branch);
+                        nextBranch = GetBrancheByID(poss.branch);
                     }
                 }
-                StartCoroutine(LoadBranches(branch));
+                StartCoroutine(LoadBranches(nextBranch));
+
 
                 break;
             case "change":
-
-                StartCoroutine(LoadBranches(GetBrancheByID(branchingPoint.possibilities[0].branch)));
+                nextBranch = GetBrancheByID(branchingPoint.possibilities[0].branch);
+                StartCoroutine(LoadBranches(nextBranch));
 
                 break;
             case "stop":

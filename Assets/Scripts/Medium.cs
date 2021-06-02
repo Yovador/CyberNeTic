@@ -7,6 +7,8 @@ using UnityEngine;
 public class Medium : ScriptableObject
 {
     [SerializeField]
+    public float spaceBetweenMessages;
+    [SerializeField]
     public GameObject playerMessageBox;
     [SerializeField]
     public GameObject npcMessageBox;
@@ -16,9 +18,16 @@ public class Medium : ScriptableObject
     public GameObject navBar;
     [SerializeField]
     public GameObject footer;
+    [SerializeField]
+    public float footerHeigth;
+    [SerializeField]
+    public GameObject choiceButton;
+    [SerializeField]
+    public GameObject impossibleChoiceButton;
+    [SerializeField]
+    public float spaceBetweenChoices;
 
     private string id;
-
     private void Awake()
     {
         id = name;
