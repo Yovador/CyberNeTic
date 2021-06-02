@@ -1,0 +1,29 @@
+{
+    "version": 0.1,
+    "Characters": [
+        {
+            "id": "coach_velo",
+            "profilePicture": "olivier.jpg",
+            "firstName": "Olivier",
+            "lastName": "Achain"
+        },
+        {
+            "id": "victime",
+            "profilePicture": "sophie.jpg",
+            "firstName": "Sophie",
+            "lastName": "Fouquet"
+        }
+    ],
+    "Relationships": [
+        {
+            "me": "coach_velo",
+            "them": "victime",
+            "confidenceMeToThem": "5"
+        },
+        {
+            "me": "victime",
+            "them": "coach_velo",
+            "confidenceMeToThem": "3"
+        }
+    ]
+}

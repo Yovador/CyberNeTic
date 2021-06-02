@@ -7,7 +7,7 @@
     ],
     "Relationships":[
         {"me": "angélique", "them": "sophie", "confidenceMeToThem":2},
-        {"me": "sophie", "them": "angélique", "confidenceMeToThem":2},
+        {"me": "sophie", "them": "angélique", "confidenceMeToThem":0},
         {"me": "sophie", "them": "victor", "confidenceMeToThem":0},
         {"me": "victor", "them": "sophie", "confidenceMeToThem":-12},
         {"me": "victor", "them": "angélique", "confidenceMeToThem":0},

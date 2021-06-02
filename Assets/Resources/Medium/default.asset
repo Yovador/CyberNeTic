@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6723b94facd0648bfe130252f7591b, type: 3}
   m_Name: default
   m_EditorClassIdentifier: Assembly-CSharp::Medium
+  spaceBetweenMessages: 50
   playerMessageBox: {fileID: 7272966043441959420, guid: cb9192e44195eee40883f830ed88ee8b, type: 3}
   npcMessageBox: {fileID: 5532616446848884718, guid: cd71845fba422f840b4ce9ae60cb9799, type: 3}
   background: {fileID: 848058901730201712, guid: c57eac5e1074c554593e32e22a1450c0, type: 3}
   navBar: {fileID: 454831195708029934, guid: 4e6f227266733fe4fa37e2673f83bae6, type: 3}
   footer: {fileID: 8402148764533746829, guid: 8805de5a0737f1f45b20fdebca5222f6, type: 3}
+  footerHeigth: 80
+  choiceButton: {fileID: 8568480440450106278, guid: 93beb846b8ddb274bbcc35d6bc614780, type: 3}
+  spaceBetweenChoices: 50
