@@ -35,7 +35,7 @@
                     {
                         "branch": "olivier-sophie-1",
                         "possible": true,
-                        "confidenceMod": "0",
+                        "confidenceMod": "10000",
                         "message": {
                             "isNpc": false,
                             "content": {
@@ -105,7 +105,7 @@
                     {
                         "branch": "olivier-sophie-2",
                         "possible": true,
-                        "confidenceMod": "5",
+                        "confidenceMod": "0",
                         "message": {
                             "isNpc": false,
                             "content": {
@@ -118,7 +118,7 @@
                     {
                         "branch": "olivier-sophie-5",
                         "possible": true,
-                        "confidenceMod": "-5",
+                        "confidenceMod": "0",
                         "message": {
                             "isNpc": false,
                             "content": {
