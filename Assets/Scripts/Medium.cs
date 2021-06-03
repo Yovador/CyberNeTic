@@ -25,6 +25,8 @@ public class Medium : ScriptableObject
     [SerializeField]
     public GameObject impossibleChoiceButton;
     [SerializeField]
+    public GameObject nextConvoButton;
+    [SerializeField]
     public float spaceBetweenChoices;
 
     private string id;

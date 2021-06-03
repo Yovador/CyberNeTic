@@ -21,4 +21,5 @@ MonoBehaviour:
   footerHeigth: 80
   choiceButton: {fileID: 8568480440450106278, guid: 93beb846b8ddb274bbcc35d6bc614780, type: 3}
   impossibleChoiceButton: {fileID: 7519917683848704902, guid: 7492946f4e463c14d92f51f0471fb113, type: 3}
+  nextConvoButton: {fileID: 6655867024192596153, guid: 41a334534e35f94479988ced222c0bdd, type: 3}
   spaceBetweenChoices: 50

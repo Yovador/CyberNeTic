@@ -17,24 +17,30 @@ public class ConversationDisplayer : MonoBehaviour
     private GameObject conversationFlux;
     private Character npCharacter;
     private Character playerCharacter;
-    private List<Character> characterList;
     private Character.Relationship npcToPlayerRelationhship;
     private GameObject footer;
     [HideInInspector]
     public bool isInChoice { get; set; } = false;
     [HideInInspector]
     public Conversation.Branche nextBranch {get; set;}
-    private SaveManager saveManager = new SaveManager();
     private List<string> branchList = new List<string>();
+    private GameManager gameManager;
+    [HideInInspector]
+    public bool endConversation;
 
-private void Start()
+    public void Start()
     {
-        conversation = jsonUnloader.LoadConversationFromJson(Path.Combine(Application.streamingAssetsPath, "Conversations", "olivier-sophie.json"));
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager.conversationDisplayer = this;
+    }
+
+    public void LaunchAConv(Conversation currentConversation)
+    {
+        conversation = currentConversation;
         conversationFlux = GameObject.Find("ConversationFlux");
         medium = LoadMedium(conversation.medium);
-        characterList = jsonUnloader.LoadCharacterListFromJson(Path.Combine(Application.streamingAssetsPath, "Characters", "characterSet2.json"));
 
-        foreach (var character in characterList)
+        foreach (var character in gameManager.charactersSet)
         {
             if(character.id == conversation.npCharacter)
             {
@@ -58,7 +64,6 @@ private void Start()
             }
         }
 
-        saveManager.SaveGame(conversation.id, branchList, characterList);
 
     }
 
@@ -126,6 +131,7 @@ private void Start()
         {
             LoadMessage(message);
             yield return new WaitForSecondsRealtime(waitTime);
+
         }
 
         branchList.Add(branche.id);
@@ -145,14 +151,31 @@ private void Start()
         return foundBranch;
     }
 
+    private void MoveFooter(bool isMoveUp)
+    {
+        RectTransform rectTransform = footer.GetComponent<RectTransform>();
+        if (isMoveUp)
+        {
+            isInChoice = true;
+            float upValue = rectTransform.sizeDelta.y - medium.footerHeigth;
+            MoveFlux(upValue);
+            rectTransform.position += new Vector3(0, upValue, 0);
+        }
+        else
+        {
+
+            float downValue = -rectTransform.sizeDelta.y + medium.footerHeigth;
+            MoveFlux(downValue);
+            rectTransform.position += new Vector3(0, downValue, 0);
+        }
+    }
+
     private IEnumerator LoadChoiceBranch(List<Conversation.Possibility> choicePossibilities)
     {
         Conversation.Branche branch = GetBrancheByID(choicePossibilities[0].branch);
-        RectTransform rectTransform = footer.GetComponent<RectTransform>();
-        isInChoice = true;
-        float upValue = rectTransform.sizeDelta.y - medium.footerHeigth;
-        MoveFlux(upValue);
-        rectTransform.position += new Vector3(0, upValue, 0);
+
+        MoveFooter(true);
+
         Dictionary<GameObject, Conversation.ChoicePossibility> buttonList = new Dictionary<GameObject, Conversation.ChoicePossibility>();
         for (int i = 0; i < choicePossibilities.Count; i++)
         {
@@ -181,9 +204,7 @@ private void Start()
         //yield return new WaitForSecondsRealtime(waitTime);
         yield return new WaitWhile(() => isInChoice);
 
-        float downValue = -rectTransform.sizeDelta.y + medium.footerHeigth;
-        MoveFlux(downValue);
-        rectTransform.position += new Vector3(0, downValue, 0);
+        MoveFooter(false);
 
         foreach (var newButton in buttonList)
         {
@@ -242,7 +263,10 @@ private void Start()
 
                 break;
             case "stop":
-                EndConversation();
+
+
+
+                StartCoroutine(EndConversation());
                 break;
             default:
                 Debug.LogError("Type de branching Point Inconnue");
@@ -250,10 +274,18 @@ private void Start()
         }
     }
 
-    private void EndConversation()
+
+
+    private IEnumerator EndConversation()
     {
         Debug.LogWarning("Conversation End");
-        saveManager.SaveGame(conversation.id, branchList, characterList);
+
+        MoveFooter(true);
+        Instantiate(medium.nextConvoButton, footer.transform);
+
+        yield return new WaitUntil(() => endConversation);
+
+        gameManager.nextConversation = conversation.nextConversation;
     }
 
     public void LoadProfilePicture(Image imageComponent, string character)
