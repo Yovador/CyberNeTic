@@ -36,7 +36,7 @@ public class ImageContent : Content
         return NewSprite;
     }
 
-    public Texture2D LoadTexture(string FilePath)
+    private Texture2D LoadTexture(string FilePath)
     {
 
         // Load a PNG or JPG file from disk to a Texture2D

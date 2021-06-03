@@ -1,1 +1,87 @@
-{"version":0.2,"Parameters":{"id":"conversationchangetest","startingBranch":"conversationchangetest-0","medium":"sms","playerCharacter":"victime","npCharacter":"coach_velo","nextConversation":"cool"},"Branches":[{"id":"conversationchangetest-0","messagesList":[{"isNpc":true,"content":{"type":"text","data":"Yo je suis une nouvelle Conversation"},"sendTime":null},{"isNpc":false,"content":{"type":"text","data":"ptdr Ca marche"},"sendTime":null}],"branchingPoint":{"type":"stop","possibilities":[]}}]}
+{
+    "version": 0.2,
+    "Parameters": {
+        "id": "conversationchangetest",
+        "startingBranch": "conversationchangetest-0",
+        "medium": "sms",
+        "playerCharacter": "coach_velo",
+        "npCharacter": "victime",
+        "nextConversation": "cool"
+    },
+    "Branches": [
+        {
+            "id": "conversationchangetest-0",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Yo je suis une nouvelle Conversation"
+                    },
+                    "sendTime": null
+                },
+                {
+                    "isNpc": false,
+                    "content": {
+                        "type": "text",
+                        "data": "ptdr Ca marche"
+                    },
+                    "sendTime": null
+                }
+            ],
+            "branchingPoint": {
+                "type": "test",
+                "possibilities": [
+                    {
+                        "branch": "conversationchangetest-1",
+                        "thresholds": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "branch": "conversationchangetest-2",
+                        "thresholds": [
+                            "1",
+                            "99999999"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "conversationchangetest-1",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Marche pas :("
+                    },
+                    "sendTime": null
+                }
+            ],
+            "branchingPoint": {
+                "type": "stop",
+                "possibilities": []
+            }
+        },
+        {
+            "id": "conversationchangetest-2",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Marche !"
+                    },
+                    "sendTime": null
+                }
+            ],
+            "branchingPoint": {
+                "type": "stop",
+                "possibilities": []
+            }
+        }
+    ]
+}

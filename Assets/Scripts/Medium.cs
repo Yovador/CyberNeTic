@@ -13,6 +13,10 @@ public class Medium : ScriptableObject
     [SerializeField]
     public GameObject npcMessageBox;
     [SerializeField]
+    public GameObject playerMessageBoxImage;
+    [SerializeField]
+    public GameObject npcMessageBoxImage;
+    [SerializeField]
     public GameObject background;
     [SerializeField]
     public GameObject navBar;

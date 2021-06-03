@@ -13,7 +13,7 @@ public class ConversationDisplayer : MonoBehaviour
     private float waitTime;
     private Medium medium;
     private Conversation conversation;
-    private JsonUnloader jsonUnloader = new JsonUnloader();
+    private SaveManager saveManager = new SaveManager();
     private GameObject conversationFlux;
     private Character npCharacter;
     private Character playerCharacter;
@@ -34,14 +34,31 @@ public class ConversationDisplayer : MonoBehaviour
         gameManager.conversationDisplayer = this;
     }
 
-    public void LaunchAConv(Conversation currentConversation)
+    void OnApplicationQuit()
+    {
+        saveManager.SaveGame(conversation.id, branchList, gameManager.charactersSet);
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            saveManager.SaveGame(conversation.id, branchList, gameManager.charactersSet);
+        }
+    }
+    public void LaunchAConv(Conversation currentConversation, List<string> branchesList)
     {
         conversation = currentConversation;
         conversationFlux = GameObject.Find("ConversationFlux");
         medium = LoadMedium(conversation.medium);
+        if(branchesList.Count > 0)
+        {
+            conversation.startingBranch = branchesList[branchesList.Count - 1];
+        }
 
         foreach (var character in gameManager.charactersSet)
         {
+            character.DebugLogCharacter();
             if(character.id == conversation.npCharacter)
             {
                 npCharacter = character;
@@ -53,7 +70,7 @@ public class ConversationDisplayer : MonoBehaviour
         }
 
 
-        StartCoroutine(LoadBranches(conversation.branches[0]));
+        StartCoroutine(LoadBranches(GetBrancheByID(conversation.startingBranch)));
 
 
         foreach (var relationship in npCharacter.relationships)
@@ -64,6 +81,7 @@ public class ConversationDisplayer : MonoBehaviour
             }
         }
 
+        saveManager.SaveGame(conversation.id, branchList, gameManager.charactersSet);
 
     }
 
@@ -97,17 +115,44 @@ public class ConversationDisplayer : MonoBehaviour
 
         if (message.isNpc)
         {
-            messageBoxPrefab = medium.npcMessageBox;
+            if(message.content is ImageContent)
+            {
+                messageBoxPrefab = medium.npcMessageBoxImage;
+            }
+            else
+            {
+                messageBoxPrefab = medium.npcMessageBox;
+            }
         }
         else
         {
-            messageBoxPrefab = medium.playerMessageBox;
+            if (message.content is ImageContent)
+            {
+                messageBoxPrefab = medium.playerMessageBoxImage;
+            }
+            else
+            {
+                messageBoxPrefab = medium.playerMessageBox;
+            }
         }
+
+
+
 
         GameObject messageBox = Instantiate(messageBoxPrefab, transform);
 
-        Text textComponent = messageBox.GetComponentsInChildren<Text>()[0];
-        textComponent.text = message.content.data;
+        if(message.content is ImageContent)
+        {
+            Image image = messageBox.transform.Find("Mask").Find("MediaImage").GetComponent<Image>();
+            ImageContent imgContent = (ImageContent)message.content;
+            Sprite newSprite = imgContent.LoadNewSprite();
+            image.overrideSprite = newSprite;
+        }
+        else
+        {
+            Text textComponent = messageBox.GetComponentsInChildren<Text>()[0];
+            textComponent.text = message.content.data;
+        }
 
         RectTransform rectTransform = messageBox.GetComponent<RectTransform>();
         MoveFlux(medium.spaceBetweenMessages + rectTransform.sizeDelta.y );
@@ -221,6 +266,7 @@ public class ConversationDisplayer : MonoBehaviour
                         if (relationship.them == playerCharacter.id)
                         {
                             relationship.confidenceMeToThem += newButton.Value.confidenceMod;
+                            Debug.Log("Plus value : " + newButton.Value.confidenceMod);
 
                         }
                     }
@@ -248,6 +294,7 @@ public class ConversationDisplayer : MonoBehaviour
                 nextBranch = GetBrancheByID(branchingPoint.possibilities[0].branch);
                 foreach (Conversation.TestPossibility poss in branchingPoint.possibilities)
                 {
+                    Debug.Log(poss.thresholds[0] + " / " + npcToPlayerRelationhship.confidenceMeToThem  + " / " +  poss.thresholds[1]);
                     if (npcToPlayerRelationhship.confidenceMeToThem >= poss.thresholds[0] && npcToPlayerRelationhship.confidenceMeToThem <= poss.thresholds[1])
                     {
                         nextBranch = GetBrancheByID(poss.branch);
@@ -282,6 +329,7 @@ public class ConversationDisplayer : MonoBehaviour
 
         MoveFooter(true);
         Instantiate(medium.nextConvoButton, footer.transform);
+        saveManager.SaveGame(conversation.id, branchList, gameManager.charactersSet);
 
         yield return new WaitUntil(() => endConversation);
 

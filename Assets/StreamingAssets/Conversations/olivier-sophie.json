@@ -1,1 +1,293 @@
-{"version":0.2,"Parameters":{"id":"olivier-sophie","startingBranch":"olivier-sophie-0","medium":"Messenger","playerCharacter":"coach_velo","npCharacter":"victime","nextConversation":"conversationchangetest"},"Branches":[{"id":"olivier-sophie-0","messagesList":[{"isNpc":false,"content":{"type":"text","data":"Sophie ? J’ai reçu des messages bizarres de ton compte facebook, c’est normal ?"},"sendTime":null},{"isNpc":true,"content":{"type":"text","data":"M@!#e, désolé, je me suis faite hacker mes réseaux sociaux c’est l’enfer depuis trois jours."},"sendTime":null}],"branchingPoint":{"type":"choice","possibilities":[{"branch":"olivier-sophie-1","possible":true,"confidenceMod":"10000","message":{"isNpc":false,"content":{"type":"text","data":"Je me suis toujours dit que c’était dangereux ces sites… Fais attention à toi."},"sendTime":null}},{"branch":"olivier-sophie-6","possible":true,"confidenceMod":"0","message":{"isNpc":false,"content":{"type":"text","data":"Ça m’est arrivé une fois, mais j’ai changé mon mot de passe et depuis j'ai eu aucun problème. Essaye ça peut-être ? "},"sendTime":null}},{"branch":"olivier-sophie-8","possible":true,"confidenceMod":"0","message":{"isNpc":false,"content":{"type":"text","data":"Ah mince, tu sais comment ça se fait ? "},"sendTime":null}},{"branch":"","possible":false,"confidenceMod":"0","message":{"isNpc":false,"content":{"type":"text","data":"Rah c'est marrant ça xD"},"sendTime":null}}]}},{"id":"olivier-sophie-1","messagesList":[{"isNpc":true,"content":{"type":"text","data":"C’est pas les sites en soi… C’est les gens."},"sendTime":null}],"branchingPoint":{"type":"choice","possibilities":[{"branch":"olivier-sophie-2","possible":true,"confidenceMod":"0","message":{"isNpc":false,"content":{"type":"text","data":"Oui, c’est vrai, souvent.\nM’enfin, j’espère que ça va aller mieux cette histoire de faux compte. Courage."},"sendTime":null}},{"branch":"olivier-sophie-5","possible":true,"confidenceMod":"0","message":{"isNpc":false,"content":{"type":"text","data":"N’empêche que sans ces sites on aurait pas tout ces problèmes. De mon temps il n’y avait pas ce délire d’usurpation d’identité, on voyait les gens en vrai 😂"},"sendTime":null}}]}},{"id":"olivier-sophie-2","messagesList":[{"isNpc":true,"content":{"type":"text","data":"Je vais faire ce que je peux, on verra bien... "},"sendTime":null},{"isNpc":true,"content":{"type":"text","data":"Je sais pas si je viendrai samedi du coup. Je te tiens le courant."},"sendTime":null}],"branchingPoint":{"type":"test","possibilities":[{"branch":"olivier-sophie-3","thresholds":["5","10"]},{"branch":"olivier-sophie-4","thresholds":["-5","4"]}]}},{"id":"olivier-sophie-3","messagesList":[{"isNpc":true,"content":{"type":"text","data":"Si c'est maintenu à 18h je devrais être là, j'ai vraiment envie de venir"},"sendTime":null}],"branchingPoint":{"type":"stop","possibilities":[]}},{"id":"olivier-sophie-4","messagesList":[{"isNpc":true,"content":{"type":"text","data":"Ça risque d'être compliqué, je serais probablement pas là"},"sendTime":null}],"branchingPoint":{"type":"stop","possibilities":[]}},{"id":"olivier-sophie-5","messagesList":[{"isNpc":true,"content":{"type":"text","data":"Enfin Facebook est quand même bien utile quand il faut organiser une compétition de VTT. S’il fallait mettre une annonce dans le journal à chaque fois..."},"sendTime":null},{"isNpc":false,"content":{"type":"text","data":"Pas faux. Mais ça se faisait, ça se faisait..."},"sendTime":null}],"branchingPoint":{"type":"stop","possibilities":[]}},{"id":"olivier-sophie-6","messagesList":[{"isNpc":true,"content":{"type":"text","data":"C’est déjà fait mais en l'occurrence c’est un peu plus compliqué que ça."},"sendTime":null}],"branchingPoint":{"type":"change","possibilities":[{"branch":"olivier-sophie-7"}]}},{"id":"olivier-sophie-7","messagesList":[{"isNpc":false,"content":{"type":"text","data":"À ce point là..."},"sendTime":null}],"branchingPoint":{"type":"stop","possibilities":[]}},{"id":"olivier-sophie-8","messagesList":[{"isNpc":true,"content":{"type":"text","data":"Je ne sais pas comment il a fait ça mais quelqu’un m’a créé des faux comptes et s’amuse à distribuer mon numéro de téléphone."},"sendTime":null}],"branchingPoint":{"type":"change","possibilities":[{"branch":"olivier-sophie-7"}]}}]}
+{
+    "version": 0.2,
+    "Parameters": {
+        "id": "olivier-sophie",
+        "startingBranch": "olivier-sophie-0",
+        "medium": "Messenger",
+        "playerCharacter": "coach_velo",
+        "npCharacter": "victime",
+        "nextConversation": "conversationchangetest"
+    },
+    "Branches": [
+        {
+            "id": "olivier-sophie-0",
+            "messagesList": [
+                {
+                    "isNpc": false,
+                    "content": {
+                        "type": "text",
+                        "data": "Sophie ? J’ai reçu des messages bizarres de ton compte facebook, c’est normal ?"
+                    },
+                    "sendTime": null
+                },
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "image",
+                        "data": "ohno.jpg"
+                    },
+                    "sendTime": null
+                }
+            ],
+            "branchingPoint": {
+                "type": "choice",
+                "possibilities": [
+                    {
+                        "branch": "olivier-sophie-1",
+                        "possible": true,
+                        "confidenceMod": "10000",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "Je me suis toujours dit que c’était dangereux ces sites… Fais attention à toi."
+                            },
+                            "sendTime": null
+                        }
+                    },
+                    {
+                        "branch": "olivier-sophie-6",
+                        "possible": true,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "Ça m’est arrivé une fois, mais j’ai changé mon mot de passe et depuis j'ai eu aucun problème. Essaye ça peut-être ? "
+                            },
+                            "sendTime": null
+                        }
+                    },
+                    {
+                        "branch": "olivier-sophie-8",
+                        "possible": true,
+                        "confidenceMod": "99999",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "Ah mince, tu sais comment ça se fait ? "
+                            },
+                            "sendTime": null
+                        }
+                    },
+                    {
+                        "branch": "",
+                        "possible": false,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "Rah c'est marrant ça xD"
+                            },
+                            "sendTime": null
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "olivier-sophie-1",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "C’est pas les sites en soi… C’est les gens."
+                    },
+                    "sendTime": null
+                }
+            ],
+            "branchingPoint": {
+                "type": "choice",
+                "possibilities": [
+                    {
+                        "branch": "olivier-sophie-2",
+                        "possible": true,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "Oui, c’est vrai, souvent.\nM’enfin, j’espère que ça va aller mieux cette histoire de faux compte. Courage."
+                            },
+                            "sendTime": null
+                        }
+                    },
+                    {
+                        "branch": "olivier-sophie-5",
+                        "possible": true,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "N’empêche que sans ces sites on aurait pas tout ces problèmes. De mon temps il n’y avait pas ce délire d’usurpation d’identité, on voyait les gens en vrai 😂"
+                            },
+                            "sendTime": null
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "olivier-sophie-2",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Je vais faire ce que je peux, on verra bien... "
+                    },
+                    "sendTime": null
+                },
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Je sais pas si je viendrai samedi du coup. Je te tiens le courant."
+                    },
+                    "sendTime": null
+                }
+            ],
+            "branchingPoint": {
+                "type": "test",
+                "possibilities": [
+                    {
+                        "branch": "olivier-sophie-3",
+                        "thresholds": [
+                            "5",
+                            "10"
+                        ]
+                    },
+                    {
+                        "branch": "olivier-sophie-4",
+                        "thresholds": [
+                            "-5",
+                            "4"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "olivier-sophie-3",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Si c'est maintenu à 18h je devrais être là, j'ai vraiment envie de venir"
+                    },
+                    "sendTime": null
+                }
+            ],
+            "branchingPoint": {
+                "type": "stop",
+                "possibilities": []
+            }
+        },
+        {
+            "id": "olivier-sophie-4",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Ça risque d'être compliqué, je serais probablement pas là"
+                    },
+                    "sendTime": null
+                }
+            ],
+            "branchingPoint": {
+                "type": "stop",
+                "possibilities": []
+            }
+        },
+        {
+            "id": "olivier-sophie-5",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Enfin Facebook est quand même bien utile quand il faut organiser une compétition de VTT. S’il fallait mettre une annonce dans le journal à chaque fois..."
+                    },
+                    "sendTime": null
+                },
+                {
+                    "isNpc": false,
+                    "content": {
+                        "type": "text",
+                        "data": "Pas faux. Mais ça se faisait, ça se faisait..."
+                    },
+                    "sendTime": null
+                }
+            ],
+            "branchingPoint": {
+                "type": "stop",
+                "possibilities": []
+            }
+        },
+        {
+            "id": "olivier-sophie-6",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "C’est déjà fait mais en l'occurrence c’est un peu plus compliqué que ça."
+                    },
+                    "sendTime": null
+                }
+            ],
+            "branchingPoint": {
+                "type": "change",
+                "possibilities": [
+                    {
+                        "branch": "olivier-sophie-7"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "olivier-sophie-7",
+            "messagesList": [
+                {
+                    "isNpc": false,
+                    "content": {
+                        "type": "text",
+                        "data": "À ce point là..."
+                    },
+                    "sendTime": null
+                }
+            ],
+            "branchingPoint": {
+                "type": "stop",
+                "possibilities": []
+            }
+        },
+        {
+            "id": "olivier-sophie-8",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Je ne sais pas comment il a fait ça mais quelqu’un m’a créé des faux comptes et s’amuse à distribuer mon numéro de téléphone."
+                    },
+                    "sendTime": null
+                }
+            ],
+            "branchingPoint": {
+                "type": "change",
+                "possibilities": [
+                    {
+                        "branch": "olivier-sophie-7"
+                    }
+                ]
+            }
+        }
+    ]
+}
