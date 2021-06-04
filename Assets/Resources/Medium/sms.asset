@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6723b94facd0648bfe130252f7591b, type: 3}
   m_Name: sms
   m_EditorClassIdentifier: 
-  spaceBetweenMessages: 50
+  spaceBetweenMessages: 150
   playerMessageBox: {fileID: 7272966043441959420, guid: 2f97c0e558148b1438412b358c1a595b, type: 3}
   npcMessageBox: {fileID: 5532616446848884718, guid: 45534fa95f34c30499703fcbd66e54e7, type: 3}
   playerMessageBoxImage: {fileID: 7207647838909603615, guid: cc727f5068d561c478a63aa91ecafc20, type: 3}
@@ -20,8 +20,8 @@ MonoBehaviour:
   background: {fileID: 848058901730201712, guid: 8aa8ed416c56fdf428f64eb63d437282, type: 3}
   navBar: {fileID: 454831195708029934, guid: 3d2c90a0c7ffdc540b7c8b6387b4b6bf, type: 3}
   footer: {fileID: 8402148764533746829, guid: 6ef94cba01af8214ea65a0bb2c2d896c, type: 3}
-  footerHeigth: 0
+  footerHeigth: 100
   choiceButton: {fileID: 8568480440450106278, guid: 11b738b65639db245bc6616ff9140f9d, type: 3}
   impossibleChoiceButton: {fileID: 7519917683848704902, guid: a2560a0a08abeb243a4a589fd16cae46, type: 3}
   nextConvoButton: {fileID: 6655867024192596153, guid: ac9d27b394fa12146a70720ff4f03e32, type: 3}
-  spaceBetweenChoices: 0
+  spaceBetweenChoices: 50
