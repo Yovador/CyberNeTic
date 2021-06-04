@@ -153,14 +153,14 @@ public class ConversationDisplayer : MonoBehaviour
         }
 
         GameObject messageBox = Instantiate(messageBoxPrefab, transform.Find("Scroll") );
-        RectTransform rectTransform = messageBox.GetComponent<RectTransform>();
-        float size = medium.spaceBetweenMessages + rectTransform.sizeDelta.y;
+        GameObject backgroungMessage = messageBox.transform.Find("Background").gameObject;
+        MessageBoxResizer messageBoxResizer = backgroungMessage.GetComponent<MessageBoxResizer>();
 
-        scrollTransform.sizeDelta += new Vector2(0, size);
+
 
         if (message.content is ImageContent)
         {
-            Image image = messageBox.transform.Find("Mask").Find("MediaImage").GetComponent<Image>();
+            Image image = backgroungMessage.transform.Find("Mask").Find("MediaImage").GetComponent<Image>();
             ImageContent imgContent = (ImageContent)message.content;
             Sprite newSprite = imgContent.LoadNewSprite();
             image.overrideSprite = newSprite;
@@ -169,9 +169,15 @@ public class ConversationDisplayer : MonoBehaviour
         {
             Text textComponent = messageBox.GetComponentsInChildren<Text>()[0];
             textComponent.text = message.content.data;
+            messageBoxResizer.ResizeBox();
         }
 
 
+        RectTransform rectTransform = backgroungMessage.GetComponent<RectTransform>();
+        Debug.Log("Message size : " + rectTransform.sizeDelta.y);
+        float size = medium.spaceBetweenMessages + rectTransform.sizeDelta.y;
+
+        scrollTransform.sizeDelta += new Vector2(0, size);
 
 
         if (conversationFlux.transform.childCount > 0)
@@ -211,8 +217,6 @@ public class ConversationDisplayer : MonoBehaviour
             StartCoroutine(LoadMessage(message));
             yield return new WaitForSecondsRealtime(waitTime);
             yield return new WaitWhile(() => animationOn);
-
-
 
         }
 

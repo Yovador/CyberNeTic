@@ -5,23 +5,17 @@ using UnityEngine.UI;
 
 public class MessageBoxResizer : MonoBehaviour
 {
-    RectTransform textRectTransform;
+    Text textComponent;
     RectTransform myRectTransform;
     [SerializeField]
     private float padding;
 
-    private void Start()
+    public void ResizeBox()
     {
-        textRectTransform = transform.Find("Text").gameObject.GetComponent<RectTransform>();
+        textComponent = transform.Find("Text").gameObject.GetComponent<Text>();
         myRectTransform = GetComponent<RectTransform>();
-    }
-
-    private void LateUpdate()
-    {
-        if(textRectTransform.rect.height + padding != myRectTransform.sizeDelta.x)
-        {
-            myRectTransform.sizeDelta = new Vector2(myRectTransform.sizeDelta.x, textRectTransform.rect.height +padding );
-        }
+        Debug.Log("Box size: " + (textComponent.preferredHeight + 2 * padding) );
+        myRectTransform.sizeDelta = new Vector2(myRectTransform.sizeDelta.x, textComponent.preferredHeight+ 2*padding );
 
     }
 }
