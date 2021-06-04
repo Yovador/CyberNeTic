@@ -27,6 +27,13 @@ public class ConversationDisplayer : MonoBehaviour
     private GameManager gameManager;
     [HideInInspector]
     public bool endConversation;
+    private bool animationOn = false;
+
+    [SerializeField, Range(0.5f, 5f)]
+    private float messageSpeed;
+
+    private ScrollRect scrollRect;
+    private RectTransform scrollTransform;
 
     public void Start()
     {
@@ -46,12 +53,21 @@ public class ConversationDisplayer : MonoBehaviour
             saveManager.SaveGame(conversation.id, branchList, gameManager.charactersSet);
         }
     }
+
+
+
     public void LaunchAConv(Conversation currentConversation, List<string> branchesList)
     {
         conversation = currentConversation;
         conversationFlux = GameObject.Find("ConversationFlux");
         medium = LoadMedium(conversation.medium);
-        if(branchesList.Count > 0)
+        conversation.DebugLogConversation();
+        scrollRect = GetComponentInChildren<ScrollRect>();
+        scrollRect.enabled = false;
+        scrollTransform = scrollRect.gameObject.GetComponent<RectTransform>();
+        scrollTransform.sizeDelta = new Vector2(0, footer.GetComponent<RectTransform>().sizeDelta.y + medium.navBar.GetComponent<RectTransform>().sizeDelta.y);
+
+        if (branchesList.Count > 0)
         {
             conversation.startingBranch = branchesList[branchesList.Count - 1];
         }
@@ -109,7 +125,7 @@ public class ConversationDisplayer : MonoBehaviour
         return medium;
     }
 
-    private GameObject LoadMessage(Conversation.Message message)
+    private IEnumerator LoadMessage(Conversation.Message message)
     {
         GameObject messageBoxPrefab;
 
@@ -136,12 +152,13 @@ public class ConversationDisplayer : MonoBehaviour
             }
         }
 
+        GameObject messageBox = Instantiate(messageBoxPrefab, transform.Find("Scroll") );
+        RectTransform rectTransform = messageBox.GetComponent<RectTransform>();
+        float size = medium.spaceBetweenMessages + rectTransform.sizeDelta.y;
 
+        scrollTransform.sizeDelta += new Vector2(0, size);
 
-
-        GameObject messageBox = Instantiate(messageBoxPrefab, transform);
-
-        if(message.content is ImageContent)
+        if (message.content is ImageContent)
         {
             Image image = messageBox.transform.Find("Mask").Find("MediaImage").GetComponent<Image>();
             ImageContent imgContent = (ImageContent)message.content;
@@ -154,28 +171,48 @@ public class ConversationDisplayer : MonoBehaviour
             textComponent.text = message.content.data;
         }
 
-        RectTransform rectTransform = messageBox.GetComponent<RectTransform>();
-        MoveFlux(medium.spaceBetweenMessages + rectTransform.sizeDelta.y );
+
+
+
+        if (conversationFlux.transform.childCount > 0)
+        {
+            StartCoroutine(MoveFlux(size));
+
+            yield return new WaitWhile(() => animationOn);
+        }
 
         messageBox.transform.SetParent(conversationFlux.transform);
 
-        return messageBox;
     }
 
-    private void MoveFlux(float value)
+
+    private IEnumerator MoveFlux(float value)
     {
-        //Monter des messages sans animation **TEMPORAIRE**
+
+        animationOn = true;
+
         Vector2 newPos = new Vector2(conversationFlux.transform.position.x, conversationFlux.transform.position.y +  value);
+
+        while (Vector2.Distance(conversationFlux.transform.position, newPos) > 0.5f)
+        {
+            conversationFlux.transform.position = Vector2.Lerp(conversationFlux.transform.position, newPos, messageSpeed * Time.deltaTime);
+            yield return null;
+        }
         conversationFlux.transform.position = newPos;
-        //**TEMPORAIRE**
+
+        animationOn = false;
+
     }
 
     private IEnumerator LoadBranches(Conversation.Branche branche )
     {
         foreach (var message in branche.messagesList)
         {
-            LoadMessage(message);
+            StartCoroutine(LoadMessage(message));
             yield return new WaitForSecondsRealtime(waitTime);
+            yield return new WaitWhile(() => animationOn);
+
+
 
         }
 
@@ -196,30 +233,46 @@ public class ConversationDisplayer : MonoBehaviour
         return foundBranch;
     }
 
-    private void MoveFooter(bool isMoveUp)
+    private IEnumerator MoveFooter(bool isMoveUp)
     {
+        animationOn = true;
+
         RectTransform rectTransform = footer.GetComponent<RectTransform>();
+        Vector2 newPos;
+
+
         if (isMoveUp)
         {
             isInChoice = true;
             float upValue = rectTransform.sizeDelta.y - medium.footerHeigth;
-            MoveFlux(upValue);
-            rectTransform.position += new Vector3(0, upValue, 0);
+            StartCoroutine(MoveFlux(upValue));
+            newPos = rectTransform.position + new Vector3(0, upValue, 0);
         }
         else
         {
-
             float downValue = -rectTransform.sizeDelta.y + medium.footerHeigth;
-            MoveFlux(downValue);
-            rectTransform.position += new Vector3(0, downValue, 0);
+            StartCoroutine(MoveFlux(downValue));
+            newPos = rectTransform.position + new Vector3(0, downValue, 0);
+
         }
+
+
+        while (Vector2.Distance(rectTransform.transform.position, newPos) > 0.5f)
+        {
+            rectTransform.transform.position = Vector2.Lerp(rectTransform.transform.position, newPos, messageSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        animationOn = false;
+
     }
 
-    private IEnumerator LoadChoiceBranch(List<Conversation.Possibility> choicePossibilities)
+    private IEnumerator LoadChoiceBranching(List<Conversation.Possibility> choicePossibilities)
     {
         Conversation.Branche branch = GetBrancheByID(choicePossibilities[0].branch);
 
-        MoveFooter(true);
+        StartCoroutine(MoveFooter(true));
+
 
         Dictionary<GameObject, Conversation.ChoicePossibility> buttonList = new Dictionary<GameObject, Conversation.ChoicePossibility>();
         for (int i = 0; i < choicePossibilities.Count; i++)
@@ -246,10 +299,21 @@ public class ConversationDisplayer : MonoBehaviour
             buttonList.Add(newButton, poss);
         }
 
+        yield return new WaitWhile(() => animationOn);
+        scrollRect.enabled = true;
+
+
         //yield return new WaitForSecondsRealtime(waitTime);
         yield return new WaitWhile(() => isInChoice);
 
-        MoveFooter(false);
+        scrollRect.enabled = false;
+        StartCoroutine(MoveFooter(false));
+        foreach (var newButton in buttonList)
+        {
+            newButton.Key.SetActive(false);
+        }
+        yield return new WaitWhile(() => animationOn);
+
 
         foreach (var newButton in buttonList)
         {
@@ -258,7 +322,7 @@ public class ConversationDisplayer : MonoBehaviour
             {
                 if (choiceButton.branche == nextBranch)
                 {
-                    LoadMessage(newButton.Value.message);
+                    StartCoroutine(LoadMessage(newButton.Value.message));
 
 
                     foreach (var relationship in npCharacter.relationships)
@@ -266,7 +330,6 @@ public class ConversationDisplayer : MonoBehaviour
                         if (relationship.them == playerCharacter.id)
                         {
                             relationship.confidenceMeToThem += newButton.Value.confidenceMod;
-                            Debug.Log("Plus value : " + newButton.Value.confidenceMod);
 
                         }
                     }
@@ -277,7 +340,8 @@ public class ConversationDisplayer : MonoBehaviour
 
             Destroy(newButton.Key);
         }
-        
+
+        yield return new WaitWhile(() => animationOn);
         yield return new WaitForSecondsRealtime(waitTime);
         StartCoroutine(LoadBranches(nextBranch));
 
@@ -288,13 +352,12 @@ public class ConversationDisplayer : MonoBehaviour
         switch (branchingPoint.type)
         {
             case "choice":
-                StartCoroutine(LoadChoiceBranch((branchingPoint.possibilities)));
+                StartCoroutine(LoadChoiceBranching((branchingPoint.possibilities)));
                 break;
             case "test":
                 nextBranch = GetBrancheByID(branchingPoint.possibilities[0].branch);
                 foreach (Conversation.TestPossibility poss in branchingPoint.possibilities)
                 {
-                    Debug.Log(poss.thresholds[0] + " / " + npcToPlayerRelationhship.confidenceMeToThem  + " / " +  poss.thresholds[1]);
                     if (npcToPlayerRelationhship.confidenceMeToThem >= poss.thresholds[0] && npcToPlayerRelationhship.confidenceMeToThem <= poss.thresholds[1])
                     {
                         nextBranch = GetBrancheByID(poss.branch);
@@ -325,14 +388,17 @@ public class ConversationDisplayer : MonoBehaviour
 
     private IEnumerator EndConversation()
     {
-        Debug.LogWarning("Conversation End");
 
-        MoveFooter(true);
+        StartCoroutine(MoveFooter(true));
         Instantiate(medium.nextConvoButton, footer.transform);
+        yield return new WaitWhile(() => animationOn);
+        scrollRect.enabled = true;
+
         saveManager.SaveGame(conversation.id, branchList, gameManager.charactersSet);
 
         yield return new WaitUntil(() => endConversation);
 
+        gameManager.nextConversation = conversation.nextConversation;
         gameManager.nextConversation = conversation.nextConversation;
     }
 

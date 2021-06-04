@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
         GetCharacterSet();
     }
 
+
+
     public void StartNewGame()
     {
         saveManager.SaveGame(firstConversation, new List<string>(), charactersSet);
