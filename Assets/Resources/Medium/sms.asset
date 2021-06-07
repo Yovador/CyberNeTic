@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6723b94facd0648bfe130252f7591b, type: 3}
   m_Name: sms
   m_EditorClassIdentifier: 
-  spaceBetweenMessages: 0
+  spaceBetweenMessages: 30
   playerMessageBox: {fileID: 7272966043441959420, guid: 2f97c0e558148b1438412b358c1a595b, type: 3}
   npcMessageBox: {fileID: 5532616446848884718, guid: 45534fa95f34c30499703fcbd66e54e7, type: 3}
   playerMessageBoxImage: {fileID: 7207647838909603615, guid: cc727f5068d561c478a63aa91ecafc20, type: 3}
