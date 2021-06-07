@@ -1,18 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static int minSwipeDistance = 150;
+    public SectionMainMenu startSection, menuSection, settingsSection;
+
+    private SectionMainMenu currentSection;
+
+    #region Singleton
+    public static MainMenu instance;
+    private void Awake()
     {
-        
+        if(instance == null)
+        {
+            instance = this;
+        }else
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
+
+    public void SetSection (SectionMainMenu newSection)
+    {
+        if (currentSection != null) currentSection.Exit();
+        currentSection = newSection;
+        currentSection.Land();
+    } 
+
+    private void Start()
+    {
+        SetSection(startSection);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        currentSection.Frame();
+    }
+
+    // Methods
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
     }
 }
