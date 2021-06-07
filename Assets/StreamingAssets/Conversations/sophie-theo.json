@@ -21,9 +21,9 @@
                     "sendTime": null
                 },
                 {
-                    "isNpc": true,
+                    "isNpc": false,
                     "content": {
-                        "type": "text",
+                        "type": "image",
                         "data": "sophie.jpg"
                     },
                     "sendTime": null

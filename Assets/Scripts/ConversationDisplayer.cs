@@ -85,8 +85,6 @@ public class ConversationDisplayer : MonoBehaviour
             }
         }
 
-        //conversationFlux.GetComponent<RectTransform>().position += footer.GetComponent<RectTransform>().position;
-
         StartCoroutine(LoadBranches(GetBrancheByID(conversation.startingBranch)));
 
 
@@ -176,28 +174,34 @@ public class ConversationDisplayer : MonoBehaviour
 
         LayoutGroup rectTransform = messageBox.GetComponent<LayoutGroup>();
         yield return null;
+        
         float heigth = rectTransform.preferredHeight;
-        Debug.Log(heigth);
         float size = medium.spaceBetweenMessages + heigth;
+        Debug.Log("Content : " + message.content.data + "\nHeight : " + heigth + "\nSize: " + size);
 
         scrollTransform.sizeDelta += new Vector2(0, size);
 
 
         if (conversationFlux.transform.childCount > 0)
         {
+
+            yield return new WaitWhile(() => animationOn);
+
             StartCoroutine(MoveFlux(size));
 
             yield return new WaitWhile(() => animationOn);
         }
 
+
         messageBox.transform.SetParent(conversationFlux.transform);
+
 
     }
 
 
     private IEnumerator MoveFlux(float value)
     {
-
+        Debug.Log("Flux move : " + value);
         animationOn = true;
         Vector2 newPos = new Vector2(conversationFlux.transform.position.x, conversationFlux.transform.position.y +  value);
 
@@ -210,12 +214,15 @@ public class ConversationDisplayer : MonoBehaviour
 
         animationOn = false;
 
+
     }
 
     private IEnumerator LoadBranches(Conversation.Branche branche )
     {
         foreach (var message in branche.messagesList)
         {
+            yield return new WaitWhile(() => animationOn);
+
             StartCoroutine(LoadMessage(message));
             yield return new WaitForSecondsRealtime(waitTime);
             yield return new WaitWhile(() => animationOn);
@@ -241,6 +248,7 @@ public class ConversationDisplayer : MonoBehaviour
 
     private IEnumerator MoveFooter(bool isMoveUp)
     {
+
         animationOn = true;
 
         RectTransform rectTransform = footer.GetComponent<RectTransform>();
@@ -276,6 +284,7 @@ public class ConversationDisplayer : MonoBehaviour
 
     private IEnumerator LoadChoiceBranching(List<Conversation.Possibility> choicePossibilities)
     {
+
         Conversation.Branche branch = GetBrancheByID(choicePossibilities[0].branch);
 
         StartCoroutine(MoveFooter(true));
@@ -347,7 +356,6 @@ public class ConversationDisplayer : MonoBehaviour
 
             Destroy(newButton.Key);
         }
-
         yield return new WaitWhile(() => animationOn);
         yield return new WaitForSecondsRealtime(waitTime);
         StartCoroutine(LoadBranches(nextBranch));
@@ -395,7 +403,6 @@ public class ConversationDisplayer : MonoBehaviour
 
     private IEnumerator EndConversation()
     {
-
         StartCoroutine(MoveFooter(true));
         Instantiate(medium.nextConvoButton, footer.transform);
         yield return new WaitWhile(() => animationOn);
