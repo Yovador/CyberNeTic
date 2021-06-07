@@ -23,7 +23,7 @@
                 {
                     "isNpc": true,
                     "content": {
-                        "type": "image",
+                        "type": "text",
                         "data": "sophie.jpg"
                     },
                     "sendTime": null

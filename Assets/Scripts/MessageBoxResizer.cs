@@ -14,7 +14,6 @@ public class MessageBoxResizer : MonoBehaviour
     {
         textComponent = transform.Find("Text").gameObject.GetComponent<Text>();
         myRectTransform = GetComponent<RectTransform>();
-        Debug.Log("Box size: " + (textComponent.preferredHeight + 2 * padding) );
         myRectTransform.sizeDelta = new Vector2(myRectTransform.sizeDelta.x, textComponent.preferredHeight+ 2*padding );
 
     }
