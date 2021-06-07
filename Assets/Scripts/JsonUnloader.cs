@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
+using UnityEngine.Networking;
 using UnityEngine;
 
 
@@ -126,7 +128,7 @@ public class JsonUnloader
         JsonConversationObject jsonConversation;
         Conversation conversationFinal = new Conversation();
 
-        jsonConversation = JsonUtility.FromJson<JsonConversationObject>(File.ReadAllText(jsonPath));
+        jsonConversation = JsonUtility.FromJson<JsonConversationObject>(LoadFromStreamingAssetsText(jsonPath));
 
         conversationFinal.id = jsonConversation.Parameters.id;
         conversationFinal.startingBranch = jsonConversation.Parameters.startingBranch;
@@ -192,7 +194,7 @@ public class JsonUnloader
     {
         List<Character> listFinal = new List<Character>();
 
-        JsonCharacterSetObject jsonCharacterSet = JsonUtility.FromJson<JsonCharacterSetObject>(File.ReadAllText(jsonPath));
+        JsonCharacterSetObject jsonCharacterSet = JsonUtility.FromJson<JsonCharacterSetObject>(LoadFromStreamingAssetsText(jsonPath));
 
 
         foreach (var characterJson in jsonCharacterSet.Characters)
@@ -227,5 +229,26 @@ public class JsonUnloader
 
 
         return listFinal;
+    }
+
+
+    string LoadFromStreamingAssetsText(string path)
+    {
+        string text = null;
+        var loadingRequest = UnityWebRequest.Get(path);
+        loadingRequest.SendWebRequest();
+        while (!loadingRequest.isDone)
+        {
+            if (loadingRequest.result == UnityWebRequest.Result.ProtocolError)
+            {
+                break;
+            }
+        }
+        if (loadingRequest.result != UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.Log(loadingRequest.downloadHandler.data);
+            text = Encoding.Default.GetString(loadingRequest.downloadHandler.data);
+        }
+        return text;
     }
 }

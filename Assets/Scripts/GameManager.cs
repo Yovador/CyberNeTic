@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private string firstConversation;
-    private string pathConversation = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, "Conversations"));
-    private string pathCharacterSet = Path.GetFullPath(Path.Combine(Application.streamingAssetsPath, "Characters"));
+    private string pathConversation = Path.Combine(Application.streamingAssetsPath, "Conversations");
+    private string pathCharacterSet = Path.Combine(Application.streamingAssetsPath, "Characters");
     private JsonUnloader jsonUnloader = new JsonUnloader();
 
     private SaveManager saveManager = new SaveManager();
@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         GetAllConversation();
         GetCharacterSet();
+        Debug.developerConsoleVisible = true;
     }
 
 
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("ConversationScene");
 
         yield return new WaitUntil(() => conversationDisplayer != null);
-
+        Debug.Log(FindConvById(firstConversation).id);
         conversationDisplayer.LaunchAConv(FindConvById(firstConversation), branchList);
 
 

@@ -97,7 +97,7 @@ public class ConversationDisplayer : MonoBehaviour
         }
 
         // Update header name
-        GameObject.FindGameObjectWithTag("ContactName").GetComponent<Text>().text = npCharacter.firstName;
+        GameObject.FindGameObjectWithTag("ContactName").GetComponent<Text>().text = $"{npCharacter.firstName} {npCharacter.lastName}" ;
 
         saveManager.SaveGame(conversation.id, branchList, gameManager.charactersSet);
 
@@ -129,6 +129,9 @@ public class ConversationDisplayer : MonoBehaviour
 
     private IEnumerator LoadMessage(Conversation.Message message)
     {
+
+
+
         GameObject messageBoxPrefab;
 
         if (message.isNpc)
@@ -225,7 +228,6 @@ public class ConversationDisplayer : MonoBehaviour
         foreach (var message in branche.messagesList)
         {
             yield return new WaitWhile(() => animationOn);
-
             StartCoroutine(LoadMessage(message));
             yield return new WaitForSecondsRealtime(waitTime);
             yield return new WaitWhile(() => animationOn);
