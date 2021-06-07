@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 
 
 //Ce fichier contient toutes les classes stockant des données à propos de l'histoire
@@ -19,7 +18,8 @@ public class ImageContent : Content
     {
         string path;
 
-        path = Path.Combine(Application.streamingAssetsPath, "Pictures" ,this.data);
+
+        path = $"/pictures/{this.data}";
 
         return path;
     }
@@ -43,11 +43,11 @@ public class ImageContent : Content
         // Returns null if load fails
 
         Texture2D Tex2D;
-        byte[] FileData;
+        byte[] FileData = JsonUnloader.LoadFromStreamingAssets(FilePath);
 
-        if (File.Exists(FilePath))
+
+        if (FileData != null)
         {
-            FileData = File.ReadAllBytes(FilePath);
             Tex2D = new Texture2D(2, 2);           // Create new "empty" texture
             if (Tex2D.LoadImage(FileData))           // Load the imagedata into the texture (size is set automatically)
                 return Tex2D;                 // If data = readable -> return texture

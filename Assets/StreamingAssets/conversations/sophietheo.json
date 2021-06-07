@@ -1,12 +1,12 @@
 {
     "version": 0.2,
     "Parameters": {
-        "id": "sophie-théo",
+        "id": "sophietheo",
         "startingBranch": "sophie-théo-0",
         "medium": "sms",
         "playerCharacter": "collegue",
         "npCharacter": "victime",
-        "nextConversation": "sophie-olivier"
+        "nextConversation": "sophieolivier"
     },
     "Branches": [
         {

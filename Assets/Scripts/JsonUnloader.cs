@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
-using UnityEngine.Networking;
 using UnityEngine;
 
 
@@ -128,7 +126,7 @@ public class JsonUnloader
         JsonConversationObject jsonConversation;
         Conversation conversationFinal = new Conversation();
 
-        jsonConversation = JsonUtility.FromJson<JsonConversationObject>(LoadFromStreamingAssetsText(jsonPath));
+        jsonConversation = JsonUtility.FromJson<JsonConversationObject>(Encoding.Default.GetString(LoadFromStreamingAssets(jsonPath)));
 
         conversationFinal.id = jsonConversation.Parameters.id;
         conversationFinal.startingBranch = jsonConversation.Parameters.startingBranch;
@@ -194,7 +192,7 @@ public class JsonUnloader
     {
         List<Character> listFinal = new List<Character>();
 
-        JsonCharacterSetObject jsonCharacterSet = JsonUtility.FromJson<JsonCharacterSetObject>(LoadFromStreamingAssetsText(jsonPath));
+        JsonCharacterSetObject jsonCharacterSet = JsonUtility.FromJson<JsonCharacterSetObject>( Encoding.Default.GetString(LoadFromStreamingAssets(jsonPath)) );
 
 
         foreach (var characterJson in jsonCharacterSet.Characters)
@@ -232,23 +230,12 @@ public class JsonUnloader
     }
 
 
-    string LoadFromStreamingAssetsText(string path)
+    static public byte[] LoadFromStreamingAssets(string path)
     {
-        string text = null;
-        var loadingRequest = UnityWebRequest.Get(path);
-        loadingRequest.SendWebRequest();
-        while (!loadingRequest.isDone)
-        {
-            if (loadingRequest.result == UnityWebRequest.Result.ProtocolError)
-            {
-                break;
-            }
-        }
-        if (loadingRequest.result != UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.Log(loadingRequest.downloadHandler.data);
-            text = Encoding.Default.GetString(loadingRequest.downloadHandler.data);
-        }
-        return text;
+        byte[] bytes = null;
+
+        bytes = BetterStreamingAssets.ReadAllBytes(path);
+
+        return bytes;
     }
 }

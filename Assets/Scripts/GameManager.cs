@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        BetterStreamingAssets.Initialize();
         GetAllConversation();
         GetCharacterSet();
         Debug.developerConsoleVisible = true;
@@ -134,27 +135,25 @@ public class GameManager : MonoBehaviour
 
     private void GetAllConversation()
     {
-        var info = new DirectoryInfo(pathConversation);
-        var fileInfo = info.GetFiles();
-        foreach (var file in fileInfo)
+
+        string[] paths = BetterStreamingAssets.GetFiles("conversations", "*.json", SearchOption.AllDirectories);
+
+        foreach (var path in paths)
         {
-            if(file.Extension == ".json")
-            {
-                conversations.Add(jsonUnloader.LoadConversationFromJson(file.FullName));
-            }
+            conversations.Add(jsonUnloader.LoadConversationFromJson(path));
         }
+        conversations[0].DebugLogConversation();
+
+
     }
 
     private void GetCharacterSet()
     {
-        var info = new DirectoryInfo(pathCharacterSet);
-        var fileInfo = info.GetFiles();
-        foreach (var file in fileInfo)
+        string[] paths = BetterStreamingAssets.GetFiles("characters", "*.json", SearchOption.AllDirectories);
+
+        foreach (var path in paths)
         {
-            if (file.Extension == ".json")
-            {
-                charactersSet = jsonUnloader.LoadCharacterListFromJson(file.FullName);
-            }
+            charactersSet = jsonUnloader.LoadCharacterListFromJson(path);
         }
     }
     
