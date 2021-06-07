@@ -313,6 +313,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 233314869559803340}
   - {fileID: 7066301773848651299}
   - {fileID: 1201860750827361133}
   m_Father: {fileID: 0}

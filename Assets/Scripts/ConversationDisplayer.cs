@@ -96,6 +96,9 @@ public class ConversationDisplayer : MonoBehaviour
             }
         }
 
+        // Update header name
+        GameObject.FindGameObjectWithTag("ContactName").GetComponent<Text>().text = npCharacter.firstName;
+
         saveManager.SaveGame(conversation.id, branchList, gameManager.charactersSet);
 
     }
