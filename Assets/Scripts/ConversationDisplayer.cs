@@ -85,6 +85,7 @@ public class ConversationDisplayer : MonoBehaviour
             }
         }
 
+        //conversationFlux.GetComponent<RectTransform>().position += footer.GetComponent<RectTransform>().position;
 
         StartCoroutine(LoadBranches(GetBrancheByID(conversation.startingBranch)));
 
@@ -167,15 +168,17 @@ public class ConversationDisplayer : MonoBehaviour
         }
         else
         {
-            Text textComponent = messageBox.GetComponentsInChildren<Text>()[0];
+            Text textComponent = backgroungMessage.transform.Find("Text").GetComponent<Text>();
             textComponent.text = message.content.data;
             messageBoxResizer.ResizeBox();
         }
 
 
-        RectTransform rectTransform = backgroungMessage.GetComponent<RectTransform>();
-        Debug.Log("Message size : " + rectTransform.sizeDelta.y);
-        float size = medium.spaceBetweenMessages + rectTransform.sizeDelta.y;
+        LayoutGroup rectTransform = messageBox.GetComponent<LayoutGroup>();
+        yield return null;
+        float heigth = rectTransform.preferredHeight;
+        Debug.Log(heigth);
+        float size = medium.spaceBetweenMessages + heigth;
 
         scrollTransform.sizeDelta += new Vector2(0, size);
 
@@ -196,7 +199,6 @@ public class ConversationDisplayer : MonoBehaviour
     {
 
         animationOn = true;
-
         Vector2 newPos = new Vector2(conversationFlux.transform.position.x, conversationFlux.transform.position.y +  value);
 
         while (Vector2.Distance(conversationFlux.transform.position, newPos) > 0.5f)
@@ -251,10 +253,11 @@ public class ConversationDisplayer : MonoBehaviour
             float upValue = rectTransform.sizeDelta.y - medium.footerHeigth;
             StartCoroutine(MoveFlux(upValue));
             newPos = rectTransform.position + new Vector3(0, upValue, 0);
+
         }
         else
         {
-            float downValue = -rectTransform.sizeDelta.y + medium.footerHeigth;
+            float downValue = -(rectTransform.sizeDelta.y - medium.footerHeigth);
             StartCoroutine(MoveFlux(downValue));
             newPos = rectTransform.position + new Vector3(0, downValue, 0);
 
