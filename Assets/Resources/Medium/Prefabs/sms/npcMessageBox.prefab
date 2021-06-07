@@ -89,7 +89,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profilesPictureCharacter: 1
-<<<<<<< HEAD
 --- !u!1 &1541978987137396392
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,8 +189,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
-=======
->>>>>>> bd8ccb60d8e3b5f84770da36c38a27369ef37bd5
 --- !u!1 &3805879529089946998
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,11 +313,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8158991810892938175}
-<<<<<<< HEAD
-  - {fileID: 726553095985060304}
-=======
   - {fileID: 7114318520618291384}
->>>>>>> bd8ccb60d8e3b5f84770da36c38a27369ef37bd5
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
