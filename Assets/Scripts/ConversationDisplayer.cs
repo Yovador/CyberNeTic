@@ -62,7 +62,7 @@ public class ConversationDisplayer : MonoBehaviour
         medium = LoadMedium(conversation.medium);
         conversation.DebugLogConversation();
         scrollRect = GetComponentInChildren<ScrollRect>();
-        scrollRect.enabled = false;
+        scrollRect.enabled = false; 
         scrollTransform = scrollRect.gameObject.GetComponent<RectTransform>();
         scrollTransform.sizeDelta = new Vector2(0, 100 + footer.GetComponent<RectTransform>().sizeDelta.y + medium.navBar.GetComponent<RectTransform>().sizeDelta.y);
 
@@ -88,8 +88,8 @@ public class ConversationDisplayer : MonoBehaviour
         dateAndHour.transform.SetParent(conversationFlux.transform);
         scrollTransform.sizeDelta += new Vector2(0, dateAndHour.GetComponent<RectTransform>().sizeDelta.y + medium.spaceBetweenMessages);
         Debug.Log(scrollTransform.sizeDelta.y);
-        dateAndHour.GetComponentInChildren<Text>().text = $"{ conversation.date}  · {conversation.time}";
-
+        dateAndHour.GetComponentInChildren<Text>().text = GetDateAndTimeToDisplay(conversation.date, conversation.time); ;
+        
 
         StartCoroutine(LoadBranches(GetBrancheByID(conversation.startingBranch)));
 
@@ -447,51 +447,26 @@ public class ConversationDisplayer : MonoBehaviour
         }
     }
 
-    class HmsTime
+    string GetDateAndTimeToDisplay(string date, string time)
     {
-        public int hours { get; set; }
-        public int minutes { get; set; }
-        public int seconds { get; set; }
 
-        public string GetFormatedTime()
+
+        string pattern = "yyyy-MM-dd HH:mm";
+        System.DateTime parsedDate;
+        string display = null;
+
+        if (System.DateTime.TryParseExact($"{date} {time}", pattern, null, System.Globalization.DateTimeStyles.None, out parsedDate))
         {
-            string hoursToShow = hours.ToString();
-            if (hours < 10)
-            {
-                hoursToShow = "0" + hours.ToString();
-            }
-
-            string minutesToShow = minutes.ToString();
-            if (minutes < 10)
-            {
-                minutesToShow = "0" + minutes.ToString();
-            }
-
-            string secondsToShow = seconds.ToString();
-            if (seconds < 10)
-            {
-                secondsToShow = "0" + seconds.ToString();
-            }
-
-            string formatedTime = $"{hoursToShow}:{minutesToShow}:{secondsToShow}";
-
-            return formatedTime;
+            display = $"{parsedDate.DayOfWeek} {parsedDate.Day} {parsedDate.Month} · {parsedDate.TimeOfDay}";
         }
-    }
+        else
+        {
+            Debug.LogError("Couldn't parse date");
+        }
 
-    private HmsTime GetTimeFromSeconds(int timeInSec)
-    {
-        int seconds;
-        int totalMinutes = System.Math.DivRem(timeInSec, 60, out seconds);
-        int minutes;
-        int hours = System.Math.DivRem(totalMinutes, 60, out minutes);
-        hours = hours % 24;
-        HmsTime hmsTime = new HmsTime();
-        hmsTime.hours = hours;
-        hmsTime.minutes = minutes;
-        hmsTime.seconds = seconds;
 
-        return hmsTime;
+        return display;
+        
 
     }
 
