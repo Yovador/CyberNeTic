@@ -64,7 +64,7 @@ public class ConversationDisplayer : MonoBehaviour
         scrollRect = GetComponentInChildren<ScrollRect>();
         scrollRect.enabled = false;
         scrollTransform = scrollRect.gameObject.GetComponent<RectTransform>();
-        scrollTransform.sizeDelta = new Vector2(0, footer.GetComponent<RectTransform>().sizeDelta.y + medium.navBar.GetComponent<RectTransform>().sizeDelta.y);
+        scrollTransform.sizeDelta = new Vector2(0, 100 + footer.GetComponent<RectTransform>().sizeDelta.y + medium.navBar.GetComponent<RectTransform>().sizeDelta.y);
 
         if (branchesList.Count > 0)
         {
@@ -83,6 +83,13 @@ public class ConversationDisplayer : MonoBehaviour
                 playerCharacter = character;
             }
         }
+
+        GameObject dateAndHour = Instantiate(medium.dateAndHour);
+        dateAndHour.transform.SetParent(conversationFlux.transform);
+        scrollTransform.sizeDelta += new Vector2(0, dateAndHour.GetComponent<RectTransform>().sizeDelta.y + medium.spaceBetweenMessages);
+        Debug.Log(scrollTransform.sizeDelta.y);
+        dateAndHour.GetComponentInChildren<Text>().text = $"{ conversation.date}  · {conversation.time}";
+
 
         StartCoroutine(LoadBranches(GetBrancheByID(conversation.startingBranch)));
 

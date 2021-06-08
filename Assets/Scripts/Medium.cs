@@ -32,7 +32,8 @@ public class Medium : ScriptableObject
     public GameObject nextConvoButton;
     [SerializeField]
     public float spaceBetweenChoices;
-
+    [SerializeField]
+    public GameObject dateAndHour;
     private string id;
     private void Awake()
     {
