@@ -31,7 +31,6 @@ public class JsonUnloader
     {
         public bool isNpc;
         public ContentJSON content;
-        public int sendTime;
     }
 
     [System.Serializable]
@@ -41,7 +40,6 @@ public class JsonUnloader
         public bool possible;
         public int confidenceMod;
         public Message message;
-        public int sendTime;
         public int[] thresholds;
 
     }
@@ -107,7 +105,6 @@ public class JsonUnloader
         {
             Conversation.Message newMessage = new Conversation.Message();
             newMessage.isNpc = message.isNpc;
-            newMessage.sendTime = message.sendTime;
             Content newContent;
             switch (message.content.type)
             {

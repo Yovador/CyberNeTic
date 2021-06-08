@@ -63,7 +63,6 @@ public class Conversation
     {
         public bool isNpc{ get; set; }
         public Content content{ get; set; }
-        public int sendTime{ get; set; }
     }
 
     public class Possibility
@@ -77,7 +76,6 @@ public class Conversation
         public bool possible{ get; set; }
         public int confidenceMod{ get; set; }
         public Message message{ get; set; }
-        public int sendTime{ get; set; }
     }
 
     public class TestPossibility : Possibility
@@ -124,7 +122,7 @@ public class Conversation
             logString += $"\t \tMessages : \n";
             foreach (Message message in branch.messagesList)
             {
-                logString += $"\t \t \tisNPC: {message.isNpc}, type : {message.content.GetType()}, data : {message.content.data}, sendTime :{message.sendTime}\n ";
+                logString += $"\t \t \tisNPC: {message.isNpc}, type : {message.content.GetType()}, data : {message.content.data}\n ";
             }
 
 
@@ -137,7 +135,7 @@ public class Conversation
                     case "choice":
                         var choicePoss = (ChoicePossibility)possibility;
                         logString += $"Possible ? {choicePoss.possible}, confidenceMod : {choicePoss.possible}, message :\n";
-                        logString += $"\t \t \t \tisNPC: {choicePoss.message.isNpc}, type : {choicePoss.message.content.GetType()}, data : {choicePoss.message.content.data}, sendTime :{choicePoss.message.sendTime}\n ";
+                        logString += $"\t \t \t \tisNPC: {choicePoss.message.isNpc}, type : {choicePoss.message.content.GetType()}, data : {choicePoss.message.content.data}\n ";
 
                         break;
                     case "test":
