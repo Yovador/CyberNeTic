@@ -175,7 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6b1d31a4512fa4db42aab12e74861c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultValue: 0
 --- !u!114 &8481319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +247,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 44.8062}
+  m_AnchoredPosition: {x: 0, y: 44.806152}
   m_SizeDelta: {x: 0, y: 89.6125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &41277665
@@ -712,7 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1581,7 +1580,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 375, y: -727.8848}
+  m_AnchoredPosition: {x: 375, y: -281.87134}
   m_SizeDelta: {x: 750, y: 286.1044}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &442956712
@@ -1596,7 +1595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba34ac22f54e52e4a975fdc924b54783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultValue: 0.5
 --- !u!114 &442956713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1692,7 +1690,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello Zireael, are you there?
+  m_text: Miam les escargots
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 55e0aef0c0daca64ba6f4be3c18e43d2, type: 2}
   m_sharedMaterial: {fileID: -7348047843092383148, guid: 55e0aef0c0daca64ba6f4be3c18e43d2, type: 2}
@@ -3944,6 +3942,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 877033657}
+        m_TargetAssemblyTypeName: SettingsSectionMainMenu, Assembly-CSharp
+        m_MethodName: SaveSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1298945438
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4992,7 +5002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.91764706}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
