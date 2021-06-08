@@ -41,9 +41,17 @@ public class MainMenu : MonoBehaviour
         currentSection.Frame();
     }
 
-    // Methods
+    // Buttons
     public void StartGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void SettingsVisible (bool visible)
+    {
+        if (visible)
+            SetSection(settingsSection);
+        else
+            SetSection(menuSection);
     }
 }

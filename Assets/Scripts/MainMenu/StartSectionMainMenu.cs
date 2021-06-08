@@ -42,7 +42,7 @@ public class StartSectionMainMenu : SectionMainMenu
 
         if(m_Holding)
         {
-            transform.position = startPanelPosition + new Vector2(0, Mathf.Clamp((swipeVector.y + 100) * -0.5f, 0, 100));
+            //transform.position = startPanelPosition + new Vector2(0, Mathf.Clamp((swipeVector.y + 100) * -0.5f, 0, 100));
         }
 
     }
