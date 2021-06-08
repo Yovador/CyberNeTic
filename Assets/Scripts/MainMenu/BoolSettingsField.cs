@@ -1,11 +1,9 @@
 public class BoolSettingsField : SettingsField
 {
-    public bool defaultValue;
     private bool value = false;
 
-    private void Start()
+    private void Awake()
     {
-        value = defaultValue;
         base.Init();
     }
 
@@ -32,5 +30,11 @@ public class BoolSettingsField : SettingsField
     public bool GetValue()
     {
         return value;
+    }
+
+    public void SetValue(bool newValue)
+    {
+        value = newValue;
+        UpdateUI();
     }
 }

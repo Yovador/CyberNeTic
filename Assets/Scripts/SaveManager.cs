@@ -57,4 +57,19 @@ public class SaveManager
         }
         return save;
     }
+
+    public static void SaveSettings (PlayerSettings settings)
+    {
+        PlayerPrefs.SetFloat("volume", settings.volume);
+        PlayerPrefs.SetInt("easyMode", settings.easyMode ? 0 : 1);
+    }
+
+    public static PlayerSettings LoadSettings()
+    {
+        PlayerSettings settings = new PlayerSettings();
+        settings.volume = PlayerPrefs.GetFloat("volume", 0.5f);
+        settings.easyMode = PlayerPrefs.GetInt("easyMode", 0) != 0;
+
+        return settings;
+    }
 }
