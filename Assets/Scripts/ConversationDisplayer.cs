@@ -177,12 +177,15 @@ public class ConversationDisplayer : MonoBehaviour
         }
 
 
+        HmsTime hmsTime = GetTimeFromSeconds(message.sendTime);
+        messageBox.transform.Find("Date").GetComponent<Text>().text = hmsTime.GetFormatedTime();
+
+
         LayoutGroup rectTransform = messageBox.GetComponent<LayoutGroup>();
         yield return null;
         
         float heigth = rectTransform.preferredHeight;
         float size = medium.spaceBetweenMessages + heigth;
-        Debug.Log("Content : " + message.content.data + "\nHeight : " + heigth + "\nSize: " + size);
 
         scrollTransform.sizeDelta += new Vector2(0, size);
 
@@ -441,5 +444,52 @@ public class ConversationDisplayer : MonoBehaviour
         }
     }
 
-    
+    class HmsTime
+    {
+        public int hours { get; set; }
+        public int minutes { get; set; }
+        public int seconds { get; set; }
+
+        public string GetFormatedTime()
+        {
+            string hoursToShow = hours.ToString();
+            if (hours < 10)
+            {
+                hoursToShow = "0" + hours.ToString();
+            }
+
+            string minutesToShow = minutes.ToString();
+            if (minutes < 10)
+            {
+                minutesToShow = "0" + minutes.ToString();
+            }
+
+            string secondsToShow = seconds.ToString();
+            if (seconds < 10)
+            {
+                secondsToShow = "0" + seconds.ToString();
+            }
+
+            string formatedTime = $"{hoursToShow}:{minutesToShow}:{secondsToShow}";
+
+            return formatedTime;
+        }
+    }
+
+    private HmsTime GetTimeFromSeconds(int timeInSec)
+    {
+        int seconds;
+        int totalMinutes = System.Math.DivRem(timeInSec, 60, out seconds);
+        int minutes;
+        int hours = System.Math.DivRem(totalMinutes, 60, out minutes);
+        hours = hours % 24;
+        HmsTime hmsTime = new HmsTime();
+        hmsTime.hours = hours;
+        hmsTime.minutes = minutes;
+        hmsTime.seconds = seconds;
+
+        return hmsTime;
+
+    }
+
 }
