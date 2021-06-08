@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class BoolSettingsField : SettingsField
 {
     private bool value = false;

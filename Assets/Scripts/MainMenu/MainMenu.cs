@@ -33,6 +33,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        SaveManager.LoadSettings();
         SetSection(startSection);
     }
 

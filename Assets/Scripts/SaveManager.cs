@@ -6,8 +6,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveManager
 {
-    
 
+    #region Game save
     [System.Serializable]
     public class Save
     {
@@ -58,18 +58,28 @@ public class SaveManager
         return save;
     }
 
-    public static void SaveSettings (PlayerSettings settings)
+    #endregion
+
+    #region Settings save
+
+    public class PlayerSettings
+    {
+        public float volume = 0.5f;
+        public bool easyMode = false;
+    }
+    public static PlayerSettings settings = new PlayerSettings();
+
+    public static void SaveSettings()
     {
         PlayerPrefs.SetFloat("volume", settings.volume);
-        PlayerPrefs.SetInt("easyMode", settings.easyMode ? 0 : 1);
+        PlayerPrefs.SetInt("easyMode", settings.easyMode ? 1 : 0);
     }
 
-    public static PlayerSettings LoadSettings()
+    public static void LoadSettings()
     {
-        PlayerSettings settings = new PlayerSettings();
         settings.volume = PlayerPrefs.GetFloat("volume", 0.5f);
-        settings.easyMode = PlayerPrefs.GetInt("easyMode", 0) != 0;
-
-        return settings;
+        settings.easyMode = PlayerPrefs.GetInt("easyMode", 0) > 0;
     }
+
+    #endregion
 }

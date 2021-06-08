@@ -1,37 +1,27 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingsSectionMainMenu : SectionMainMenu
 {
     public FloatSettingsField volume;
     public BoolSettingsField easyMode;
 
-    private PlayerSettings settings;
-
     public override void Land()
     {
-        settings = SaveManager.LoadSettings();
+        SaveManager.LoadSettings();
 
         base.Land();
 
-        volume.SetValue(settings.volume);
-        easyMode.SetValue(settings.easyMode);
-
-        // Callbacks
-        volume.OnChanged += SaveSettings;
-        easyMode.OnChanged += SaveSettings;
+        volume.SetValue(SaveManager.settings.volume);
+        easyMode.SetValue(SaveManager.settings.easyMode);
     }
 
-    private void SaveSettings()
+    public void SaveSettings()
     {
-        settings.volume = volume.GetValue();
-        settings.easyMode = easyMode.GetValue();
+        SaveManager.settings.volume = volume.GetValue();
+        SaveManager.settings.easyMode = easyMode.GetValue();
 
-        SaveManager.SaveSettings(settings);
+        SaveManager.SaveSettings();
     }
-}
 
-public class PlayerSettings
-{
-    public float volume = 0.5f;
-    public bool easyMode = false;
 }
