@@ -177,10 +177,6 @@ public class ConversationDisplayer : MonoBehaviour
         }
 
 
-        HmsTime hmsTime = GetTimeFromSeconds(message.sendTime);
-        messageBox.transform.Find("Date").GetComponent<Text>().text = hmsTime.GetFormatedTime();
-
-
         LayoutGroup rectTransform = messageBox.GetComponent<LayoutGroup>();
         yield return null;
         
