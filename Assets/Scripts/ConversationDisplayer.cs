@@ -34,6 +34,9 @@ public class ConversationDisplayer : MonoBehaviour
     private ScrollRect scrollRect;
     private RectTransform scrollTransform;
 
+    [HideInInspector]
+    public ChoiceButton choiceButton;
+
     public void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -343,10 +346,10 @@ public class ConversationDisplayer : MonoBehaviour
 
         foreach (var newButton in buttonList)
         {
-            ChoiceButton choiceButton = newButton.Key.GetComponent<ChoiceButton>();
-            if(choiceButton != null)
+            ChoiceButton choiceButtonSelected = newButton.Key.GetComponent<ChoiceButton>();
+            if(choiceButtonSelected != null)
             {
-                if (choiceButton.branche == nextBranch)
+                if (choiceButtonSelected == choiceButton)
                 {
                     StartCoroutine(LoadMessage(newButton.Value.message));
 
