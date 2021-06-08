@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingsSectionMainMenu : SectionMainMenu
 {
@@ -7,14 +8,20 @@ public class SettingsSectionMainMenu : SectionMainMenu
 
     public override void Land()
     {
+        SaveManager.LoadSettings();
+
         base.Land();
 
-        volume.OnChanged += SaveSettings;
-        easyMode.OnChanged += SaveSettings;
+        volume.SetValue(SaveManager.settings.volume);
+        easyMode.SetValue(SaveManager.settings.easyMode);
     }
 
-    private void SaveSettings()
+    public void SaveSettings()
     {
-        Debug.Log("Saving user settings...");
+        SaveManager.settings.volume = volume.GetValue();
+        SaveManager.settings.easyMode = easyMode.GetValue();
+
+        SaveManager.SaveSettings();
     }
+
 }

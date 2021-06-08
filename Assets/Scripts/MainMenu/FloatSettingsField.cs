@@ -2,18 +2,13 @@ using UnityEngine;
 
 public class FloatSettingsField : SettingsField
 {
-    [Range(0f, 1f)]
-    public float defaultValue;
-
     private float value = 0.0f;
 
-    private void Start()
+    private void Awake()
     {
-        value = defaultValue;
         base.Init();
 
-        SetSliderValue(defaultValue);
-
+        SetSliderValue(value);
     }
 
     public override void OnValueChanged()
@@ -24,11 +19,18 @@ public class FloatSettingsField : SettingsField
 
     protected override void UpdateUI()
     {
+        SetSliderValue(value);
         base.UpdateUI();
     }
 
     public float GetValue()
     {
         return value;
+    }
+
+    public void SetValue(float newValue)
+    {
+        value = newValue;
+        UpdateUI();
     }
 }
