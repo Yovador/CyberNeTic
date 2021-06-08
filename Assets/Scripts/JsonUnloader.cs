@@ -16,6 +16,8 @@ public class JsonUnloader
         public string playerCharacter;
         public string npCharacter;
         public string nextConversation;
+        public string date;
+        public string time;
     }
 
     [System.Serializable]
@@ -131,6 +133,8 @@ public class JsonUnloader
         conversationFinal.playerCharacter = jsonConversation.Parameters.playerCharacter;
         conversationFinal.npCharacter = jsonConversation.Parameters.npCharacter;
         conversationFinal.nextConversation = jsonConversation.Parameters.nextConversation;
+        conversationFinal.date = jsonConversation.Parameters.date;
+        conversationFinal.time = jsonConversation.Parameters.time;
 
         foreach (Branche branche in jsonConversation.Branches)
         {

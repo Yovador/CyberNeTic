@@ -106,6 +106,8 @@ public class Conversation
     public string playerCharacter{ get; set; }
     public string npCharacter{ get; set; }
     public string nextConversation{ get; set; }
+    public string date{ get; set; }
+    public string time{ get; set; }
 
     public List<Branche> branches { get; set; } = new List<Branche>();
 
