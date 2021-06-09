@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class ConversationDisplayer : MonoBehaviour
 {
@@ -91,7 +91,7 @@ public class ConversationDisplayer : MonoBehaviour
         dateAndHour.transform.SetParent(conversationFlux.transform);
         scrollTransform.sizeDelta += new Vector2(0, dateAndHour.GetComponent<RectTransform>().sizeDelta.y + medium.spaceBetweenMessages);
         Debug.Log(scrollTransform.sizeDelta.y);
-        dateAndHour.GetComponentInChildren<Text>().text = GetDateAndTimeToDisplay(conversation.date, conversation.time); ;
+        dateAndHour.GetComponentInChildren<TMP_Text>().text = GetDateAndTimeToDisplay(conversation.date, conversation.time); ;
         
 
         StartCoroutine(LoadBranches(GetBrancheByID(conversation.startingBranch)));
@@ -106,7 +106,7 @@ public class ConversationDisplayer : MonoBehaviour
         }
 
         // Update header name
-        GameObject.FindGameObjectWithTag("ContactName").GetComponent<Text>().text = $"{npCharacter.firstName} {npCharacter.lastName}" ;
+        GameObject.FindGameObjectWithTag("ContactName").GetComponent<TMP_Text>().text = $"{npCharacter.firstName} {npCharacter.lastName}" ;
 
         saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
 
@@ -192,7 +192,8 @@ public class ConversationDisplayer : MonoBehaviour
         }
         else
         {
-            Text textComponent = backgroungMessage.transform.Find("Text").GetComponent<Text>();
+            TMP_Text textComponent = backgroungMessage.transform.Find("Text").GetComponent<TMP_Text>();
+            Debug.Log(textComponent);
             textComponent.text = message.content.data;
             messageBoxResizer.ResizeBox();
         }
@@ -336,7 +337,7 @@ public class ConversationDisplayer : MonoBehaviour
             }
             RectTransform rectTransformButton = newButton.GetComponent<RectTransform>();
             rectTransformButton.position -= new Vector3(0, i * (medium.spaceBetweenChoices + (rectTransformButton.sizeDelta.y/2)) , 0 );
-            newButton.GetComponentInChildren<Text>().text = poss.message.content.data;
+            newButton.GetComponentInChildren<TMP_Text>().text = poss.message.content.data;
             if (poss.possible)
             {
                 newButton.GetComponent<ChoiceButton>().branche = GetBrancheByID(poss.branch);
