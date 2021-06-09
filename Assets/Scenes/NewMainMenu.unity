@@ -4155,6 +4155,7 @@ MonoBehaviour:
   startSection: {fileID: 1675187021}
   menuSection: {fileID: 1819939742}
   settingsSection: {fileID: 877033657}
+  startSceneIndex: 5
 --- !u!1 &1358626606
 GameObject:
   m_ObjectHideFlags: 0
