@@ -62,6 +62,8 @@ public class SaveManager
 
     #region Settings save
 
+    public static bool sessionGameStarted = false;
+
     public class PlayerSettings
     {
         public float volume = 0.5f;

@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public SectionMainMenu startSection, menuSection, settingsSection;
-    [Space]
-    public int startSceneIndex;
 
     public static int minSwipeDistance = 150;
 
@@ -37,7 +35,14 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         SaveManager.LoadSettings();
-        SetSection(startSection);
+
+        if (!SaveManager.sessionGameStarted)
+        {
+            SetSection(startSection);
+        }else
+        {
+            SetSection(menuSection);
+        }
     }
 
     private void Update()
@@ -48,7 +53,8 @@ public class MainMenu : MonoBehaviour
     // Buttons
     public void StartGame()
     {
-        SceneManager.LoadScene(startSceneIndex);
+        SaveManager.sessionGameStarted = true;
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void SettingsVisible (bool visible)
