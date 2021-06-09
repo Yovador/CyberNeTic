@@ -7,11 +7,13 @@ using UnityEngine;
 
 
 //Classe contenant les informations d'une conversation
+[System.Serializable]
 public class Content
 {
     public string data { get; set; }
 
 }
+[System.Serializable]
 public class ImageContent : Content
 {
     public string GetPath()
@@ -58,7 +60,7 @@ public class ImageContent : Content
 
 public class Conversation
 {
-
+    [System.Serializable]
     public class Message
     {
         public bool isNpc{ get; set; }

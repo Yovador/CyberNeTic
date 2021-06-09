@@ -8,23 +8,26 @@ public class SaveManager
 {
 
     #region Game save
+    private string saveName = $"gamedata1.save";
     [System.Serializable]
     public class Save
     {
         public string currentConversation { get; set; }
-        public List<string> currentConversationBranches { get; set; } = new List<string>();
+        public string currentBranch { get; set; }
+        public List<Conversation.Message> currentMessageList { get; set; } = new List<Conversation.Message>();
         public List<JsonUnloader.Relationship> relationshipsList { get; set; } = new List<JsonUnloader.Relationship>();
 
     }
 
-    public void SaveGame(string currentConversation, List<string> currentConversationBranches, List<Character> charactersList)
+    public void SaveGame(string currentConversation, List<Conversation.Message> currentMessageList, List<Character> charactersList, string currentBranch)
     {
         Debug.Log("Saving to : " + Application.persistentDataPath);
-        string savePath = Path.GetFullPath(Path.Combine(Application.persistentDataPath, "gamesave.save"));
+        string savePath = Path.GetFullPath(Path.Combine(Application.persistentDataPath, saveName));
         Save newSave = new Save();
         newSave.currentConversation = currentConversation;
-        newSave.currentConversationBranches = currentConversationBranches;
+        newSave.currentMessageList = currentMessageList;
         newSave.relationshipsList = new List<JsonUnloader.Relationship>();
+        newSave.currentBranch = currentBranch;
         foreach (var character in charactersList)
         {
             foreach (var relationship in character.relationships)
@@ -46,7 +49,7 @@ public class SaveManager
 
     public Save LoadSave()
     {
-        string savePath = Path.GetFullPath(Path.Combine(Application.persistentDataPath, "gamesave.save"));
+        string savePath = Path.GetFullPath(Path.Combine(Application.persistentDataPath, saveName));
         Save save = null;
         if (File.Exists(savePath))
         {

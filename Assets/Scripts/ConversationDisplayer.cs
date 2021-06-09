@@ -22,7 +22,7 @@ public class ConversationDisplayer : MonoBehaviour
     public bool isInChoice { get; set; } = false;
     [HideInInspector]
     public Conversation.Branche nextBranch {get; set;}
-    private List<string> branchList = new List<string>();
+    private List<Conversation.Message> currentMessageList = new List<Conversation.Message>();
     private GameManager gameManager;
     [HideInInspector]
     public bool endConversation;
@@ -36,6 +36,9 @@ public class ConversationDisplayer : MonoBehaviour
 
     [HideInInspector]
     public ChoiceButton choiceButton;
+    private string currentBranch = null;
+    private bool canAddMessageOfPreviousBranch = true;
+    private LoadingPanel loadPanel;
 
     public void Start()
     {
@@ -43,22 +46,8 @@ public class ConversationDisplayer : MonoBehaviour
         gameManager.conversationDisplayer = this;
     }
 
-    void OnApplicationQuit()
-    {
-        saveManager.SaveGame(conversation.id, branchList, gameManager.charactersSet);
-    }
 
-    private void OnApplicationPause(bool pause)
-    {
-        if (pause)
-        {
-            saveManager.SaveGame(conversation.id, branchList, gameManager.charactersSet);
-        }
-    }
-
-
-
-    public void LaunchAConv(Conversation currentConversation, List<string> branchesList)
+    public void LaunchAConv(Conversation currentConversation, List<Conversation.Message> messagesList, string branchToLoad)
     {
         conversation = currentConversation;
         conversationFlux = GameObject.Find("ConversationFlux");
@@ -68,10 +57,21 @@ public class ConversationDisplayer : MonoBehaviour
         scrollRect.enabled = false; 
         scrollTransform = scrollRect.gameObject.GetComponent<RectTransform>();
         scrollTransform.sizeDelta = new Vector2(0, 100 + footer.GetComponent<RectTransform>().sizeDelta.y + medium.navBar.GetComponent<RectTransform>().sizeDelta.y);
+        loadPanel = GameObject.Find("LoadingPanel").GetComponent<LoadingPanel>();
 
-        if (branchesList.Count > 0)
+        if (branchToLoad != null)
         {
-            conversation.startingBranch = branchesList[branchesList.Count - 1];
+            conversation.startingBranch = branchToLoad;
+            Debug.LogWarning(conversation.startingBranch);
+        }
+
+        if(messagesList.Count > 0)
+        {
+            StartCoroutine(LoadPreviousMessage(messagesList));
+        }
+        else
+        {
+            StartCoroutine(loadPanel.Disappear());
         }
 
         foreach (var character in gameManager.charactersSet)
@@ -108,12 +108,25 @@ public class ConversationDisplayer : MonoBehaviour
         // Update header name
         GameObject.FindGameObjectWithTag("ContactName").GetComponent<Text>().text = $"{npCharacter.firstName} {npCharacter.lastName}" ;
 
-        saveManager.SaveGame(conversation.id, branchList, gameManager.charactersSet);
+        saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
 
     }
+    private IEnumerator LoadPreviousMessage(List<Conversation.Message> messagesToLoad)
+    {
+        Debug.Log("messageList : " + messagesToLoad[messagesToLoad.Count-1].content.data );
+        currentMessageList.AddRange(messagesToLoad);
+        float previousMessageSpeed = messageSpeed;
+        messageSpeed = 100000000f;
+        foreach (var message in messagesToLoad)
+        {
+            StartCoroutine(LoadMessage(message));
+            yield return new WaitWhile(() => animationOn);
 
-
-
+        }
+        yield return new WaitForSecondsRealtime(0.2f);
+        messageSpeed = previousMessageSpeed;
+        StartCoroutine(loadPanel.Disappear());
+    }
     private Medium LoadMedium(string mediumID)
     {
         Medium medium;
@@ -138,8 +151,6 @@ public class ConversationDisplayer : MonoBehaviour
 
     private IEnumerator LoadMessage(Conversation.Message message)
     {
-
-
 
         GameObject messageBoxPrefab;
 
@@ -212,7 +223,6 @@ public class ConversationDisplayer : MonoBehaviour
 
     }
 
-
     private IEnumerator MoveFlux(float value)
     {
         Debug.Log("Flux move : " + value);
@@ -233,17 +243,24 @@ public class ConversationDisplayer : MonoBehaviour
 
     private IEnumerator LoadBranches(Conversation.Branche branche )
     {
+        canAddMessageOfPreviousBranch = true;
+        currentBranch = branche.id;
+        List<Conversation.Message> tempMessageList = new List<Conversation.Message>();
         foreach (var message in branche.messagesList)
         {
             yield return new WaitWhile(() => animationOn);
+            tempMessageList.Add(message);
             StartCoroutine(LoadMessage(message));
             yield return new WaitForSecondsRealtime(waitTime);
             yield return new WaitWhile(() => animationOn);
 
         }
 
-        branchList.Add(branche.id);
         LoadBranchingPoint(branche.branchingPoint);
+        yield return new WaitUntil(() => canAddMessageOfPreviousBranch);
+        currentMessageList.AddRange(tempMessageList);
+        saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
+
     }
 
     private Conversation.Branche GetBrancheByID (string id)
@@ -351,6 +368,7 @@ public class ConversationDisplayer : MonoBehaviour
             {
                 if (choiceButtonSelected == choiceButton)
                 {
+                    currentMessageList.Add(newButton.Value.message);
                     StartCoroutine(LoadMessage(newButton.Value.message));
 
 
@@ -377,6 +395,7 @@ public class ConversationDisplayer : MonoBehaviour
 
     private void LoadBranchingPoint(Conversation.BranchingPoint branchingPoint)
     {
+        canAddMessageOfPreviousBranch = false;
         switch (branchingPoint.type)
         {
             case "choice":
@@ -421,7 +440,8 @@ public class ConversationDisplayer : MonoBehaviour
         yield return new WaitWhile(() => animationOn);
         scrollRect.enabled = true;
 
-        saveManager.SaveGame(conversation.id, branchList, gameManager.charactersSet);
+        currentMessageList = new List<Conversation.Message>();
+        saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
 
         yield return new WaitUntil(() => endConversation);
 

@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class NewGameButton : MenuButton
 {
-
-    public override void OnClick()
+    protected override IEnumerator LaunchSequence()
     {
+        StartCoroutine(base.LaunchSequence());
+        yield return new WaitWhile(() => loadingPanel.isFading);
+
+
+        Debug.Log("In NewGame");
         gameManager.StartNewGame();
+        yield return null;
     }
+
 
 }

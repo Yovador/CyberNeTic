@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private string firstConversation;
-    private string pathConversation = Path.Combine(Application.streamingAssetsPath, "Conversations");
-    private string pathCharacterSet = Path.Combine(Application.streamingAssetsPath, "Characters");
+    private string branchToLoad = null;
     private JsonUnloader jsonUnloader = new JsonUnloader();
 
     private SaveManager saveManager = new SaveManager();
@@ -22,7 +21,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public string nextConversation { get; set; }
 
-    private List<string> branchList = new List<string>() ;
+    private List<Conversation.Message> messageList = new List<Conversation.Message>() ;
 
 
     // Start is called before the first frame update
@@ -38,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     public void StartNewGame()
     {
-        saveManager.SaveGame(firstConversation, new List<string>(), charactersSet);
+        saveManager.SaveGame(firstConversation, new List<Conversation.Message>(), charactersSet, null);
         StartCoroutine(StartGame());
     }
 
@@ -46,8 +45,8 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(StartGame());
         firstConversation = saveManager.LoadSave().currentConversation;
-        branchList = saveManager.LoadSave().currentConversationBranches;
-
+        messageList = saveManager.LoadSave().currentMessageList;
+        branchToLoad = saveManager.LoadSave().currentBranch;
     }
 
     IEnumerator StartGame()
@@ -56,7 +55,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitUntil(() => conversationDisplayer != null);
         Debug.Log(FindConvById(firstConversation).id);
-        conversationDisplayer.LaunchAConv(FindConvById(firstConversation), branchList);
+        conversationDisplayer.LaunchAConv(FindConvById(firstConversation), messageList, branchToLoad);
 
 
 
@@ -77,7 +76,8 @@ public class GameManager : MonoBehaviour
 
         if (FindConvById(nextConversation) != null)
         {
-            conversationDisplayer.LaunchAConv(FindConvById(nextConversation), branchList);
+            branchToLoad = null;
+            conversationDisplayer.LaunchAConv(FindConvById(nextConversation), messageList, branchToLoad);
             nextConversation = null;
             UpdateRelationships();
             StartCoroutine(WaitToLaunchNextConversation());
