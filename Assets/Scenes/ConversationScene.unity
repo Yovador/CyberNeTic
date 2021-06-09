@@ -433,6 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeRate: 5
+  isFading: 0
 --- !u!1 &1179515613
 GameObject:
   m_ObjectHideFlags: 0

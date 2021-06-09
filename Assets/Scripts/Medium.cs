@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Medium", menuName = "Medium", order = 51)]
 public class Medium : ScriptableObject
 {
-    [SerializeField]
+    [SerializeField, Range(0, 20)]
     public float spaceBetweenMessages;
     [SerializeField]
     public GameObject playerMessageBox;
@@ -30,7 +30,7 @@ public class Medium : ScriptableObject
     public GameObject impossibleChoiceButton;
     [SerializeField]
     public GameObject nextConvoButton;
-    [SerializeField]
+    [SerializeField, Range(0, 20)]
     public float spaceBetweenChoices;
     [SerializeField]
     public GameObject dateAndHour;

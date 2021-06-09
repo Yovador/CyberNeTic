@@ -19,7 +19,7 @@
                 "possibilities": [
                     {
                         "branch": "sophie-olivier.2.3-1",
-                        "possible": false,
+                        "possible": true,
                         "confidenceMod": "0",
                         "message": {
                             "isNpc": false,
