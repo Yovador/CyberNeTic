@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public SectionMainMenu startSection, menuSection, settingsSection;
+    public SectionMainMenu startSection, menuSection, settingsSection, informationsSection;
 
     public static int minSwipeDistance = 150;
 
@@ -61,6 +61,14 @@ public class MainMenu : MonoBehaviour
     {
         if (visible)
             SetSection(settingsSection);
+        else
+            SetSection(menuSection);
+    }
+
+    public void InformationsVisible (bool visible)
+    {
+        if (visible)
+            SetSection(informationsSection);
         else
             SetSection(menuSection);
     }
