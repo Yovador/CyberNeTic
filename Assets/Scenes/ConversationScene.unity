@@ -213,6 +213,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1311733293470629281, guid: f6f7a2d2741db26448b378d43ded9f09, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311733293470629281, guid: f6f7a2d2741db26448b378d43ded9f09, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311733293470629281, guid: f6f7a2d2741db26448b378d43ded9f09, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311733293470629281, guid: f6f7a2d2741db26448b378d43ded9f09, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1334
+      objectReference: {fileID: 0}
     - target: {fileID: 1311733293470629282, guid: f6f7a2d2741db26448b378d43ded9f09, type: 3}
       propertyPath: m_Name
       value: ConversationDisplayer
