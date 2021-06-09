@@ -460,7 +460,13 @@ public class ConversationDisplayer : MonoBehaviour
 
         if (System.DateTime.TryParseExact($"{date} {time}", pattern, null, System.Globalization.DateTimeStyles.None, out parsedDate))
         {
-            display = $"{parsedDate.DayOfWeek} {parsedDate.Day} {parsedDate.Month} · {parsedDate.TimeOfDay}";
+            var culture = new System.Globalization.CultureInfo("fr-FR");
+            string dayName = FirstLetterToUpper(culture.DateTimeFormat.GetDayName(parsedDate.DayOfWeek));
+            int dayNumber = parsedDate.Day;
+            string monthName = culture.DateTimeFormat.GetMonthName(parsedDate.Month);
+            var timeDay = $"{parsedDate.TimeOfDay.Hours}:{parsedDate.TimeOfDay.Minutes} "  ;
+
+            display = $"{dayName} {dayNumber} {monthName} · {timeDay}";
         }
         else
         {
@@ -473,4 +479,14 @@ public class ConversationDisplayer : MonoBehaviour
 
     }
 
+    public string FirstLetterToUpper(string str)
+    {
+        if (str == null)
+            return null;
+
+        if (str.Length > 1)
+            return char.ToUpper(str[0]) + str.Substring(1);
+
+        return str.ToUpper();
+    }
 }
