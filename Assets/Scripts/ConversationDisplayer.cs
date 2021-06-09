@@ -39,6 +39,7 @@ public class ConversationDisplayer : MonoBehaviour
     private string currentBranch = null;
     private bool canAddMessageOfPreviousBranch = true;
     private LoadingPanel loadPanel;
+    private float screenSensitiveSpaceBetweenMessage;
 
     public void Start()
     {
@@ -62,7 +63,6 @@ public class ConversationDisplayer : MonoBehaviour
         if (branchToLoad != null)
         {
             conversation.startingBranch = branchToLoad;
-            Debug.LogWarning(conversation.startingBranch);
         }
 
         if(messagesList.Count > 0)
@@ -87,11 +87,11 @@ public class ConversationDisplayer : MonoBehaviour
             }
         }
 
-        GameObject dateAndHour = Instantiate(medium.dateAndHour);
+        GameObject dateAndHour = Instantiate(medium.dateAndHour, conversationFlux.transform);
         dateAndHour.transform.SetParent(conversationFlux.transform);
         scrollTransform.sizeDelta += new Vector2(0, dateAndHour.GetComponent<RectTransform>().sizeDelta.y + medium.spaceBetweenMessages);
         Debug.Log(scrollTransform.sizeDelta.y);
-        dateAndHour.GetComponentInChildren<TMP_Text>().text = GetDateAndTimeToDisplay(conversation.date, conversation.time); ;
+        dateAndHour.GetComponentInChildren<TMP_Text>().text = GetDateAndTimeToDisplay(conversation.date, conversation.time);
         
 
         StartCoroutine(LoadBranches(GetBrancheByID(conversation.startingBranch)));
@@ -113,7 +113,6 @@ public class ConversationDisplayer : MonoBehaviour
     }
     private IEnumerator LoadPreviousMessage(List<Conversation.Message> messagesToLoad)
     {
-        Debug.Log("messageList : " + messagesToLoad[messagesToLoad.Count-1].content.data );
         currentMessageList.AddRange(messagesToLoad);
         float previousMessageSpeed = messageSpeed;
         messageSpeed = 100000000f;
@@ -145,7 +144,7 @@ public class ConversationDisplayer : MonoBehaviour
         Instantiate(medium.background, transform).transform.SetSiblingIndex(0);
         Instantiate(medium.navBar, transform);
         footer = Instantiate(medium.footer, transform);
-
+        screenSensitiveSpaceBetweenMessage = (medium.spaceBetweenMessages * Screen.height) / 100 ;
         return medium;
     }
 
@@ -203,8 +202,9 @@ public class ConversationDisplayer : MonoBehaviour
         yield return null;
         
         float heigth = rectTransform.preferredHeight;
-        float size = medium.spaceBetweenMessages + heigth;
-
+        float size = screenSensitiveSpaceBetweenMessage + heigth;
+        //yield return new WaitForSecondsRealtime(100f);
+        Debug.Log("expected heigth : " + size);
         scrollTransform.sizeDelta += new Vector2(0, size);
 
 
@@ -226,18 +226,21 @@ public class ConversationDisplayer : MonoBehaviour
 
     private IEnumerator MoveFlux(float value)
     {
-        Debug.Log("Flux move : " + value);
+        Debug.Log("Starting pos : " + conversationFlux.transform.localPosition);
         animationOn = true;
-        Vector2 newPos = new Vector2(conversationFlux.transform.position.x, conversationFlux.transform.position.y +  value);
+        Vector2 newPos = new Vector2(conversationFlux.transform.localPosition.x, conversationFlux.transform.localPosition.y +  value);
+        Debug.Log("expected pos : " + newPos);
 
-        while (Vector2.Distance(conversationFlux.transform.position, newPos) > 0.5f)
+
+        while (Vector2.Distance(conversationFlux.transform.localPosition, newPos) > 0.5f)
         {
-            conversationFlux.transform.position = Vector2.Lerp(conversationFlux.transform.position, newPos, messageSpeed * Time.deltaTime);
+            conversationFlux.transform.localPosition = Vector2.Lerp(conversationFlux.transform.localPosition, newPos, messageSpeed * Time.deltaTime);
             yield return null;
         }
-        conversationFlux.transform.position = newPos;
+        conversationFlux.transform.localPosition = newPos;
 
         animationOn = false;
+        Debug.Log("end pos : " + conversationFlux.transform.localPosition);
 
 
     }
@@ -291,21 +294,21 @@ public class ConversationDisplayer : MonoBehaviour
             isInChoice = true;
             float upValue = rectTransform.sizeDelta.y - medium.footerHeigth;
             StartCoroutine(MoveFlux(upValue));
-            newPos = rectTransform.position + new Vector3(0, upValue, 0);
+            newPos = rectTransform.localPosition + new Vector3(0, upValue, 0);
 
         }
         else
         {
             float downValue = -(rectTransform.sizeDelta.y - medium.footerHeigth);
             StartCoroutine(MoveFlux(downValue));
-            newPos = rectTransform.position + new Vector3(0, downValue, 0);
+            newPos = rectTransform.localPosition + new Vector3(0, downValue, 0);
 
         }
 
 
-        while (Vector2.Distance(rectTransform.transform.position, newPos) > 0.5f)
+        while (Vector2.Distance(rectTransform.transform.localPosition, newPos) > 0.5f)
         {
-            rectTransform.transform.position = Vector2.Lerp(rectTransform.transform.position, newPos, messageSpeed * Time.deltaTime);
+            rectTransform.transform.localPosition = Vector2.Lerp(rectTransform.transform.localPosition, newPos, messageSpeed * Time.deltaTime);
             yield return null;
         }
 
@@ -487,7 +490,7 @@ public class ConversationDisplayer : MonoBehaviour
             string monthName = culture.DateTimeFormat.GetMonthName(parsedDate.Month);
             var timeDay = $"{parsedDate.TimeOfDay.Hours}:{parsedDate.TimeOfDay.Minutes} "  ;
 
-            display = $"{dayName} {dayNumber} {monthName} · {timeDay}";
+            display = $"{dayName} {dayNumber} {monthName} ï¿½ {timeDay}";
         }
         else
         {
