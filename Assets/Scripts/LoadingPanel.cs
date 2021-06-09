@@ -32,7 +32,7 @@ public class LoadingPanel : MonoBehaviour
         isFading = true;
         Color curColor = image.color;
         float alphaDiff = Mathf.Abs(curColor.a - targetAlpha);
-        while (alphaDiff > 0.0001f)
+        while (alphaDiff > 0.05f)
         {
             curColor.a = Mathf.Lerp(curColor.a, targetAlpha, fadeRate * Time.deltaTime);
             image.color = curColor;
