@@ -69,21 +69,27 @@ public class SaveManager
 
     public class PlayerSettings
     {
-        public float volume = 0.5f;
-        public bool easyMode = false;
+        public float volumeEffects = 0.5f;
+        public float volumeMusic = 0.5f;
+        public float readSpeed = 0.5f;
+        public bool colorBlind = false;
     }
     public static PlayerSettings settings = new PlayerSettings();
 
     public static void SaveSettings()
     {
-        PlayerPrefs.SetFloat("volume", settings.volume);
-        PlayerPrefs.SetInt("easyMode", settings.easyMode ? 1 : 0);
+        PlayerPrefs.SetFloat("volumeEffects", settings.volumeEffects);
+        PlayerPrefs.SetFloat("volumeMusic", settings.volumeMusic);
+        PlayerPrefs.SetFloat("readSpeed", settings.readSpeed);
+        PlayerPrefs.SetInt("colorBlind", settings.colorBlind ? 1 : 0);
     }
 
     public static void LoadSettings()
     {
-        settings.volume = PlayerPrefs.GetFloat("volume", 0.5f);
-        settings.easyMode = PlayerPrefs.GetInt("easyMode", 0) > 0;
+        settings.volumeEffects = PlayerPrefs.GetFloat("volumeEffects", 0.5f);
+        settings.volumeMusic = PlayerPrefs.GetFloat("volumeMusic", 0.5f);
+        settings.readSpeed = PlayerPrefs.GetFloat("readSpeed", 0.5f);
+        settings.colorBlind = PlayerPrefs.GetInt("colorBlind", 0) > 0;
     }
 
     #endregion

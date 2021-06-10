@@ -490,7 +490,7 @@ public class ConversationDisplayer : MonoBehaviour
             string monthName = culture.DateTimeFormat.GetMonthName(parsedDate.Month);
             var timeDay = $"{parsedDate.TimeOfDay.Hours}:{parsedDate.TimeOfDay.Minutes} "  ;
 
-            display = $"{dayName} {dayNumber} {monthName} � {timeDay}";
+            display = $"{dayName} {dayNumber} {monthName} • {timeDay}";
         }
         else
         {

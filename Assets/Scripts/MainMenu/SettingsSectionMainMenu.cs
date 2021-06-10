@@ -4,8 +4,8 @@ using TMPro;
 
 public class SettingsSectionMainMenu : SectionMainMenu
 {
-    public FloatSettingsField volume;
-    public BoolSettingsField easyMode;
+    public FloatSettingsField volumeEffectsField, volumeMusicField, readSpeedField;
+    public BoolSettingsField colorBlindField;
     [Space]
     public TMP_Text versionText;
 
@@ -16,16 +16,25 @@ public class SettingsSectionMainMenu : SectionMainMenu
 
         base.Land();
 
-        volume.SetValue(SaveManager.settings.volume);
-        easyMode.SetValue(SaveManager.settings.easyMode);
+        UpdateUI();
     }
 
     public void SaveSettings()
     {
-        SaveManager.settings.volume = volume.GetValue();
-        SaveManager.settings.easyMode = easyMode.GetValue();
+        SaveManager.settings.volumeEffects = volumeEffectsField.GetValue();
+        SaveManager.settings.volumeMusic = volumeMusicField.GetValue();
+        SaveManager.settings.readSpeed = readSpeedField.GetValue();
+        SaveManager.settings.colorBlind = colorBlindField.GetValue();
 
         SaveManager.SaveSettings();
+    }
+
+    private void UpdateUI()
+    {
+        volumeEffectsField.SetValue(SaveManager.settings.volumeEffects);
+        volumeMusicField.SetValue(SaveManager.settings.volumeMusic);
+        readSpeedField.SetValue(SaveManager.settings.readSpeed);
+        colorBlindField.SetValue(SaveManager.settings.colorBlind);
     }
 
 }
