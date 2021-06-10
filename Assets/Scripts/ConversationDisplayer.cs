@@ -9,7 +9,7 @@ public class ConversationDisplayer : MonoBehaviour
     [SerializeField]
     private string defaultMedium;
     [SerializeField]
-    private float waitTime;
+    public float waitTime;
     private Medium medium;
     private Conversation conversation;
     private SaveManager saveManager = new SaveManager();
@@ -29,7 +29,7 @@ public class ConversationDisplayer : MonoBehaviour
     private bool animationOn = false;
 
     [SerializeField, Range(0.5f, 5f)]
-    private float messageSpeed;
+    public float messageSpeed;
 
     private ScrollRect scrollRect;
     private RectTransform scrollTransform;

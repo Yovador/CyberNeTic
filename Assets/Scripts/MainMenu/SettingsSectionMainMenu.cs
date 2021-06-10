@@ -48,7 +48,7 @@ public class SettingsSectionMainMenu : SectionMainMenu
 
     private void OnColorBlindChange()
     {
-        DDOL.UpdateColorBlindFilter(colorBlindField.GetValue());
+        GameManager.UpdateColorBlindFilter(colorBlindField.GetValue());
     }
 
 }
