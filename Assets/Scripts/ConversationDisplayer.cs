@@ -150,8 +150,9 @@ public class ConversationDisplayer : MonoBehaviour
 
     private IEnumerator LoadMessage(Conversation.Message message)
     {
-
         GameObject messageBoxPrefab;
+
+        SpeechController.StopReading();
 
         if (message.isNpc)
         {
@@ -195,6 +196,8 @@ public class ConversationDisplayer : MonoBehaviour
             Debug.Log(textComponent);
             textComponent.text = message.content.data;
             messageBoxResizer.ResizeBox();
+
+            SpeechController.ReadText(message.content.data);
         }
 
 
