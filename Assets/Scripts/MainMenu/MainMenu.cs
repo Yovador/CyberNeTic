@@ -35,6 +35,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         SaveManager.LoadSettings();
+        GameManager.ApplySettingsToScene();
 
         if (!SaveManager.sessionGameStarted)
         {

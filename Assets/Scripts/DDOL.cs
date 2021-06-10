@@ -16,5 +16,4 @@ public class DDOL : MonoBehaviour
         SceneManager.LoadScene(sceneName);
 
     }
-
 }

@@ -9,7 +9,7 @@ public class ConversationDisplayer : MonoBehaviour
     [SerializeField]
     private string defaultMedium;
     [SerializeField]
-    private float waitTime;
+    public float waitTime;
     private Medium medium;
     private Conversation conversation;
     private SaveManager saveManager = new SaveManager();
@@ -29,7 +29,7 @@ public class ConversationDisplayer : MonoBehaviour
     private bool animationOn = false;
 
     [SerializeField, Range(0.5f, 5f)]
-    private float messageSpeed;
+    public float messageSpeed;
 
     private ScrollRect scrollRect;
     private RectTransform scrollTransform;
@@ -151,8 +151,10 @@ public class ConversationDisplayer : MonoBehaviour
     }
     private IEnumerator LoadMessage(Conversation.Message message)
     {
-
         GameObject messageBoxPrefab;
+
+        if(SaveManager.settings.speechHelp)
+            SpeechController.StopReading();
 
         if (message.isNpc)
         {
@@ -181,8 +183,6 @@ public class ConversationDisplayer : MonoBehaviour
         GameObject backgroungMessage = messageBox.transform.Find("Background").gameObject;
         MessageBoxResizer messageBoxResizer = backgroungMessage.GetComponent<MessageBoxResizer>();
 
-
-
         if (message.content is ImageContent)
         {
             Image image = backgroungMessage.transform.Find("Mask").Find("MediaImage").GetComponent<Image>();
@@ -196,6 +196,9 @@ public class ConversationDisplayer : MonoBehaviour
             Debug.Log(textComponent);
             textComponent.text = message.content.data;
             messageBoxResizer.ResizeBox();
+
+            if (SaveManager.settings.speechHelp)
+                SpeechController.ReadText(message.content.data);
         }
 
 

@@ -156,5 +156,38 @@ public class GameManager : MonoBehaviour
             charactersSet = jsonUnloader.LoadCharacterListFromJson(path);
         }
     }
-    
+
+
+    #region Apply settings to scene
+    private const float maxWaitTime = 4f;
+
+    private void OnLevelWasLoaded(int level)
+    {
+        ApplySettingsToScene();
+    }
+
+    public static void ApplySettingsToScene()
+    {
+        if(SceneManager.GetActiveScene().name == "ConversationScene")
+        {
+            ConversationDisplayer displayer = FindObjectOfType<ConversationDisplayer>();
+            if (displayer != null)
+            {
+                displayer.waitTime = maxWaitTime - (SaveManager.settings.readSpeed * maxWaitTime);
+            }
+        }
+
+        UpdateColorBlindFilter(SaveManager.settings.colorBlind);
+    }
+
+    public static void UpdateColorBlindFilter(int colorBlindType)
+    {
+        Wilberforce.Colorblind colorblindScript = Camera.main.GetComponent<Wilberforce.Colorblind>();
+
+        if (colorblindScript != null)
+        {
+            colorblindScript.Type = colorBlindType;
+        }
+    }
+    #endregion
 }
