@@ -46,7 +46,6 @@ public class LoadingPanel : MonoBehaviour
     {
         image.raycastTarget = true;
         targetAlpha = 1f;
-        Debug.Log("Appearing : " + image.color.a);
         StartCoroutine(Fade(targetAlpha));
         yield return new WaitWhile(() => isFading);
 

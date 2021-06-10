@@ -15,13 +15,11 @@ public class MenuButton : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("Click " + gameObject.name);
         StartCoroutine(LaunchSequence());
     }
 
     protected virtual IEnumerator LaunchSequence()
     {
-        Debug.Log("LaunchSequence " + gameObject.name);
         loadingPanel = loadingPanelObj.GetComponent<LoadingPanel>();
 
         StartCoroutine(loadingPanel.Appear());

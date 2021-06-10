@@ -52,9 +52,8 @@ public class GameManager : MonoBehaviour
     IEnumerator StartGame()
     {
         SceneManager.LoadScene("ConversationScene");
-
         yield return new WaitUntil(() => conversationDisplayer != null);
-        Debug.Log(FindConvById(firstConversation).id);
+
         conversationDisplayer.LaunchAConv(FindConvById(firstConversation), messageList, branchToLoad);
 
 

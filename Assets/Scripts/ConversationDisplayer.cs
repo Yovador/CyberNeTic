@@ -91,7 +91,6 @@ public class ConversationDisplayer : MonoBehaviour
         GameObject dateAndHour = Instantiate(medium.dateAndHour, conversationFlux.transform);
         dateAndHour.transform.SetParent(conversationFlux.transform);
         scrollTransform.sizeDelta += new Vector2(0, dateAndHour.GetComponent<RectTransform>().sizeDelta.y + medium.spaceBetweenMessages);
-        Debug.Log(scrollTransform.sizeDelta.y);
         dateAndHour.GetComponentInChildren<TMP_Text>().text = GetDateAndTimeToDisplay(conversation.date, conversation.time);
         
 
@@ -193,7 +192,6 @@ public class ConversationDisplayer : MonoBehaviour
         else
         {
             TMP_Text textComponent = backgroungMessage.transform.Find("Text").GetComponent<TMP_Text>();
-            Debug.Log(textComponent);
             textComponent.text = message.content.data;
             messageBoxResizer.ResizeBox();
 
@@ -207,8 +205,6 @@ public class ConversationDisplayer : MonoBehaviour
         
         float heigth = rectTransform.preferredHeight;
         float size = screenSensitiveSpaceBetweenMessage + heigth;
-        //yield return new WaitForSecondsRealtime(100f);
-        Debug.Log("expected heigth : " + size);
         scrollTransform.sizeDelta += new Vector2(0, size);
 
 
@@ -229,10 +225,8 @@ public class ConversationDisplayer : MonoBehaviour
     }
     private IEnumerator MoveFlux(float value)
     {
-        Debug.Log("Starting pos : " + conversationFlux.transform.localPosition);
         animationOn = true;
         Vector2 newPos = new Vector2(conversationFlux.transform.localPosition.x, conversationFlux.transform.localPosition.y +  value);
-        Debug.Log("expected pos : " + newPos);
 
 
         while (Vector2.Distance(conversationFlux.transform.localPosition, newPos) > 0.5f)
@@ -243,7 +237,6 @@ public class ConversationDisplayer : MonoBehaviour
         conversationFlux.transform.localPosition = newPos;
 
         animationOn = false;
-        Debug.Log("end pos : " + conversationFlux.transform.localPosition);
 
 
     }
@@ -445,11 +438,11 @@ public class ConversationDisplayer : MonoBehaviour
         yield return new WaitWhile(() => animationOn);
         scrollRect.enabled = true;
 
-        currentMessageList = new List<Conversation.Message>();
-        saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
 
         yield return new WaitUntil(() => endConversation);
 
+        currentMessageList = new List<Conversation.Message>();
+        saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
         gameManager.nextConversation = conversation.nextConversation;
         gameManager.nextConversation = conversation.nextConversation;
     }

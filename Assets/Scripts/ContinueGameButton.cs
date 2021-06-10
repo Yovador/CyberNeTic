@@ -10,7 +10,6 @@ public class ContinueGameButton : MenuButton
 
         yield return new WaitWhile(() => loadingPanel.isFading);
 
-        Debug.Log("In ContinueGame");
         gameManager.ContinueGame();
         yield return null;
     }

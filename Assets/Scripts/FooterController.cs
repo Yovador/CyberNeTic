@@ -17,7 +17,6 @@ public class FooterController : MonoBehaviour
         RectTransform rectTransform = GetComponent<RectTransform>();
         footerHeigth = rectTransform.rect.y;
         keyboardBarHeigth = transform.Find("KeyboardBarParent").GetComponent<RectTransform>().rect.y * 2;
-        Debug.Log("Footer Heigth : " + footerHeigth + " keyboardBarHeigth : " + keyboardBarHeigth);
         rectTransform.localPosition = new Vector2(rectTransform.localPosition.x, rectTransform.localPosition.y + footerHeigth - keyboardBarHeigth );
     }
 

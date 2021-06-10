@@ -10,7 +10,6 @@ public class NewGameButton : MenuButton
         yield return new WaitWhile(() => loadingPanel.isFading);
 
 
-        Debug.Log("In NewGame");
         gameManager.StartNewGame();
         yield return null;
     }
