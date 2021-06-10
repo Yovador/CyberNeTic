@@ -152,7 +152,8 @@ public class ConversationDisplayer : MonoBehaviour
     {
         GameObject messageBoxPrefab;
 
-        SpeechController.StopReading();
+        if(SaveManager.settings.speechHelp)
+            SpeechController.StopReading();
 
         if (message.isNpc)
         {
@@ -181,8 +182,6 @@ public class ConversationDisplayer : MonoBehaviour
         GameObject backgroungMessage = messageBox.transform.Find("Background").gameObject;
         MessageBoxResizer messageBoxResizer = backgroungMessage.GetComponent<MessageBoxResizer>();
 
-
-
         if (message.content is ImageContent)
         {
             Image image = backgroungMessage.transform.Find("Mask").Find("MediaImage").GetComponent<Image>();
@@ -197,7 +196,8 @@ public class ConversationDisplayer : MonoBehaviour
             textComponent.text = message.content.data;
             messageBoxResizer.ResizeBox();
 
-            SpeechController.ReadText(message.content.data);
+            if (SaveManager.settings.speechHelp)
+                SpeechController.ReadText(message.content.data);
         }
 
 

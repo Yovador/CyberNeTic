@@ -6,6 +6,7 @@ public class SettingsSectionMainMenu : SectionMainMenu
 {
     public FloatSettingsField volumeEffectsField, volumeMusicField, readSpeedField;
     public DropdownSettingsField colorBlindField;
+    public BoolSettingsField speechHelpField;
     [Space]
     public TMP_Text versionText;
 
@@ -34,6 +35,7 @@ public class SettingsSectionMainMenu : SectionMainMenu
         SaveManager.settings.volumeMusic = volumeMusicField.GetValue();
         SaveManager.settings.readSpeed = readSpeedField.GetValue();
         SaveManager.settings.colorBlind = colorBlindField.GetValue();
+        SaveManager.settings.speechHelp = speechHelpField.GetValue();
 
         SaveManager.SaveSettings();
     }
@@ -44,6 +46,7 @@ public class SettingsSectionMainMenu : SectionMainMenu
         volumeMusicField.SetValue(SaveManager.settings.volumeMusic);
         readSpeedField.SetValue(SaveManager.settings.readSpeed);
         colorBlindField.SetValue(SaveManager.settings.colorBlind);
+        speechHelpField.SetValue(SaveManager.settings.speechHelp);
     }
 
     private void OnColorBlindChange()
