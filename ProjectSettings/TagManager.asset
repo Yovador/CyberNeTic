@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ConversationDisplayer
   - ContactName
+  - footerRow
   layers:
   - Default
   - TransparentFX

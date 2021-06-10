@@ -40,6 +40,7 @@ public class ConversationDisplayer : MonoBehaviour
     private bool canAddMessageOfPreviousBranch = true;
     private LoadingPanel loadPanel;
     private float screenSensitiveSpaceBetweenMessage;
+    private FooterController footerController;
 
     public void Start()
     {
@@ -144,10 +145,10 @@ public class ConversationDisplayer : MonoBehaviour
         Instantiate(medium.background, transform).transform.SetSiblingIndex(0);
         Instantiate(medium.navBar, transform);
         footer = Instantiate(medium.footer, transform);
+        footerController = footer.GetComponent<FooterController>();
         screenSensitiveSpaceBetweenMessage = (medium.spaceBetweenMessages * Screen.height) / 100 ;
         return medium;
     }
-
     private IEnumerator LoadMessage(Conversation.Message message)
     {
 
@@ -223,7 +224,6 @@ public class ConversationDisplayer : MonoBehaviour
 
 
     }
-
     private IEnumerator MoveFlux(float value)
     {
         Debug.Log("Starting pos : " + conversationFlux.transform.localPosition);
@@ -244,7 +244,6 @@ public class ConversationDisplayer : MonoBehaviour
 
 
     }
-
     private IEnumerator LoadBranches(Conversation.Branche branche )
     {
         canAddMessageOfPreviousBranch = true;
@@ -266,7 +265,6 @@ public class ConversationDisplayer : MonoBehaviour
         saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
 
     }
-
     private Conversation.Branche GetBrancheByID (string id)
     {
         Conversation.Branche foundBranch = null;
@@ -279,7 +277,6 @@ public class ConversationDisplayer : MonoBehaviour
         }
         return foundBranch;
     }
-
     private IEnumerator MoveFooter(bool isMoveUp)
     {
 
@@ -292,14 +289,14 @@ public class ConversationDisplayer : MonoBehaviour
         if (isMoveUp)
         {
             isInChoice = true;
-            float upValue = rectTransform.sizeDelta.y - medium.footerHeigth;
+            float upValue = - ( footerController.footerHeigth - footerController.keyboardBarHeigth );
             StartCoroutine(MoveFlux(upValue));
             newPos = rectTransform.localPosition + new Vector3(0, upValue, 0);
 
         }
         else
         {
-            float downValue = -(rectTransform.sizeDelta.y - medium.footerHeigth);
+            float downValue = (footerController.footerHeigth - footerController.keyboardBarHeigth);
             StartCoroutine(MoveFlux(downValue));
             newPos = rectTransform.localPosition + new Vector3(0, downValue, 0);
 
@@ -315,16 +312,16 @@ public class ConversationDisplayer : MonoBehaviour
         animationOn = false;
 
     }
-
     private IEnumerator LoadChoiceBranching(List<Conversation.Possibility> choicePossibilities)
     {
-
+        yield return null;
         Conversation.Branche branch = GetBrancheByID(choicePossibilities[0].branch);
 
         StartCoroutine(MoveFooter(true));
 
 
         Dictionary<GameObject, Conversation.ChoicePossibility> buttonList = new Dictionary<GameObject, Conversation.ChoicePossibility>();
+
         for (int i = 0; i < choicePossibilities.Count; i++)
         {
             Conversation.ChoicePossibility poss = (Conversation.ChoicePossibility)choicePossibilities[i];
@@ -338,22 +335,23 @@ public class ConversationDisplayer : MonoBehaviour
                 newButton = Instantiate(medium.impossibleChoiceButton, footer.transform);
 
             }
-            RectTransform rectTransformButton = newButton.GetComponent<RectTransform>();
-            rectTransformButton.position -= new Vector3(0, i * (medium.spaceBetweenChoices + (rectTransformButton.sizeDelta.y/2)) , 0 );
+
             newButton.GetComponentInChildren<TMP_Text>().text = poss.message.content.data;
             if (poss.possible)
             {
                 newButton.GetComponent<ChoiceButton>().branche = GetBrancheByID(poss.branch);
             }
-            newButton.name = "choiceButton";
+            newButton.name = "choiceButton" + i;
             buttonList.Add(newButton, poss);
         }
+
+        List<GameObject> buttonGameObjects = new List<GameObject>(buttonList.Keys);
+        footerController.DisplayChoices(buttonGameObjects);
 
         yield return new WaitWhile(() => animationOn);
         scrollRect.enabled = true;
 
 
-        //yield return new WaitForSecondsRealtime(waitTime);
         yield return new WaitWhile(() => isInChoice);
 
         scrollRect.enabled = false;
@@ -396,7 +394,6 @@ public class ConversationDisplayer : MonoBehaviour
         StartCoroutine(LoadBranches(nextBranch));
 
     }
-
     private void LoadBranchingPoint(Conversation.BranchingPoint branchingPoint)
     {
         canAddMessageOfPreviousBranch = false;
@@ -434,13 +431,14 @@ public class ConversationDisplayer : MonoBehaviour
                 break;
         }
     }
-
-
-
     private IEnumerator EndConversation()
     {
         StartCoroutine(MoveFooter(true));
-        Instantiate(medium.nextConvoButton, footer.transform);
+        List<GameObject> footerButtons = new List<GameObject>();
+        footerButtons.Add(Instantiate(medium.nextConvoButton, footer.transform));
+
+        footerController.DisplayChoices(footerButtons);
+
         yield return new WaitWhile(() => animationOn);
         scrollRect.enabled = true;
 
@@ -452,7 +450,6 @@ public class ConversationDisplayer : MonoBehaviour
         gameManager.nextConversation = conversation.nextConversation;
         gameManager.nextConversation = conversation.nextConversation;
     }
-
     public void LoadProfilePicture(Image imageComponent, string character)
     {
         Sprite newSprite;
@@ -473,7 +470,6 @@ public class ConversationDisplayer : MonoBehaviour
             imageComponent.sprite = newSprite;
         }
     }
-
     string GetDateAndTimeToDisplay(string date, string time)
     {
 
@@ -502,7 +498,6 @@ public class ConversationDisplayer : MonoBehaviour
         
 
     }
-
     public string FirstLetterToUpper(string str)
     {
         if (str == null)
