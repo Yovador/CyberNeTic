@@ -35,6 +35,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         SaveManager.LoadSettings();
+        DDOL.UpdateColorBlindFilter();
 
         if (!SaveManager.sessionGameStarted)
         {

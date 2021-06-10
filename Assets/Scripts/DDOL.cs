@@ -17,4 +17,30 @@ public class DDOL : MonoBehaviour
 
     }
 
+    private void OnLevelWasLoaded (int level)
+    {
+        UpdateColorBlindFilter();
+    }
+
+    public static void UpdateColorBlindFilter()
+    {
+        Wilberforce.Colorblind colorblindScript = Camera.main.GetComponent<Wilberforce.Colorblind>();
+
+        if (colorblindScript != null)
+        {
+            colorblindScript.Type = SaveManager.settings.colorBlind;
+        }
+    }
+
+    public static void UpdateColorBlindFilter (int colorBlindType)
+    {
+        Wilberforce.Colorblind colorblindScript = Camera.main.GetComponent<Wilberforce.Colorblind>();
+
+        if (colorblindScript != null)
+        {
+            colorblindScript.Type = colorBlindType;
+        }
+    }
+
+
 }

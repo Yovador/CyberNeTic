@@ -72,7 +72,7 @@ public class SaveManager
         public float volumeEffects = 0.5f;
         public float volumeMusic = 0.5f;
         public float readSpeed = 0.5f;
-        public bool colorBlind = false;
+        public int colorBlind = 0;
     }
     public static PlayerSettings settings = new PlayerSettings();
 
@@ -81,7 +81,8 @@ public class SaveManager
         PlayerPrefs.SetFloat("volumeEffects", settings.volumeEffects);
         PlayerPrefs.SetFloat("volumeMusic", settings.volumeMusic);
         PlayerPrefs.SetFloat("readSpeed", settings.readSpeed);
-        PlayerPrefs.SetInt("colorBlind", settings.colorBlind ? 1 : 0);
+        //PlayerPrefs.SetInt("colorBlind", settings.colorBlind ? 1 : 0);
+        PlayerPrefs.SetInt("colorBlind", settings.colorBlind);
     }
 
     public static void LoadSettings()
@@ -89,7 +90,7 @@ public class SaveManager
         settings.volumeEffects = PlayerPrefs.GetFloat("volumeEffects", 0.5f);
         settings.volumeMusic = PlayerPrefs.GetFloat("volumeMusic", 0.5f);
         settings.readSpeed = PlayerPrefs.GetFloat("readSpeed", 0.5f);
-        settings.colorBlind = PlayerPrefs.GetInt("colorBlind", 0) > 0;
+        settings.colorBlind = PlayerPrefs.GetInt("colorBlind", 0);
     }
 
     #endregion
