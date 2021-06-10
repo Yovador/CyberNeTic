@@ -42,10 +42,12 @@ public class ConversationDisplayer : MonoBehaviour
     private float screenSensitiveSpaceBetweenMessage;
     private FooterController footerController;
 
+    private AudioSource musicSource;
     public void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         gameManager.conversationDisplayer = this;
+        musicSource = GameObject.Find("MusicLoader").GetComponent<AudioSource>();
     }
 
 
@@ -146,6 +148,10 @@ public class ConversationDisplayer : MonoBehaviour
         footer = Instantiate(medium.footer, transform);
         footerController = footer.GetComponent<FooterController>();
         screenSensitiveSpaceBetweenMessage = (medium.spaceBetweenMessages * Screen.height) / 100 ;
+
+        musicSource.clip = medium.musicClip;
+        musicSource.Play();
+
         return medium;
     }
     private IEnumerator LoadMessage(Conversation.Message message)
@@ -217,6 +223,7 @@ public class ConversationDisplayer : MonoBehaviour
 
             yield return new WaitWhile(() => animationOn);
         }
+
 
 
         messageBox.transform.SetParent(conversationFlux.transform);

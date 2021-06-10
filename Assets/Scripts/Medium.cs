@@ -23,17 +23,16 @@ public class Medium : ScriptableObject
     [SerializeField]
     public GameObject footer;
     [SerializeField]
-    public float footerHeigth;
-    [SerializeField]
     public GameObject choiceButton;
     [SerializeField]
     public GameObject impossibleChoiceButton;
     [SerializeField]
     public GameObject nextConvoButton;
-    [SerializeField, Range(0, 20)]
-    public float spaceBetweenChoices;
     [SerializeField]
     public GameObject dateAndHour;
+    [SerializeField]
+    public AudioClip musicClip;
+
     private string id;
     private void Awake()
     {
