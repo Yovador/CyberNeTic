@@ -10,14 +10,17 @@ public class FooterController : MonoBehaviour
     public float footerHeigth { get; set; }
     public float keyboardBarHeigth { get; set; }
 
+    public ConversationDisplayer conversationDisplayer { get; set; }
+
     IEnumerator Start()
     {
         yield return null;
         choiceRows = new List<GameObject>(GameObject.FindGameObjectsWithTag("footerRow"));
         RectTransform rectTransform = GetComponent<RectTransform>();
-        footerHeigth = rectTransform.rect.y;
-        keyboardBarHeigth = transform.Find("KeyboardBarParent").GetComponent<RectTransform>().rect.y * 2;
-        rectTransform.localPosition = new Vector2(rectTransform.localPosition.x, rectTransform.localPosition.y + footerHeigth - keyboardBarHeigth );
+        footerHeigth = Mathf.Abs(rectTransform.rect.y);
+        keyboardBarHeigth = Mathf.Abs(transform.Find("KeyboardBarParent").GetComponent<RectTransform>().rect.y * 2);
+        rectTransform.localPosition = new Vector2(rectTransform.localPosition.x, rectTransform.localPosition.y - (footerHeigth - keyboardBarHeigth) );
+        conversationDisplayer.footerLoaded = true;
     }
 
     public void DisplayChoices(List<GameObject> choicesButton)

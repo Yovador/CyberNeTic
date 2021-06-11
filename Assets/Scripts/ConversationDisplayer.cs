@@ -41,6 +41,7 @@ public class ConversationDisplayer : MonoBehaviour
     private LoadingPanel loadPanel;
     private float screenSensitiveSpaceBetweenMessage;
     private FooterController footerController;
+    public bool footerLoaded = false;
 
     private AudioSource musicSource;
     public void Start()
@@ -51,7 +52,7 @@ public class ConversationDisplayer : MonoBehaviour
     }
 
 
-    public void LaunchAConv(Conversation currentConversation, List<Conversation.Message> messagesList, string branchToLoad)
+    public IEnumerator LaunchAConv(Conversation currentConversation, List<Conversation.Message> messagesList, string branchToLoad)
     {
         conversation = currentConversation;
         conversationFlux = GameObject.Find("ConversationFlux");
@@ -60,7 +61,7 @@ public class ConversationDisplayer : MonoBehaviour
         scrollRect = GetComponentInChildren<ScrollRect>();
         scrollRect.enabled = false; 
         scrollTransform = scrollRect.gameObject.GetComponent<RectTransform>();
-        scrollTransform.sizeDelta = new Vector2(0, 100 + footer.GetComponent<RectTransform>().sizeDelta.y + medium.navBar.GetComponent<RectTransform>().sizeDelta.y);
+
         loadPanel = GameObject.Find("LoadingPanel").GetComponent<LoadingPanel>();
 
         if (branchToLoad != null)
@@ -90,11 +91,23 @@ public class ConversationDisplayer : MonoBehaviour
             }
         }
 
+        yield return new WaitUntil(() => footerLoaded);
+
+        scrollTransform.sizeDelta = new Vector2(0, 50 + footerController.footerHeigth + Mathf.Abs(medium.navBar.GetComponent<RectTransform>().rect.y * 2));
+        Debug.Log("footerHeigth added: " + scrollTransform.sizeDelta);
+
+
         GameObject dateAndHour = Instantiate(medium.dateAndHour, conversationFlux.transform);
         dateAndHour.transform.SetParent(conversationFlux.transform);
-        scrollTransform.sizeDelta += new Vector2(0, dateAndHour.GetComponent<RectTransform>().sizeDelta.y + medium.spaceBetweenMessages);
+        scrollTransform.sizeDelta += new Vector2(0, dateAndHour.GetComponent<RectTransform>().sizeDelta.y + screenSensitiveSpaceBetweenMessage);
+        Debug.Log("dateNHour added: " + scrollTransform.sizeDelta);
+
         dateAndHour.GetComponentInChildren<TMP_Text>().text = GetDateAndTimeToDisplay(conversation.date, conversation.time);
-        
+
+
+
+
+
 
         StartCoroutine(LoadBranches(GetBrancheByID(conversation.startingBranch)));
 
@@ -147,8 +160,10 @@ public class ConversationDisplayer : MonoBehaviour
         Instantiate(medium.navBar, transform);
         footer = Instantiate(medium.footer, transform);
         footerController = footer.GetComponent<FooterController>();
-        screenSensitiveSpaceBetweenMessage = (medium.spaceBetweenMessages * Screen.height) / 100 ;
+        footerController.conversationDisplayer = this;
 
+        screenSensitiveSpaceBetweenMessage = (medium.spaceBetweenMessages * Screen.height) / 100 ;
+        Debug.Log("space between message" + screenSensitiveSpaceBetweenMessage);
         musicSource.clip = medium.musicClip;
         musicSource.Play();
 
@@ -212,6 +227,7 @@ public class ConversationDisplayer : MonoBehaviour
         float heigth = rectTransform.preferredHeight;
         float size = screenSensitiveSpaceBetweenMessage + heigth;
         scrollTransform.sizeDelta += new Vector2(0, size);
+        Debug.Log("messageSize added: " + scrollTransform.sizeDelta);
 
 
         if (conversationFlux.transform.childCount > 0)
@@ -249,6 +265,8 @@ public class ConversationDisplayer : MonoBehaviour
     }
     private IEnumerator LoadBranches(Conversation.Branche branche )
     {
+        Debug.Log(footerController.footerHeigth);
+
         canAddMessageOfPreviousBranch = true;
         currentBranch = branche.id;
         List<Conversation.Message> tempMessageList = new List<Conversation.Message>();
@@ -288,18 +306,18 @@ public class ConversationDisplayer : MonoBehaviour
         RectTransform rectTransform = footer.GetComponent<RectTransform>();
         Vector2 newPos;
 
-
         if (isMoveUp)
         {
             isInChoice = true;
-            float upValue = - ( footerController.footerHeigth - footerController.keyboardBarHeigth );
+            float upValue = footerController.footerHeigth - footerController.keyboardBarHeigth ;
             StartCoroutine(MoveFlux(upValue));
             newPos = rectTransform.localPosition + new Vector3(0, upValue, 0);
 
         }
         else
         {
-            float downValue = (footerController.footerHeigth - footerController.keyboardBarHeigth);
+            float downValue = -(footerController.footerHeigth - footerController.keyboardBarHeigth);
+
             StartCoroutine(MoveFlux(downValue));
             newPos = rectTransform.localPosition + new Vector3(0, downValue, 0);
 

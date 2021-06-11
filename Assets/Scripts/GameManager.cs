@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("ConversationScene");
         yield return new WaitUntil(() => conversationDisplayer != null);
 
-        conversationDisplayer.LaunchAConv(FindConvById(firstConversation), messageList, branchToLoad);
+        StartCoroutine(conversationDisplayer.LaunchAConv(FindConvById(firstConversation), messageList, branchToLoad));
 
 
 
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         if (FindConvById(nextConversation) != null)
         {
             branchToLoad = null;
-            conversationDisplayer.LaunchAConv(FindConvById(nextConversation), messageList, branchToLoad);
+            StartCoroutine(conversationDisplayer.LaunchAConv(FindConvById(nextConversation), messageList, branchToLoad));
             nextConversation = null;
             UpdateRelationships();
             StartCoroutine(WaitToLaunchNextConversation());
