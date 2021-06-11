@@ -170,10 +170,20 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        soundEffectVolume = SaveManager.settings.volumeEffects;
-        DDOL.instance.GetComponentInChildren<AudioSource>().volume = SaveManager.settings.volumeMusic;
+        UpdateSourceVolume(SaveManager.settings.volumeMusic, SaveManager.settings.volumeEffects);
 
         UpdateColorBlindFilter(SaveManager.settings.colorBlind);
+    }
+
+    public static void UpdateSourceVolume (float music, float effects)
+    {
+        AudioSource musicSource = DDOL.instance.GetComponentInChildren<AudioSource>();
+
+        if(musicSource)
+        {
+            musicSource.volume = music;
+        }
+        soundEffectVolume = effects;
     }
 
     public static void UpdateColorBlindFilter(int colorBlindType)

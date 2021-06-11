@@ -18,6 +18,8 @@ public class SettingsSectionMainMenu : SectionMainMenu
         base.Land();
 
         colorBlindField.OnChanged += OnColorBlindChange;
+        volumeEffectsField.OnChanged += OnVolumeChanged;
+        volumeMusicField.OnChanged += OnVolumeChanged;
 
         UpdateUI();
     }
@@ -25,6 +27,8 @@ public class SettingsSectionMainMenu : SectionMainMenu
     public override void Exit()
     {
         colorBlindField.OnChanged -= OnColorBlindChange;
+        volumeEffectsField.OnChanged -= OnVolumeChanged;
+        volumeMusicField.OnChanged -= OnVolumeChanged;
 
         base.Exit();
     }
@@ -47,6 +51,11 @@ public class SettingsSectionMainMenu : SectionMainMenu
         readSpeedField.SetValue(SaveManager.settings.readSpeed);
         colorBlindField.SetValue(SaveManager.settings.colorBlind);
         speechHelpField.SetValue(SaveManager.settings.speechHelp);
+    }
+
+    private void OnVolumeChanged()
+    {
+        GameManager.UpdateSourceVolume(volumeMusicField.GetValue(), volumeEffectsField.GetValue());
     }
 
     private void OnColorBlindChange()
