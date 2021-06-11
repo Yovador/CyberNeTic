@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1be9d9348b10349974ef6dc7017ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMedium: default
+  defaultMedium: sms
   waitTime: 0.5
   endConversation: 0
   messageSpeed: 5
