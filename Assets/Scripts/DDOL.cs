@@ -8,12 +8,26 @@ public class DDOL : MonoBehaviour
 {
     [SerializeField]
     private string sceneName;
-    // Start is called before the first frame update
+
+    #region Singleton
+    public static DDOL instance;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
+
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
-
         SceneManager.LoadScene(sceneName);
-
     }
 }

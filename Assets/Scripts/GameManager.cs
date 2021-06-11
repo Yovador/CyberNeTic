@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     private List<Conversation.Message> messageList = new List<Conversation.Message>() ;
     [HideInInspector]
-    public float soundEffectVolume = 0.5f;
+    public static float soundEffectVolume = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -169,6 +169,9 @@ public class GameManager : MonoBehaviour
                 displayer.waitTime = maxWaitTime - (SaveManager.settings.readSpeed * maxWaitTime);
             }
         }
+
+        soundEffectVolume = SaveManager.settings.volumeEffects;
+        DDOL.instance.GetComponentInChildren<AudioSource>().volume = SaveManager.settings.volumeMusic;
 
         UpdateColorBlindFilter(SaveManager.settings.colorBlind);
     }

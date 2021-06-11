@@ -129,8 +129,8 @@ public class ConversationDisplayer : MonoBehaviour
         currentMessageList.AddRange(messagesToLoad);
         float previousMessageSpeed = messageSpeed;
         messageSpeed = 100000000f;
-        float previousMessageVolume = gameManager.soundEffectVolume;
-        gameManager.soundEffectVolume = 0;
+        float previousMessageVolume = GameManager.soundEffectVolume;
+        GameManager.soundEffectVolume = 0;
         foreach (var message in messagesToLoad)
         {
             StartCoroutine(LoadMessage(message));
@@ -139,7 +139,7 @@ public class ConversationDisplayer : MonoBehaviour
         }
         yield return new WaitForSecondsRealtime(0.2f);
         messageSpeed = previousMessageSpeed;
-        gameManager.soundEffectVolume = previousMessageVolume;
+        GameManager.soundEffectVolume = previousMessageVolume;
         StartCoroutine(loadPanel.Disappear());
     }
     private Medium LoadMedium(string mediumID)
@@ -202,7 +202,7 @@ public class ConversationDisplayer : MonoBehaviour
         GameObject messageBox = Instantiate(messageBoxPrefab, transform.Find("Scroll") );
         GameObject backgroungMessage = messageBox.transform.Find("Background").gameObject;
         MessageBoxResizer messageBoxResizer = backgroungMessage.GetComponent<MessageBoxResizer>();
-        messageBox.GetComponent<AudioSource>().volume = gameManager.soundEffectVolume;
+        messageBox.GetComponent<AudioSource>().volume = GameManager.soundEffectVolume;
 
         if (message.content is ImageContent)
         {
