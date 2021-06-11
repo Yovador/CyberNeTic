@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
     public string nextConversation { get; set; }
 
     private List<Conversation.Message> messageList = new List<Conversation.Message>() ;
-
+    [HideInInspector]
+    public float soundEffectVolume = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("ConversationScene");
         yield return new WaitUntil(() => conversationDisplayer != null);
 
-        conversationDisplayer.LaunchAConv(FindConvById(firstConversation), messageList, branchToLoad);
+        StartCoroutine(conversationDisplayer.LaunchAConv(FindConvById(firstConversation), messageList, branchToLoad));
 
         StartCoroutine(WaitToLaunchNextConversation());
     }
@@ -73,7 +74,7 @@ public class GameManager : MonoBehaviour
         if (FindConvById(nextConversation) != null)
         {
             branchToLoad = null;
-            conversationDisplayer.LaunchAConv(FindConvById(nextConversation), messageList, branchToLoad);
+            StartCoroutine(conversationDisplayer.LaunchAConv(FindConvById(nextConversation), messageList, branchToLoad));
             nextConversation = null;
             UpdateRelationships();
             StartCoroutine(WaitToLaunchNextConversation());
