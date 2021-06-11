@@ -40,9 +40,13 @@ public class StartSectionMainMenu : SectionMainMenu
             transform.position = startPanelPosition;
         }
 
+        // Animation
         if(m_Holding)
         {
-            //transform.position = startPanelPosition + new Vector2(0, Mathf.Clamp((swipeVector.y + 100) * -0.5f, 0, 100));
+            transform.position = startPanelPosition + new Vector2(0, Mathf.Clamp(-swipeVector.y * 0.005f, 0f, 4f));
+        }else
+        {
+            transform.position = startPanelPosition;
         }
 
     }

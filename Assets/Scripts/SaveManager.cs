@@ -6,7 +6,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveManager
 {
-
     #region Game save
     private string saveName = $"gamedata1.save";
     [System.Serializable]
