@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
     public string nextConversation { get; set; }
 
     private List<Conversation.Message> messageList = new List<Conversation.Message>() ;
-
+    [HideInInspector]
+    public float soundEffectVolume = 0.5f;
 
     // Start is called before the first frame update
     void Start()

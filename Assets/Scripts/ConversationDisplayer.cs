@@ -94,13 +94,11 @@ public class ConversationDisplayer : MonoBehaviour
         yield return new WaitUntil(() => footerLoaded);
 
         scrollTransform.sizeDelta = new Vector2(0, 50 + footerController.footerHeigth + Mathf.Abs(medium.navBar.GetComponent<RectTransform>().rect.y * 2));
-        Debug.Log("footerHeigth added: " + scrollTransform.sizeDelta);
 
 
         GameObject dateAndHour = Instantiate(medium.dateAndHour, conversationFlux.transform);
         dateAndHour.transform.SetParent(conversationFlux.transform);
         scrollTransform.sizeDelta += new Vector2(0, dateAndHour.GetComponent<RectTransform>().sizeDelta.y + screenSensitiveSpaceBetweenMessage);
-        Debug.Log("dateNHour added: " + scrollTransform.sizeDelta);
 
         dateAndHour.GetComponentInChildren<TMP_Text>().text = GetDateAndTimeToDisplay(conversation.date, conversation.time);
 
@@ -131,6 +129,8 @@ public class ConversationDisplayer : MonoBehaviour
         currentMessageList.AddRange(messagesToLoad);
         float previousMessageSpeed = messageSpeed;
         messageSpeed = 100000000f;
+        float previousMessageVolume = gameManager.soundEffectVolume;
+        gameManager.soundEffectVolume = 0;
         foreach (var message in messagesToLoad)
         {
             StartCoroutine(LoadMessage(message));
@@ -139,6 +139,7 @@ public class ConversationDisplayer : MonoBehaviour
         }
         yield return new WaitForSecondsRealtime(0.2f);
         messageSpeed = previousMessageSpeed;
+        gameManager.soundEffectVolume = previousMessageVolume;
         StartCoroutine(loadPanel.Disappear());
     }
     private Medium LoadMedium(string mediumID)
@@ -163,7 +164,6 @@ public class ConversationDisplayer : MonoBehaviour
         footerController.conversationDisplayer = this;
 
         screenSensitiveSpaceBetweenMessage = (medium.spaceBetweenMessages * Screen.height) / 100 ;
-        Debug.Log("space between message" + screenSensitiveSpaceBetweenMessage);
         musicSource.clip = medium.musicClip;
         musicSource.Play();
 
@@ -202,6 +202,7 @@ public class ConversationDisplayer : MonoBehaviour
         GameObject messageBox = Instantiate(messageBoxPrefab, transform.Find("Scroll") );
         GameObject backgroungMessage = messageBox.transform.Find("Background").gameObject;
         MessageBoxResizer messageBoxResizer = backgroungMessage.GetComponent<MessageBoxResizer>();
+        messageBox.GetComponent<AudioSource>().volume = gameManager.soundEffectVolume;
 
         if (message.content is ImageContent)
         {
@@ -227,7 +228,6 @@ public class ConversationDisplayer : MonoBehaviour
         float heigth = rectTransform.preferredHeight;
         float size = screenSensitiveSpaceBetweenMessage + heigth;
         scrollTransform.sizeDelta += new Vector2(0, size);
-        Debug.Log("messageSize added: " + scrollTransform.sizeDelta);
 
 
         if (conversationFlux.transform.childCount > 0)
@@ -265,7 +265,6 @@ public class ConversationDisplayer : MonoBehaviour
     }
     private IEnumerator LoadBranches(Conversation.Branche branche )
     {
-        Debug.Log(footerController.footerHeigth);
 
         canAddMessageOfPreviousBranch = true;
         currentBranch = branche.id;
