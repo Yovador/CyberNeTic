@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public SectionMainMenu startSection, menuSection, settingsSection, informationsSection;
 
-    public static int minSwipeDistance = 150;
+    public static int minSwipeDistance = 100;
 
     private SectionMainMenu currentSection;
 
