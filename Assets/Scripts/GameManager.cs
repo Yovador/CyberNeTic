@@ -33,8 +33,6 @@ public class GameManager : MonoBehaviour
         Debug.developerConsoleVisible = true;
     }
 
-
-
     public void StartNewGame()
     {
         saveManager.SaveGame(firstConversation, new List<Conversation.Message>(), charactersSet, null);
@@ -55,8 +53,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => conversationDisplayer != null);
 
         conversationDisplayer.LaunchAConv(FindConvById(firstConversation), messageList, branchToLoad);
-
-
 
         StartCoroutine(WaitToLaunchNextConversation());
     }
@@ -85,11 +81,7 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("EndScene");
         }
-
-
     }
-
-
 
     private void UpdateRelationships()
     {
@@ -185,7 +177,14 @@ public class GameManager : MonoBehaviour
 
         if (colorblindScript != null)
         {
-            colorblindScript.Type = colorBlindType;
+            if(colorBlindType > 0)
+            {
+                colorblindScript.enabled = true;
+                colorblindScript.Type = colorBlindType;
+            }else
+            {
+                colorblindScript.enabled = false;
+            }
         }
     }
     #endregion
