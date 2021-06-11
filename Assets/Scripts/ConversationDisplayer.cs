@@ -44,6 +44,7 @@ public class ConversationDisplayer : MonoBehaviour
     public bool footerLoaded = false;
 
     private AudioSource musicSource;
+    private bool messageLoaded = false;
     public void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -64,6 +65,10 @@ public class ConversationDisplayer : MonoBehaviour
 
         loadPanel = GameObject.Find("LoadingPanel").GetComponent<LoadingPanel>();
 
+
+        GameObject dateAndHour = Instantiate(medium.dateAndHour, conversationFlux.transform);
+        dateAndHour.transform.SetParent(conversationFlux.transform);
+
         if (branchToLoad != null)
         {
             conversation.startingBranch = branchToLoad;
@@ -76,11 +81,11 @@ public class ConversationDisplayer : MonoBehaviour
         else
         {
             StartCoroutine(loadPanel.Disappear());
+            messageLoaded = true;
         }
 
         foreach (var character in gameManager.charactersSet)
         {
-            character.DebugLogCharacter();
             if(character.id == conversation.npCharacter)
             {
                 npCharacter = character;
@@ -93,11 +98,9 @@ public class ConversationDisplayer : MonoBehaviour
 
         yield return new WaitUntil(() => footerLoaded);
 
-        scrollTransform.sizeDelta = new Vector2(0, 50 + footerController.footerHeigth + Mathf.Abs(medium.navBar.GetComponent<RectTransform>().rect.y * 2));
+        scrollTransform.sizeDelta = new Vector2(0, ((3 * Screen.height)/100) + footerController.footerHeigth + Mathf.Abs(medium.navBar.GetComponent<RectTransform>().rect.y * 2));
 
 
-        GameObject dateAndHour = Instantiate(medium.dateAndHour, conversationFlux.transform);
-        dateAndHour.transform.SetParent(conversationFlux.transform);
         scrollTransform.sizeDelta += new Vector2(0, dateAndHour.GetComponent<RectTransform>().sizeDelta.y + screenSensitiveSpaceBetweenMessage);
 
         dateAndHour.GetComponentInChildren<TMP_Text>().text = GetDateAndTimeToDisplay(conversation.date, conversation.time);
@@ -106,6 +109,7 @@ public class ConversationDisplayer : MonoBehaviour
 
 
 
+        yield return new WaitUntil(() => messageLoaded);
 
         StartCoroutine(LoadBranches(GetBrancheByID(conversation.startingBranch)));
 
@@ -133,6 +137,8 @@ public class ConversationDisplayer : MonoBehaviour
         GameManager.soundEffectVolume = 0;
         foreach (var message in messagesToLoad)
         {
+            yield return new WaitWhile(() => animationOn);
+            Debug.Log("Message : " + message.content.data);
             StartCoroutine(LoadMessage(message));
             yield return new WaitWhile(() => animationOn);
 
@@ -141,6 +147,7 @@ public class ConversationDisplayer : MonoBehaviour
         messageSpeed = previousMessageSpeed;
         GameManager.soundEffectVolume = previousMessageVolume;
         StartCoroutine(loadPanel.Disappear());
+        messageLoaded = true;
     }
     private Medium LoadMedium(string mediumID)
     {
@@ -281,8 +288,9 @@ public class ConversationDisplayer : MonoBehaviour
 
         LoadBranchingPoint(branche.branchingPoint);
         yield return new WaitUntil(() => canAddMessageOfPreviousBranch);
+        Debug.Log("Adding tempMessage message ");
+
         currentMessageList.AddRange(tempMessageList);
-        saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
 
     }
     private Conversation.Branche GetBrancheByID (string id)
@@ -382,7 +390,7 @@ public class ConversationDisplayer : MonoBehaviour
         }
         yield return new WaitWhile(() => animationOn);
 
-
+        Conversation.Message messageToAdd = null; 
         foreach (var newButton in buttonList)
         {
             ChoiceButton choiceButtonSelected = newButton.Key.GetComponent<ChoiceButton>();
@@ -390,7 +398,7 @@ public class ConversationDisplayer : MonoBehaviour
             {
                 if (choiceButtonSelected == choiceButton)
                 {
-                    currentMessageList.Add(newButton.Value.message);
+                    messageToAdd = newButton.Value.message;
                     StartCoroutine(LoadMessage(newButton.Value.message));
 
 
@@ -412,6 +420,10 @@ public class ConversationDisplayer : MonoBehaviour
         yield return new WaitWhile(() => animationOn);
         yield return new WaitForSecondsRealtime(waitTime);
         StartCoroutine(LoadBranches(nextBranch));
+        yield return new WaitWhile(() => currentMessageList.Count == 0);
+        Debug.Log("Adding choice Message ");
+        currentMessageList.Add(messageToAdd);
+        saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
 
     }
     private void LoadBranchingPoint(Conversation.BranchingPoint branchingPoint)

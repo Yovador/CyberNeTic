@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        GetCharacterSet();
+        GetAllConversation();
         saveManager.SaveGame(firstConversation, new List<Conversation.Message>(), charactersSet, null);
         StartCoroutine(StartGame());
     }
@@ -44,15 +46,17 @@ public class GameManager : MonoBehaviour
     public void ContinueGame()
     {
         StartCoroutine(StartGame());
-        firstConversation = saveManager.LoadSave().currentConversation;
-        messageList = saveManager.LoadSave().currentMessageList;
-        branchToLoad = saveManager.LoadSave().currentBranch;
+
     }
 
     IEnumerator StartGame()
     {
         SceneManager.LoadScene("ConversationScene");
         yield return new WaitUntil(() => conversationDisplayer != null);
+
+        firstConversation = saveManager.LoadSave().currentConversation;
+        messageList = saveManager.LoadSave().currentMessageList;
+        branchToLoad = saveManager.LoadSave().currentBranch;
 
         StartCoroutine(conversationDisplayer.LaunchAConv(FindConvById(firstConversation), messageList, branchToLoad));
 
