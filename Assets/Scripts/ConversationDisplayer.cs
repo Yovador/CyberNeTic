@@ -49,6 +49,7 @@ public class ConversationDisplayer : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         gameManager.conversationDisplayer = this;
+
         musicSource = GameObject.Find("MusicLoader").GetComponent<AudioSource>();
     }
 
@@ -169,9 +170,10 @@ public class ConversationDisplayer : MonoBehaviour
         footerController = footer.GetComponent<FooterController>();
         footerController.conversationDisplayer = this;
 
-        screenSensitiveSpaceBetweenMessage = (medium.spaceBetweenMessages * Screen.height) / 100 ;
-        musicSource.clip = medium.musicClip;
-        musicSource.Play();
+        screenSensitiveSpaceBetweenMessage = (medium.spaceBetweenMessages * Screen.height) / 100;
+
+        musicSource.Stop();
+        musicSource.PlayOneShot(medium.musicClip);
 
         return medium;
     }
