@@ -118,6 +118,7 @@ MonoBehaviour:
   endConversation: 0
   messageSpeed: 5
   choiceButton: {fileID: 0}
+  footerLoaded: 0
 --- !u!1 &1311733294083018756
 GameObject:
   m_ObjectHideFlags: 0
