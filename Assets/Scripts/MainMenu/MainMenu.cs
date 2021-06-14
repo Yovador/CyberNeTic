@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public SectionMainMenu startSection, menuSection, settingsSection, informationsSection;
-
+    [Space]
+    public AudioClip music;
+    
     public static int minSwipeDistance = 100;
 
     private SectionMainMenu currentSection;
@@ -44,6 +46,8 @@ public class MainMenu : MonoBehaviour
         {
             SetSection(menuSection);
         }
+
+        GameObject.Find("MusicLoader").GetComponent<AudioSource>().PlayOneShot(music);
     }
 
     private void Update()
