@@ -19,6 +19,9 @@ public class LoadingPanel : MonoBehaviour
     }
     public IEnumerator Disappear()
     {
+        Debug.Log("Disappear");
+        isFading = true;
+
         image.raycastTarget = true;
         targetAlpha = 0f;
         yield return new WaitForSecondsRealtime(0.2f);
@@ -29,7 +32,6 @@ public class LoadingPanel : MonoBehaviour
 
     private IEnumerator Fade(float targetAlpha)
     {
-        isFading = true;
         Color curColor = image.color;
         float alphaDiff = Mathf.Abs(curColor.a - targetAlpha);
         while (alphaDiff > 0.05f)
@@ -44,6 +46,10 @@ public class LoadingPanel : MonoBehaviour
 
     public IEnumerator Appear()
     {
+        isFading = true;
+        gameObject.SetActive(true);
+
+        isFading = true;
         image.raycastTarget = true;
         targetAlpha = 1f;
         StartCoroutine(Fade(targetAlpha));

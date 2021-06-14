@@ -475,8 +475,14 @@ public class ConversationDisplayer : MonoBehaviour
         yield return new WaitUntil(() => endConversation);
 
         currentMessageList = new List<Conversation.Message>();
+        Debug.Log("StartFade:");
+        StartCoroutine(loadPanel.Appear());
+
+        yield return new WaitWhile(() => loadPanel.isFading);
+
+        Debug.Log("AfterFade: ");
+
         saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
-        gameManager.nextConversation = conversation.nextConversation;
         gameManager.nextConversation = conversation.nextConversation;
     }
     public void LoadProfilePicture(Image imageComponent, string character)

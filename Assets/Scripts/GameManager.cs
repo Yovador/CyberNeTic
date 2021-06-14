@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     private List<Conversation.Message> messageList = new List<Conversation.Message>() ;
     [HideInInspector]
     public static float soundEffectVolume = 0.5f;
+    [SerializeField]
+    private float transitionTime;
 
     // Start is called before the first frame update
     void Start()
@@ -68,8 +70,16 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => nextConversation != null);
 
         SceneManager.LoadScene("TransitionScene");
-
         yield return new WaitForSecondsRealtime(1);
+
+        LoadingPanel loadingPanel = GameObject.Find("LoadingPanel").GetComponent<LoadingPanel>();
+        StartCoroutine(loadingPanel.Disappear());
+
+        yield return new WaitWhile(() => loadingPanel.isFading);
+        yield return new WaitForSecondsRealtime(transitionTime);
+
+        StartCoroutine(loadingPanel.Appear());
+        yield return new WaitWhile(() => loadingPanel.isFading);
 
         SceneManager.LoadScene("ConversationScene");
 
