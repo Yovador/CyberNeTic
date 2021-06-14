@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
         BetterStreamingAssets.Initialize();
         GetAllConversation();
         GetCharacterSet();
-        Debug.developerConsoleVisible = true;
     }
 
     public void StartNewGame()
