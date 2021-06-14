@@ -138,7 +138,6 @@ public class ConversationDisplayer : MonoBehaviour
         foreach (var message in messagesToLoad)
         {
             yield return new WaitWhile(() => animationOn);
-            Debug.Log("Message : " + message.content.data);
             StartCoroutine(LoadMessage(message));
             yield return new WaitWhile(() => animationOn);
 
@@ -288,7 +287,6 @@ public class ConversationDisplayer : MonoBehaviour
 
         LoadBranchingPoint(branche.branchingPoint);
         yield return new WaitUntil(() => canAddMessageOfPreviousBranch);
-        Debug.Log("Adding tempMessage message ");
 
         currentMessageList.AddRange(tempMessageList);
 
@@ -421,7 +419,6 @@ public class ConversationDisplayer : MonoBehaviour
         yield return new WaitForSecondsRealtime(waitTime);
         StartCoroutine(LoadBranches(nextBranch));
         yield return new WaitWhile(() => currentMessageList.Count == 0);
-        Debug.Log("Adding choice Message ");
         currentMessageList.Add(messageToAdd);
         saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
 
