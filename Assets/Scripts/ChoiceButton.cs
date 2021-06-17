@@ -10,7 +10,6 @@ public class ChoiceButton : ConversationButtons
 
     public override void OnClick()
     {
-
         conversationDisplayer.isInChoice = false;
         conversationDisplayer.nextBranch = branche;
         conversationDisplayer.choiceButton = this;
