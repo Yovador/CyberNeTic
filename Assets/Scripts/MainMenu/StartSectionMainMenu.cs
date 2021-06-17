@@ -18,6 +18,9 @@ public class StartSectionMainMenu : SectionMainMenu
     {
         base.Land();
         startPanelPosition = transform.position;
+
+        if (SaveManager.settings.speechHelp)
+            SpeechController.ReadText("Accueil.");
     }
 
     public override void Frame()

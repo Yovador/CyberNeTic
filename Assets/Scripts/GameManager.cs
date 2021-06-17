@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
     public void ContinueGame()
     {
         StartCoroutine(StartGame());
-
     }
 
     IEnumerator StartGame()

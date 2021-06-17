@@ -1,0 +1,3492 @@
+fileFormatVersion: 2
+guid: 24ffede7097ccc1408cd2b75548b2482
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8244595756675694381
+    second: send-idle_0
+  - first:
+      213: 4228610962995516897
+    second: send-idle_1
+  - first:
+      213: -3487210721335178979
+    second: send-idle_2
+  - first:
+      213: 4791932546525663242
+    second: send-idle_3
+  - first:
+      213: 4994332020414503085
+    second: send-idle_4
+  - first:
+      213: -5338634204431778767
+    second: send-idle_5
+  - first:
+      213: 3373064525877358568
+    second: send-idle_6
+  - first:
+      213: -5905572006486469423
+    second: send-idle_7
+  - first:
+      213: -2072894433733180027
+    second: send-idle_8
+  - first:
+      213: 9036835713893931393
+    second: send-idle_9
+  - first:
+      213: -733545538969158997
+    second: send-idle_10
+  - first:
+      213: -5185692712333806226
+    second: send-idle_11
+  - first:
+      213: 6678417839517614455
+    second: send-idle_12
+  - first:
+      213: 6466401669854067100
+    second: send-idle_13
+  - first:
+      213: 5696491136612445628
+    second: send-idle_14
+  - first:
+      213: 5120891103605484749
+    second: send-idle_15
+  - first:
+      213: -5157658657238674189
+    second: send-idle_16
+  - first:
+      213: -6788070931274793677
+    second: send-idle_17
+  - first:
+      213: -8786600072786522761
+    second: send-idle_18
+  - first:
+      213: -6317455370013646525
+    second: send-idle_19
+  - first:
+      213: -5253115421843272945
+    second: send-idle_20
+  - first:
+      213: -1279636275829576846
+    second: send-idle_21
+  - first:
+      213: 186817915477140767
+    second: send-idle_22
+  - first:
+      213: -2283692192604887530
+    second: send-idle_23
+  - first:
+      213: -3648224158580583750
+    second: send-idle_24
+  - first:
+      213: 974144476081166095
+    second: send-idle_25
+  - first:
+      213: 2571546802012284113
+    second: send-idle_26
+  - first:
+      213: 4679250482765936809
+    second: send-idle_27
+  - first:
+      213: -1914379465268600313
+    second: send-idle_28
+  - first:
+      213: -7277133577305034772
+    second: send-idle_29
+  - first:
+      213: -9159363960021672624
+    second: send-idle_30
+  - first:
+      213: 627913638223983777
+    second: send-idle_31
+  - first:
+      213: 5810476946411813718
+    second: send-idle_32
+  - first:
+      213: 3452799689369945103
+    second: send-idle_33
+  - first:
+      213: -5026748631848942359
+    second: send-idle_34
+  - first:
+      213: -7305560639542604700
+    second: send-idle_35
+  - first:
+      213: 8380366807456666507
+    second: send-idle_36
+  - first:
+      213: -1311141358970990810
+    second: send-idle_37
+  - first:
+      213: -7793847422858804509
+    second: send-idle_38
+  - first:
+      213: -710415680256808257
+    second: send-idle_39
+  - first:
+      213: 5758263476529267437
+    second: send-idle_40
+  - first:
+      213: -5679234055739532349
+    second: send-idle_41
+  - first:
+      213: -2798760486455825590
+    second: send-idle_42
+  - first:
+      213: -4772589125743757131
+    second: send-idle_43
+  - first:
+      213: -2016003836978231233
+    second: send-idle_44
+  - first:
+      213: -545529843797868881
+    second: send-idle_45
+  - first:
+      213: -3949235879861736793
+    second: send-idle_46
+  - first:
+      213: -162372530255560710
+    second: send-idle_47
+  - first:
+      213: -4504942469262540768
+    second: send-idle_48
+  - first:
+      213: -2401600957373876924
+    second: send-idle_49
+  - first:
+      213: -4761683323656914650
+    second: send-idle_50
+  - first:
+      213: 4804065741084463230
+    second: send-idle_51
+  - first:
+      213: 8293092481297100593
+    second: send-idle_52
+  - first:
+      213: -6097447533153485323
+    second: send-idle_53
+  - first:
+      213: 4023520617272807743
+    second: send-idle_54
+  - first:
+      213: -3274584739880977551
+    second: send-idle_55
+  - first:
+      213: 2180158377759730315
+    second: send-idle_56
+  - first:
+      213: 4297429356799959673
+    second: send-idle_57
+  - first:
+      213: 7239259857001143203
+    second: send-idle_58
+  - first:
+      213: -127381981493043254
+    second: send-idle_59
+  - first:
+      213: -4370724543250848702
+    second: send-idle_60
+  - first:
+      213: -892074515432913634
+    second: send-idle_61
+  - first:
+      213: -4649112594214211182
+    second: send-idle_62
+  - first:
+      213: 7416877489556187170
+    second: send-idle_63
+  - first:
+      213: -7375643633072109944
+    second: send-idle_64
+  - first:
+      213: 5520406301880743101
+    second: send-idle_65
+  - first:
+      213: -1569466815418603632
+    second: send-idle_66
+  - first:
+      213: -6647147632664463882
+    second: send-idle_67
+  - first:
+      213: -5165806204818934504
+    second: send-idle_68
+  - first:
+      213: -6804290987932238608
+    second: send-idle_69
+  - first:
+      213: 5036502549997851970
+    second: send-idle_70
+  - first:
+      213: 8549640754542747602
+    second: send-idle_71
+  - first:
+      213: 6876531021891053368
+    second: send-idle_72
+  - first:
+      213: -1758350599326547649
+    second: send-idle_73
+  - first:
+      213: 6967868808835203228
+    second: send-idle_74
+  - first:
+      213: -4533621911880626017
+    second: send-idle_75
+  - first:
+      213: 6030033744522381484
+    second: send-idle_76
+  - first:
+      213: -1187067985034946008
+    second: send-idle_77
+  - first:
+      213: 463078365025949786
+    second: send-idle_78
+  - first:
+      213: 9032730256641085259
+    second: send-idle_79
+  - first:
+      213: -4646995674732033415
+    second: send-idle_80
+  - first:
+      213: -7653003373480258949
+    second: send-idle_81
+  - first:
+      213: -5118446817839620566
+    second: send-idle_82
+  - first:
+      213: 8202295658379215174
+    second: send-idle_83
+  - first:
+      213: -23820047046718300
+    second: send-idle_84
+  - first:
+      213: 1051265522418131913
+    second: send-idle_85
+  - first:
+      213: 1059009695472676900
+    second: send-idle_86
+  - first:
+      213: 3604531980108433742
+    second: send-idle_87
+  - first:
+      213: -7551542969925393937
+    second: send-idle_88
+  - first:
+      213: 8506598921932937010
+    second: send-idle_89
+  - first:
+      213: 3952573190211981128
+    second: send-idle_90
+  - first:
+      213: 5079402256857432558
+    second: send-idle_91
+  - first:
+      213: 8326915763259540143
+    second: send-idle_92
+  - first:
+      213: -5188037475615679689
+    second: send-idle_93
+  - first:
+      213: 2727327265597387963
+    second: send-idle_94
+  - first:
+      213: 2913649161805329587
+    second: send-idle_95
+  - first:
+      213: 2869896307884431893
+    second: send-idle_96
+  - first:
+      213: 4532144803275609339
+    second: send-idle_97
+  - first:
+      213: -8926262857504665287
+    second: send-idle_98
+  - first:
+      213: -3450897060702712715
+    second: send-idle_99
+  - first:
+      213: -5919359608127473291
+    second: send-idle_100
+  - first:
+      213: 3029211355610405854
+    second: send-idle_101
+  - first:
+      213: 4869480527399441124
+    second: send-idle_102
+  - first:
+      213: -4336871503537027609
+    second: send-idle_103
+  - first:
+      213: 5190138014641015274
+    second: send-idle_104
+  - first:
+      213: 8598255916969342782
+    second: send-idle_105
+  - first:
+      213: 740026105462249294
+    second: send-idle_106
+  - first:
+      213: 4091935337660648691
+    second: send-idle_107
+  - first:
+      213: -202140721923006523
+    second: send-idle_108
+  - first:
+      213: 6141290573995873761
+    second: send-idle_109
+  - first:
+      213: 5162048952858945970
+    second: send-idle_110
+  - first:
+      213: -1080326999201453317
+    second: send-idle_111
+  - first:
+      213: 1274551584126854279
+    second: send-idle_112
+  - first:
+      213: -9211015834746720476
+    second: send-idle_113
+  - first:
+      213: -4298970429892991612
+    second: send-idle_114
+  - first:
+      213: -7574054737029876398
+    second: send-idle_115
+  - first:
+      213: 6029608348302740564
+    second: send-idle_116
+  - first:
+      213: 6295340129978449013
+    second: send-idle_117
+  - first:
+      213: 1370266558079290826
+    second: send-idle_118
+  - first:
+      213: -1696376678835119629
+    second: send-idle_119
+  - first:
+      213: -4478110224054122832
+    second: send-idle_120
+  - first:
+      213: 1160687652782757719
+    second: send-idle_121
+  - first:
+      213: -9014107382434987695
+    second: send-idle_122
+  - first:
+      213: 8767045663476567024
+    second: send-idle_123
+  - first:
+      213: 7971156993004045889
+    second: send-idle_124
+  - first:
+      213: -1901387636711989119
+    second: send-idle_125
+  - first:
+      213: -4197073553847548162
+    second: send-idle_126
+  - first:
+      213: -4613242892066720035
+    second: send-idle_127
+  - first:
+      213: 5833842269170998606
+    second: send-idle_128
+  - first:
+      213: 9015402145629250215
+    second: send-idle_129
+  - first:
+      213: 4849153683894277029
+    second: send-idle_130
+  - first:
+      213: -8158066594491032617
+    second: send-idle_131
+  - first:
+      213: 6013296026221218530
+    second: send-idle_132
+  - first:
+      213: -8397388325314369320
+    second: send-idle_133
+  - first:
+      213: 6005828057714968724
+    second: send-idle_134
+  - first:
+      213: -4267338462508627028
+    second: send-idle_135
+  - first:
+      213: -4423139966890706982
+    second: send-idle_136
+  - first:
+      213: -2021175821919593258
+    second: send-idle_137
+  - first:
+      213: 4729737148294483163
+    second: send-idle_138
+  - first:
+      213: 2789647412509719061
+    second: send-idle_139
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: send-idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2673
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2ff851b820ba6270800000000000000
+      internalID: 8244595756675694381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_1
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 2673
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e59ba6444b0faa30800000000000000
+      internalID: 4228610962995516897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_2
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 2673
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1902e13350fa9fc0800000000000000
+      internalID: -3487210721335178979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_3
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 2673
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a009b47234d508240800000000000000
+      internalID: 4791932546525663242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_4
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 2673
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da85a2fe28e6f4540800000000000000
+      internalID: 4994332020414503085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_5
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 2673
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13cf713f97c59e5b0800000000000000
+      internalID: -5338634204431778767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_6
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 2673
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ef2465a0588fce20800000000000000
+      internalID: 3373064525877358568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_7
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 2673
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d412e59c813b0ea0800000000000000
+      internalID: -5905572006486469423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_8
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 2673
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5850374ce799b33e0800000000000000
+      internalID: -2072894433733180027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_9
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 2673
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 189163cd33a496d70800000000000000
+      internalID: 9036835713893931393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_10
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 2673
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baabb23083ce1d5f0800000000000000
+      internalID: -733545538969158997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_11
+      rect:
+        serializedVersion: 2
+        x: 2706
+        y: 2673
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e65f20ff3f7b808b0800000000000000
+      internalID: -5185692712333806226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2430
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 771441a24a18eac50800000000000000
+      internalID: 6678417839517614455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_13
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 2430
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c99f4aaee064db950800000000000000
+      internalID: 6466401669854067100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_14
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 2430
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbd22f7e1800e0f40800000000000000
+      internalID: 5696491136612445628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_15
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 2430
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dccecdbb35f011740800000000000000
+      internalID: 5120891103605484749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_16
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 2430
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f4129617c05c68b0800000000000000
+      internalID: -5157658657238674189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_17
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 2430
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33df537e37debc1a0800000000000000
+      internalID: -6788070931274793677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_18
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 2430
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77d432689c9bf0680800000000000000
+      internalID: -8786600072786522761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_19
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 2430
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 341e3f1ffc3e358a0800000000000000
+      internalID: -6317455370013646525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_20
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 2430
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0bc7e42b5f2917b0800000000000000
+      internalID: -5253115421843272945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_21
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 2430
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27b69714691dd3ee0800000000000000
+      internalID: -1279636275829576846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_22
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 2430
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f15a1b187e5b79200800000000000000
+      internalID: 186817915477140767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_23
+      rect:
+        serializedVersion: 2
+        x: 2706
+        y: 2430
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 616e373ec02be40e0800000000000000
+      internalID: -2283692192604887530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2187
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab25ec6f477ee5dc0800000000000000
+      internalID: -3648224158580583750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_25
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 2187
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f071ab06d3bd48d00800000000000000
+      internalID: 974144476081166095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_26
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 2187
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d4eb391138ffa320800000000000000
+      internalID: 2571546802012284113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_27
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 2187
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a8b658b58900f040800000000000000
+      internalID: 4679250482765936809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_28
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 2187
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 702ec57e402ce65e0800000000000000
+      internalID: -1914379465268600313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_29
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 2187
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cef6aad319d620b90800000000000000
+      internalID: -7277133577305034772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_30
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 2187
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05d946ab10763e080800000000000000
+      internalID: -9159363960021672624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_31
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 2187
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a4b6fb802cc6b800800000000000000
+      internalID: 627913638223983777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_32
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 2187
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65bf87e5ff5f2a050800000000000000
+      internalID: 5810476946411813718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_33
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 2187
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f048975160fcaef20800000000000000
+      internalID: 3452799689369945103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_34
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 2187
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e4867f80c66d3ab0800000000000000
+      internalID: -5026748631848942359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_35
+      rect:
+        serializedVersion: 2
+        x: 2706
+        y: 2187
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46cccfa0e4f6d9a90800000000000000
+      internalID: -7305560639542604700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1944
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b83dde5d53b0d4470800000000000000
+      internalID: 8380366807456666507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_37
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 1944
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62f063871e3edcde0800000000000000
+      internalID: -1311141358970990810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_38
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 1944
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e248eeff01b6d390800000000000000
+      internalID: -7793847422858804509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_39
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 1944
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbaec67e3b81426f0800000000000000
+      internalID: -710415680256808257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_40
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 1944
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de202a19f1679ef40800000000000000
+      internalID: 5758263476529267437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_41
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 1944
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cb185757be4f21b0800000000000000
+      internalID: -5679234055739532349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_42
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 1944
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4ba6618a2ec829d0800000000000000
+      internalID: -2798760486455825590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_43
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 1944
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b8b625f97b54cdb0800000000000000
+      internalID: -4772589125743757131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_44
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 1944
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3886170137b504e0800000000000000
+      internalID: -2016003836978231233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_45
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 1944
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faebd065f73ed68f0800000000000000
+      internalID: -545529843797868881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_46
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 1944
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aa2d9624ee7139c0800000000000000
+      internalID: -3949235879861736793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_47
+      rect:
+        serializedVersion: 2
+        x: 2706
+        y: 1944
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afff5d44b032fbdf0800000000000000
+      internalID: -162372530255560710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1701
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 020090241ba3b71c0800000000000000
+      internalID: -4504942469262540768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_49
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 1701
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 445fd7b47accbaed0800000000000000
+      internalID: -2401600957373876924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_50
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 1701
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6293780ee3a1bedb0800000000000000
+      internalID: -4761683323656914650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_51
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 1701
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7096f6a6587ba240800000000000000
+      internalID: 4804065741084463230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_52
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 1701
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13f2d2d4cabf61370800000000000000
+      internalID: 8293092481297100593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_53
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 1701
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fdfdc536c3816ba0800000000000000
+      internalID: -6097447533153485323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_54
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 1701
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3191031faa66d730800000000000000
+      internalID: 4023520617272807743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_55
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 1701
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17bba7057865e82d0800000000000000
+      internalID: -3274584739880977551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_56
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 1701
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8ae57c5e7a714e10800000000000000
+      internalID: 2180158377759730315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_57
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 1701
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 972a5633b3983ab30800000000000000
+      internalID: 4297429356799959673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_58
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 1701
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ab5c451c74077460800000000000000
+      internalID: 7239259857001143203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_59
+      rect:
+        serializedVersion: 2
+        x: 2706
+        y: 1701
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acf525243c27b3ef0800000000000000
+      internalID: -127381981493043254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1458
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 244a37c5f211853c0800000000000000
+      internalID: -4370724543250848702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_61
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 1458
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e15417264f6be93f0800000000000000
+      internalID: -892074515432913634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_62
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 1458
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29131154ab80b7fb0800000000000000
+      internalID: -4649112594214211182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_63
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 1458
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 228669bc7ca0ee660800000000000000
+      internalID: 7416877489556187170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_64
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 1458
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8868ddc813374a990800000000000000
+      internalID: -7375643633072109944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_65
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 1458
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db4fd6f784c6c9c40800000000000000
+      internalID: 5520406301880743101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_66
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 1458
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 097e53c2f32283ae0800000000000000
+      internalID: -1569466815418603632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_67
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 1458
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f5b479327690c3a0800000000000000
+      internalID: -6647147632664463882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_68
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 1458
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 815324750ae5f48b0800000000000000
+      internalID: -5165806204818934504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_69
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 1458
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fc38eba56d4291a0800000000000000
+      internalID: -6804290987932238608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_70
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 1458
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24598fa726045e540800000000000000
+      internalID: 5036502549997851970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_71
+      rect:
+        serializedVersion: 2
+        x: 2706
+        y: 1458
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2df19b3e7fc66a670800000000000000
+      internalID: 8549640754542747602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1215
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83725cee7885e6f50800000000000000
+      internalID: 6876531021891053368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_73
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 1215
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f31cb8032751997e0800000000000000
+      internalID: -1758350599326547649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_74
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 1215
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c908528a3c7d2b060800000000000000
+      internalID: 6967868808835203228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_75
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 1215
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f909d6c24e65511c0800000000000000
+      internalID: -4533621911880626017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_76
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 1215
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca800edfdbbfea350800000000000000
+      internalID: 6030033744522381484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_77
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 1215
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82ad0cbf4ffa68fe0800000000000000
+      internalID: -1187067985034946008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_78
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 1215
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a585a8ac15f2d6600800000000000000
+      internalID: 463078365025949786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_79
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 1215
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4fc30b9f44ba5d70800000000000000
+      internalID: 9032730256641085259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_80
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 1215
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97a02defd0e828fb0800000000000000
+      internalID: -4646995674732033415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_81
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 1215
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b72d7daaaf11bc590800000000000000
+      internalID: -7653003373480258949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_82
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 1215
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2ed0f4ecbf97f8b0800000000000000
+      internalID: -5118446817839620566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_83
+      rect:
+        serializedVersion: 2
+        x: 2706
+        y: 1215
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6410c64917864d170800000000000000
+      internalID: 8202295658379215174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_84
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 972
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ac4f3d1bcf5baff0800000000000000
+      internalID: -23820047046718300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_85
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 972
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c3295c3c68d69e00800000000000000
+      internalID: 1051265522418131913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_86
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 972
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 420f75805bb52be00800000000000000
+      internalID: 1059009695472676900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_87
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 972
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4906effcbed50230800000000000000
+      internalID: 3604531980108433742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_88
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 972
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe1af7bbda7833790800000000000000
+      internalID: -7551542969925393937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_89
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 972
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 237988c46a28d0670800000000000000
+      internalID: 8506598921932937010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_90
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 972
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84f4157ff5c5ad630800000000000000
+      internalID: 3952573190211981128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_91
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 972
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee10e47d079ad7640800000000000000
+      internalID: 5079402256857432558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_92
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 972
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa28fafc4c52f8370800000000000000
+      internalID: 8326915763259540143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_93
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 972
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b538047636008b0800000000000000
+      internalID: -5188037475615679689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_94
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 972
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb47b24b2b969d520800000000000000
+      internalID: 2727327265597387963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_95
+      rect:
+        serializedVersion: 2
+        x: 2706
+        y: 972
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b47589b97c5f6820800000000000000
+      internalID: 2913649161805329587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_96
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 729
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51a18a59c7be3d720800000000000000
+      internalID: 2869896307884431893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_97
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 729
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf410edafa965ee30800000000000000
+      internalID: 4532144803275609339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_98
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 729
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 931dba6793b8f1480800000000000000
+      internalID: -8926262857504665287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_99
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 729
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57c006c2863fb10d0800000000000000
+      internalID: -3450897060702712715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_100
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 729
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57934cb6cc53adda0800000000000000
+      internalID: -5919359608127473291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_101
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 729
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edbdcb0bdabe90a20800000000000000
+      internalID: 3029211355610405854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_102
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 729
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e253547dbed39340800000000000000
+      internalID: 4869480527399441124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_103
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 729
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e54923685650d3c0800000000000000
+      internalID: -4336871503537027609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_104
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 729
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae9cde99603170840800000000000000
+      internalID: 5190138014641015274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_105
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 729
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e37bbd27334235770800000000000000
+      internalID: 8598255916969342782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_106
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 729
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e47d79472d9154a00800000000000000
+      internalID: 740026105462249294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_107
+      rect:
+        serializedVersion: 2
+        x: 2706
+        y: 729
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fc8125728979c830800000000000000
+      internalID: 4091935337660648691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_108
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 486
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cf532b951ad13df0800000000000000
+      internalID: -202140721923006523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_109
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 486
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e59a753d3f3a3550800000000000000
+      internalID: 6141290573995873761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_110
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 486
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b9a5544c2843a740800000000000000
+      internalID: 5162048952858945970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_111
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 486
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfa655b6158e101f0800000000000000
+      internalID: -1080326999201453317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_112
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 486
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 784eac3b9ed10b110800000000000000
+      internalID: 1274551584126854279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_113
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 486
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f6c6d76e5eb2080800000000000000
+      internalID: -9211015834746720476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_114
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 486
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 485e152cb2df654c0800000000000000
+      internalID: -4298970429892991612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_115
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 486
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25538f1885d83e690800000000000000
+      internalID: -7574054737029876398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_116
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 486
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45c8057b8d87da350800000000000000
+      internalID: 6029608348302740564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_117
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 486
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57c70ab7e7a8d5750800000000000000
+      internalID: 6295340129978449013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_118
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 486
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acdc9e1bc2a240310800000000000000
+      internalID: 1370266558079290826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_119
+      rect:
+        serializedVersion: 2
+        x: 2706
+        y: 486
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f996ccf5624578e0800000000000000
+      internalID: -1696376678835119629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_120
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 243
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b6853e2a7e8ad1c0800000000000000
+      internalID: -4478110224054122832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_121
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 243
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7575c4745479b1010800000000000000
+      internalID: 1160687652782757719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_122
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 243
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1518cbe281577e280800000000000000
+      internalID: -9014107382434987695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_123
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 243
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fb4625c49dcaa970800000000000000
+      internalID: 8767045663476567024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_124
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 243
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14680e85d0d3f9e60800000000000000
+      internalID: 7971156993004045889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_125
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 243
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1806675b40aec95e0800000000000000
+      internalID: -1901387636711989119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_126
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 243
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef60bbef6dff0c5c0800000000000000
+      internalID: -4197073553847548162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_127
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 243
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd674cb18087affb0800000000000000
+      internalID: -4613242892066720035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_128
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 243
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4d989182a8f5f050800000000000000
+      internalID: 5833842269170998606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_129
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 243
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a2a68d5c742d1d70800000000000000
+      internalID: 9015402145629250215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_130
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 243
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a39bc56597ab4340800000000000000
+      internalID: 4849153683894277029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_131
+      rect:
+        serializedVersion: 2
+        x: 2706
+        y: 243
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7db9165d7a9b8ce80800000000000000
+      internalID: -8158066594491032617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_132
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ea0f2440e4837350800000000000000
+      internalID: 6013296026221218530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_133
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d8ef943fcb767b80800000000000000
+      internalID: -8397388325314369320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_134
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 498cc2a5cccf85350800000000000000
+      internalID: 6005828057714968724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_135
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cabcfc5174e57c4c0800000000000000
+      internalID: -4267338462508627028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_136
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad775a982a9dd92c0800000000000000
+      internalID: -4423139966890706982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_137
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dcdfd17c4753f3e0800000000000000
+      internalID: -2021175821919593258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_138
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdccf0d80e663a140800000000000000
+      internalID: 4729737148294483163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-idle_139
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51aba3f9a81d6b620800000000000000
+      internalID: 2789647412509719061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

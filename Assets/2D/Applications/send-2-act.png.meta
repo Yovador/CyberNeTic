@@ -1,0 +1,660 @@
+fileFormatVersion: 2
+guid: 49ba23cc25a7ca04eb33885eb71005ce
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -47985363952079033
+    second: send-2-act_0
+  - first:
+      213: 3521174501483853068
+    second: send-2-act_1
+  - first:
+      213: 7070562512953504582
+    second: send-2-act_2
+  - first:
+      213: 4377705869265234092
+    second: send-2-act_3
+  - first:
+      213: 6783676237271377268
+    second: send-2-act_4
+  - first:
+      213: -3776108569533611880
+    second: send-2-act_5
+  - first:
+      213: 2532510013696836845
+    second: send-2-act_6
+  - first:
+      213: -2852590259555442501
+    second: send-2-act_7
+  - first:
+      213: 4509168661960080641
+    second: send-2-act_8
+  - first:
+      213: -5378028187730952431
+    second: send-2-act_9
+  - first:
+      213: -3899780109003036262
+    second: send-2-act_10
+  - first:
+      213: 3993792090300800090
+    second: send-2-act_11
+  - first:
+      213: -2666634620830820336
+    second: send-2-act_12
+  - first:
+      213: 2174770923907908995
+    second: send-2-act_13
+  - first:
+      213: 5077910111593558070
+    second: send-2-act_14
+  - first:
+      213: -4248451581023539212
+    second: send-2-act_15
+  - first:
+      213: 3137788270659901527
+    second: send-2-act_16
+  - first:
+      213: 1308140176189699110
+    second: send-2-act_17
+  - first:
+      213: -7297774185980052599
+    second: send-2-act_18
+  - first:
+      213: 6490702915412950519
+    second: send-2-act_19
+  - first:
+      213: 3198058436643151624
+    second: send-2-act_20
+  - first:
+      213: 1844106110977280261
+    second: send-2-act_21
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: send-2-act_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74fe733d095855ff0800000000000000
+      internalID: -47985363952079033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_1
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c05bb199d89bdd030800000000000000
+      internalID: 3521174501483853068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_2
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64379c2e42faf1260800000000000000
+      internalID: 7070562512953504582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_3
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca862b44b4cb0cc30800000000000000
+      internalID: 4377705869265234092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_4
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 475a1d9a895742e50800000000000000
+      internalID: 6783676237271377268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_5
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89004af3341989bc0800000000000000
+      internalID: -3776108569533611880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_6
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de4058c8078452320800000000000000
+      internalID: 2532510013696836845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_7
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb06579c5409968d0800000000000000
+      internalID: -2852590259555442501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_8
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10d3478e109c39e30800000000000000
+      internalID: 4509168661960080641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_9
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11f32467bd76d55b0800000000000000
+      internalID: -5378028187730952431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_10
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a996dbc17a231e9c0800000000000000
+      internalID: -3899780109003036262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_11
+      rect:
+        serializedVersion: 2
+        x: 2706
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5cd4210fbccc6730800000000000000
+      internalID: 3993792090300800090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_12
+      rect:
+        serializedVersion: 2
+        x: 2952
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 018de97d0f53efad0800000000000000
+      internalID: -2666634620830820336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_13
+      rect:
+        serializedVersion: 2
+        x: 3198
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 385016302a65e2e10800000000000000
+      internalID: 2174770923907908995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_14
+      rect:
+        serializedVersion: 2
+        x: 3444
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 630f5e2b75c587640800000000000000
+      internalID: 5077910111593558070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_15
+      rect:
+        serializedVersion: 2
+        x: 3690
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ff25abdbc77a05c0800000000000000
+      internalID: -4248451581023539212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_16
+      rect:
+        serializedVersion: 2
+        x: 3936
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7581215bec9ab8b20800000000000000
+      internalID: 3137788270659901527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_17
+      rect:
+        serializedVersion: 2
+        x: 4182
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62434363f82772210800000000000000
+      internalID: 1308140176189699110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_18
+      rect:
+        serializedVersion: 2
+        x: 4428
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98bb4a90b0919ba90800000000000000
+      internalID: -7297774185980052599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_19
+      rect:
+        serializedVersion: 2
+        x: 4674
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fdf7cf89eb931a50800000000000000
+      internalID: 6490702915412950519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_20
+      rect:
+        serializedVersion: 2
+        x: 4920
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80f5e0f3439c16c20800000000000000
+      internalID: 3198058436643151624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: send-2-act_21
+      rect:
+        serializedVersion: 2
+        x: 5166
+        y: 0
+        width: 246
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5098de8ccb4979910800000000000000
+      internalID: 1844106110977280261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -307,7 +307,6 @@ public class ConversationDisplayer : MonoBehaviour
     }
     private IEnumerator MoveFooter(bool isMoveUp)
     {
-
         animationOn = true;
 
         RectTransform rectTransform = footer.GetComponent<RectTransform>();
@@ -338,6 +337,9 @@ public class ConversationDisplayer : MonoBehaviour
         }
 
         animationOn = false;
+
+        // Send button's animation
+        GameObject.FindGameObjectWithTag("SendButtonSprite").GetComponent<Animator>().SetBool("canInteract", isMoveUp);
 
     }
     private IEnumerator LoadChoiceBranching(List<Conversation.Possibility> choicePossibilities)

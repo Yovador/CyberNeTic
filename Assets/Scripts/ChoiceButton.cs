@@ -10,10 +10,11 @@ public class ChoiceButton : ConversationButtons
 
     public override void OnClick()
     {
-
         conversationDisplayer.isInChoice = false;
         conversationDisplayer.nextBranch = branche;
         conversationDisplayer.choiceButton = this;
 
+        // Send button's animation
+        GameObject.FindGameObjectWithTag("SendButtonSprite").GetComponent<Animator>().SetTrigger("Active");
     }
 }
