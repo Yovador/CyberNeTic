@@ -42,9 +42,16 @@ public class MainMenu : MonoBehaviour
         if (!SaveManager.sessionGameStarted)
         {
             SetSection(startSection);
-        }else
+
+            if (SaveManager.settings.speechHelp)
+                SpeechController.ReadText("Menu principal. Glisser vers le haut pour commencer.");
+        }
+        else
         {
             SetSection(menuSection);
+
+            if (SaveManager.settings.speechHelp)
+                SpeechController.ReadText("Menu principal.");
         }
 
         GameObject.Find("MusicLoader").GetComponent<AudioSource>().PlayOneShot(music);
@@ -65,16 +72,37 @@ public class MainMenu : MonoBehaviour
     public void SettingsVisible (bool visible)
     {
         if (visible)
+        {
             SetSection(settingsSection);
+
+            if (SaveManager.settings.speechHelp)
+                SpeechController.ReadText("Paramètres.");
+        }
         else
+        {
             SetSection(menuSection);
+
+            if (SaveManager.settings.speechHelp)
+                SpeechController.ReadText("Accueil.");
+        }
+
     }
 
     public void InformationsVisible (bool visible)
     {
         if (visible)
+        {
             SetSection(informationsSection);
+
+            if (SaveManager.settings.speechHelp)
+                SpeechController.ReadText("Prévention.");
+        }
         else
+        {
             SetSection(menuSection);
+
+            if (SaveManager.settings.speechHelp)
+                SpeechController.ReadText("Accueil.");
+        }
     }
 }

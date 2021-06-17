@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultMedium: sms
-  waitTime: 0.5
+  waitTime: 0
   endConversation: 0
   messageSpeed: 5
   choiceButton: {fileID: 0}

@@ -303,7 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b570f6039c42db45a46ebd7da673df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstConversation: testfade
+  firstConversation: testnumberchoice
+  transitionTime: 1
 --- !u!1 &1790538929
 GameObject:
   m_ObjectHideFlags: 0

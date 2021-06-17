@@ -24,8 +24,11 @@ public class GameManager : MonoBehaviour
     private List<Conversation.Message> messageList = new List<Conversation.Message>() ;
     [HideInInspector]
     public static float soundEffectVolume = 0.5f;
+    [HideInInspector]
+    public static float musicVolume = 0.5f;
     [SerializeField]
     private float transitionTime;
+    private bool inTransition = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
         GetCharacterSet();
         GetAllConversation();
+        nextConversation = firstConversation;
         saveManager.SaveGame(firstConversation, new List<Conversation.Message>(), charactersSet, null);
         StartCoroutine(StartGame());
     }
@@ -47,11 +51,15 @@ public class GameManager : MonoBehaviour
     public void ContinueGame()
     {
         StartCoroutine(StartGame());
-
     }
 
     IEnumerator StartGame()
     {
+
+
+        StartCoroutine(MakeTransitionBetweenConv());
+        yield return new WaitWhile(() => inTransition);
+
         SceneManager.LoadScene("ConversationScene");
         yield return new WaitUntil(() => conversationDisplayer != null);
 
@@ -60,16 +68,37 @@ public class GameManager : MonoBehaviour
         branchToLoad = saveManager.LoadSave().currentBranch;
 
         StartCoroutine(conversationDisplayer.LaunchAConv(FindConvById(firstConversation), messageList, branchToLoad));
-
+        nextConversation = null;
         StartCoroutine(WaitToLaunchNextConversation());
     }
 
-    IEnumerator WaitToLaunchNextConversation()
+    public Character GetCharacterByID(string id)
     {
-        yield return new WaitUntil(() => nextConversation != null);
+        Character foundCharacter = null;
 
+        foreach (var character in charactersSet)
+        {
+            if(character.id == id)
+            {
+                foundCharacter = character;
+            }
+        }
+
+        return foundCharacter;
+    }
+
+    IEnumerator MakeTransitionBetweenConv()
+    {
+        inTransition = true;
         SceneManager.LoadScene("TransitionScene");
         yield return new WaitForSecondsRealtime(1);
+
+        TransitionText transitionText = GameObject.Find("TransitionText").GetComponent<TransitionText>();
+        Conversation nxtConv = FindConvById(nextConversation);
+        string date = GetDateAndTimeToDisplay(nxtConv.date, nxtConv.time);
+        string character1 = FirstLetterToUpper(GetCharacterByID(nxtConv.playerCharacter).firstName);
+        string character2 = FirstLetterToUpper(GetCharacterByID(nxtConv.npCharacter).firstName);
+        transitionText.ChangeTransition(date, character1, character2);
 
         LoadingPanel loadingPanel = GameObject.Find("LoadingPanel").GetComponent<LoadingPanel>();
         StartCoroutine(loadingPanel.Disappear());
@@ -77,15 +106,29 @@ public class GameManager : MonoBehaviour
         yield return new WaitWhile(() => loadingPanel.isFading);
         yield return new WaitForSecondsRealtime(transitionTime);
 
+
         StartCoroutine(loadingPanel.Appear());
         yield return new WaitWhile(() => loadingPanel.isFading);
+        inTransition = false;
+    }
 
-        SceneManager.LoadScene("ConversationScene");
+    IEnumerator WaitToLaunchNextConversation()
+    {
+        yield return new WaitUntil(() => nextConversation != null);
 
-        yield return new WaitUntil(() => conversationDisplayer != null);
 
+
+
+        
         if (FindConvById(nextConversation) != null)
         {
+
+            StartCoroutine(MakeTransitionBetweenConv());
+            yield return new WaitWhile(() => inTransition);
+
+            SceneManager.LoadScene("ConversationScene");
+            yield return new WaitUntil(() => conversationDisplayer != null);
+
             branchToLoad = null;
             StartCoroutine(conversationDisplayer.LaunchAConv(FindConvById(nextConversation), messageList, branchToLoad));
             nextConversation = null;
@@ -94,6 +137,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            AudioSource musicSource = DDOL.instance.GetComponentInChildren<AudioSource>();
+            musicSource.mute = true;
             SceneManager.LoadScene("EndScene");
         }
     }
@@ -163,6 +208,40 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public static string GetDateAndTimeToDisplay(string date, string time)
+    {
+        string pattern = "yyyy-MM-dd HH:mm";
+        System.DateTime parsedDate;
+        string display = null;
+
+        if (System.DateTime.TryParseExact($"{date} {time}", pattern, null, System.Globalization.DateTimeStyles.None, out parsedDate))
+        {
+            var culture = new System.Globalization.CultureInfo("fr-FR");
+            string dayName = FirstLetterToUpper(culture.DateTimeFormat.GetDayName(parsedDate.DayOfWeek));
+            int dayNumber = parsedDate.Day;
+            string monthName = culture.DateTimeFormat.GetMonthName(parsedDate.Month);
+            var timeDay = $"{parsedDate.TimeOfDay.Hours}:{parsedDate.TimeOfDay.Minutes} ";
+
+            display = $"{dayName} {dayNumber} {monthName} • {timeDay}";
+        }
+        else
+        {
+            Debug.LogError("Couldn't parse date");
+        }
+
+
+        return display;
+    }
+    public static string FirstLetterToUpper(string str)
+    {
+        if (str == null)
+            return null;
+
+        if (str.Length > 1)
+            return char.ToUpper(str[0]) + str.Substring(1);
+
+        return str.ToUpper();
+    }
 
     #region Apply settings to scene
     private const float maxWaitTime = 4f;
@@ -194,7 +273,8 @@ public class GameManager : MonoBehaviour
 
         if(musicSource)
         {
-            musicSource.volume = music;
+            musicVolume  = music;
+            musicSource.volume = musicVolume;
         }
         soundEffectVolume = effects;
     }

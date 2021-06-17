@@ -85,17 +85,8 @@ public class ConversationDisplayer : MonoBehaviour
             messageLoaded = true;
         }
 
-        foreach (var character in gameManager.charactersSet)
-        {
-            if(character.id == conversation.npCharacter)
-            {
-                npCharacter = character;
-            }
-            if (character.id == conversation.playerCharacter)
-            {
-                playerCharacter = character;
-            }
-        }
+        npCharacter = gameManager.GetCharacterByID(conversation.npCharacter);
+        playerCharacter = gameManager.GetCharacterByID(conversation.playerCharacter);
 
         yield return new WaitUntil(() => footerLoaded);
 
@@ -104,7 +95,7 @@ public class ConversationDisplayer : MonoBehaviour
 
         scrollTransform.sizeDelta += new Vector2(0, dateAndHour.GetComponent<RectTransform>().sizeDelta.y + screenSensitiveSpaceBetweenMessage);
 
-        dateAndHour.GetComponentInChildren<TMP_Text>().text = GetDateAndTimeToDisplay(conversation.date, conversation.time);
+        dateAndHour.GetComponentInChildren<TMP_Text>().text = GameManager.GetDateAndTimeToDisplay(conversation.date, conversation.time);
 
 
 
@@ -307,7 +298,6 @@ public class ConversationDisplayer : MonoBehaviour
     }
     private IEnumerator MoveFooter(bool isMoveUp)
     {
-
         animationOn = true;
 
         RectTransform rectTransform = footer.GetComponent<RectTransform>();
@@ -338,6 +328,9 @@ public class ConversationDisplayer : MonoBehaviour
         }
 
         animationOn = false;
+
+        // Send button's animation
+        GameObject.FindGameObjectWithTag("SendButtonSprite").GetComponent<Animator>().SetBool("canInteract", isMoveUp);
 
     }
     private IEnumerator LoadChoiceBranching(List<Conversation.Possibility> choicePossibilities)
@@ -507,42 +500,7 @@ public class ConversationDisplayer : MonoBehaviour
             imageComponent.sprite = newSprite;
         }
     }
-    string GetDateAndTimeToDisplay(string date, string time)
-    {
 
 
-        string pattern = "yyyy-MM-dd HH:mm";
-        System.DateTime parsedDate;
-        string display = null;
 
-        if (System.DateTime.TryParseExact($"{date} {time}", pattern, null, System.Globalization.DateTimeStyles.None, out parsedDate))
-        {
-            var culture = new System.Globalization.CultureInfo("fr-FR");
-            string dayName = FirstLetterToUpper(culture.DateTimeFormat.GetDayName(parsedDate.DayOfWeek));
-            int dayNumber = parsedDate.Day;
-            string monthName = culture.DateTimeFormat.GetMonthName(parsedDate.Month);
-            var timeDay = $"{parsedDate.TimeOfDay.Hours}:{parsedDate.TimeOfDay.Minutes} "  ;
-
-            display = $"{dayName} {dayNumber} {monthName} • {timeDay}";
-        }
-        else
-        {
-            Debug.LogError("Couldn't parse date");
-        }
-
-
-        return display;
-        
-
-    }
-    public string FirstLetterToUpper(string str)
-    {
-        if (str == null)
-            return null;
-
-        if (str.Length > 1)
-            return char.ToUpper(str[0]) + str.Substring(1);
-
-        return str.ToUpper();
-    }
 }

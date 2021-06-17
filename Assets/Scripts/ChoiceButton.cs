@@ -15,5 +15,7 @@ public class ChoiceButton : ConversationButtons
         conversationDisplayer.nextBranch = branche;
         conversationDisplayer.choiceButton = this;
 
+        // Send button's animation
+        GameObject.FindGameObjectWithTag("SendButtonSprite").GetComponent<Animator>().SetTrigger("Active");
     }
 }
