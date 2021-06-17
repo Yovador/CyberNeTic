@@ -342,6 +342,7 @@ public class ConversationDisplayer : MonoBehaviour
 
 
         Dictionary<GameObject, Conversation.ChoicePossibility> buttonList = new Dictionary<GameObject, Conversation.ChoicePossibility>();
+        List<string> buttonsTexts = new List<string>();
 
         for (int i = 0; i < choicePossibilities.Count; i++)
         {
@@ -358,6 +359,8 @@ public class ConversationDisplayer : MonoBehaviour
             }
 
             newButton.GetComponentInChildren<TMP_Text>().text = poss.message.content.data;
+            buttonsTexts.Add(poss.message.content.data);
+
             if (poss.possible)
             {
                 newButton.GetComponent<ChoiceButton>().branche = GetBrancheByID(poss.branch);
@@ -417,6 +420,16 @@ public class ConversationDisplayer : MonoBehaviour
         currentMessageList.Add(messageToAdd);
         saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
 
+        if(SaveManager.settings.speechHelp)
+        {
+            string text = "Que souhaitez-vous répondre ?";
+            for (int i = 0; i < choicePossibilities.Count; i++)
+            {
+                text += (i + 1).ToString() + "    " + buttonsTexts[i];
+            }
+
+            SpeechController.ReadText(text);
+        }
     }
     private void LoadBranchingPoint(Conversation.BranchingPoint branchingPoint)
     {
