@@ -61,6 +61,12 @@ public class ChoiceButton : ConversationButtons
         conversationDisplayer.nextBranch = branche;
         conversationDisplayer.choiceButton = this;
 
+        // Read button content
+        if (SaveManager.settings.speechHelp)
+            SpeechController.ReadText(GetComponentInChildren<TMP_Text>().text);
+
+        // Send button's animation
+        GameObject.FindGameObjectWithTag("SendButtonSprite").GetComponent<Animator>().SetTrigger("Active");
     }
 
 

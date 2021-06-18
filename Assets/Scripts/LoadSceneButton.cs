@@ -7,4 +7,10 @@ public class LoadSceneButton : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void ReadText (string text)
+    {
+        if (SaveManager.settings.speechHelp)
+            SpeechController.ReadText(text);
+    }
 }
