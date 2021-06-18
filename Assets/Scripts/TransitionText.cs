@@ -11,6 +11,8 @@ public class TransitionText : MonoBehaviour
         TMP_Text textComponent = GetComponent<TMP_Text>();
 
         textComponent.text = $"{dateTime}\n {character1} parle à {character2}";
+        if (SaveManager.settings.speechHelp)
+            SpeechController.ReadText(textComponent.text);
 
     }
 

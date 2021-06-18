@@ -82,7 +82,9 @@ public class Conversation
 
     public class TestPossibility : Possibility
     {
-        public int[] thresholds{ get; set; }
+        public int threshold{ get; set; }
+        public bool isDefault { get; set; }
+        public bool checkIfSup { get; set; }
     }
 
 
@@ -144,7 +146,7 @@ public class Conversation
                         break;
                     case "test":
                         var testPoss = (TestPossibility)possibility;
-                        logString += $"thresholdMin : {testPoss.thresholds[0]}, thresholdMax : {testPoss.thresholds[1]}\n";
+                        logString += $"threshold : {testPoss.threshold}, isDefault : {testPoss.isDefault}, checkIfSup : {testPoss.checkIfSup}  \n";
                         break;
                     default:
                         logString += "\n";

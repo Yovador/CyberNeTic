@@ -42,7 +42,9 @@ public class JsonUnloader
         public bool possible;
         public int confidenceMod;
         public Message message;
-        public int[] thresholds;
+        public int threshold;
+        public bool isDefault;
+        public bool checkIfSup;
 
     }
 
@@ -167,7 +169,9 @@ public class JsonUnloader
                     case "test":
                         Conversation.TestPossibility newTest = new Conversation.TestPossibility();
                         newTest.branch = possibility.branch;
-                        newTest.thresholds = possibility.thresholds;
+                        newTest.threshold = possibility.threshold;
+                        newTest.checkIfSup = possibility.checkIfSup;
+                        newTest.isDefault = possibility.isDefault;
                         newBranchingPoint.possibilities.Add(newTest);
                         break;
                     case "change":
