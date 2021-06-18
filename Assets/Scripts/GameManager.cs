@@ -30,7 +30,24 @@ public class GameManager : MonoBehaviour
     private float transitionTime;
     private bool inTransition = false;
 
-    // Start is called before the first frame update
+    private AudioSource musicSource;
+
+    public static GameManager instance;
+
+    private void Awake()
+    {
+        // Singleton
+        if(instance == null)
+        {
+            instance = this;
+        }else
+        {
+            Destroy(gameObject);
+        }
+
+        musicSource = GameObject.Find("MusicLoader").GetComponent<AudioSource>();
+    }
+
     void Start()
     {
         Application.targetFrameRate = 60;
@@ -55,8 +72,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartGame()
     {
-
-
         StartCoroutine(MakeTransitionBetweenConv());
         yield return new WaitWhile(() => inTransition);
 
@@ -116,10 +131,6 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitUntil(() => nextConversation != null);
 
-
-
-
-        
         if (FindConvById(nextConversation) != null)
         {
 
@@ -241,6 +252,39 @@ public class GameManager : MonoBehaviour
             return char.ToUpper(str[0]) + str.Substring(1);
 
         return str.ToUpper();
+    }
+
+
+    public void ChangeMusic (AudioClip nextMusic, float animationSpeed)
+    {
+        StopCoroutine("ChangeMusicCoroutine");
+        StartCoroutine(ChangeMusicCoroutine(nextMusic, animationSpeed));
+    }
+    private IEnumerator ChangeMusicCoroutine (AudioClip nextMusic, float animationSpeed)
+    {
+        Debug.Log("Starting fade animation");
+
+        float startVolume = musicSource.volume;
+        while (musicSource.volume > 0.01f)
+        {
+            musicSource.volume -= animationSpeed * Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        musicSource.volume = 0;
+
+        musicSource.Stop();
+        musicSource.PlayOneShot(nextMusic);
+
+        while (musicSource.volume < startVolume)
+        {
+            musicSource.volume += animationSpeed * Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        musicSource.volume = startVolume;
+
+        Debug.Log("Fin animation");
+
+        yield return null;
     }
 
     #region Apply settings to scene
