@@ -24,7 +24,7 @@
         {
             "me": "victime",
             "them": "coach",
-            "confidenceMeToThem": "10"
+            "confidenceMeToThem": "0"
         },
         {
             "me": "victime",
@@ -34,7 +34,7 @@
         {
             "me": "coach",
             "them": "victime",
-            "confidenceMeToThem": "10"
+            "confidenceMeToThem": "0"
         },
         {
             "me": "coach",

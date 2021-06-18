@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class ConversationDisplayer : MonoBehaviour
 {
@@ -91,16 +92,13 @@ public class ConversationDisplayer : MonoBehaviour
 
         yield return new WaitUntil(() => footerLoaded);
 
-        Debug.Log("Scroll base : " + scrollTransform.sizeDelta);
 
         scrollTransform.sizeDelta += new Vector2(0, ((3 * Screen.height)/100) + footerController.footerHeigth + Mathf.Abs(medium.navBar.GetComponent<RectTransform>().rect.y * 2));
 
-        Debug.Log("Adding footer, nav bar, and 5% of screen heigth : " + scrollTransform.sizeDelta);
 
 
         scrollTransform.sizeDelta += new Vector2(0, dateAndHour.GetComponent<RectTransform>().sizeDelta.y + screenSensitiveSpaceBetweenMessage);
 
-        Debug.Log("Adding dateNHour and SpaceBetweenMessage" + scrollTransform.sizeDelta);
 
 
         dateAndHour.GetComponentInChildren<TMP_Text>().text = GameManager.GetDateAndTimeToDisplay(conversation.date, conversation.time);
@@ -235,7 +233,6 @@ public class ConversationDisplayer : MonoBehaviour
         float heigth = rectTransform.preferredHeight;
         float size = screenSensitiveSpaceBetweenMessage + heigth;
 
-        Debug.Log("Adding message heigth + spaceBetweenMessages" + scrollTransform.sizeDelta);
 
 
         scrollTransform.sizeDelta += new Vector2(0, size);
@@ -450,14 +447,74 @@ public class ConversationDisplayer : MonoBehaviour
                 StartCoroutine(LoadChoiceBranching((branchingPoint.possibilities)));
                 break;
             case "test":
-                nextBranch = GetBrancheByID(branchingPoint.possibilities[0].branch);
                 foreach (Conversation.TestPossibility poss in branchingPoint.possibilities)
                 {
-                    if (npcToPlayerRelationhship.confidenceMeToThem >= poss.thresholds[0] && npcToPlayerRelationhship.confidenceMeToThem <= poss.thresholds[1])
+                    if (poss.isDefault)
                     {
                         nextBranch = GetBrancheByID(poss.branch);
                     }
                 }
+
+                List<Conversation.TestPossibility> testPossToCheck = new List<Conversation.TestPossibility>();
+
+                foreach (Conversation.TestPossibility poss in branchingPoint.possibilities)
+                {
+                    Debug.Log($"Looking at : branch: {poss.branch} / isDefault: {poss.isDefault} / threshold: {poss.threshold} / checkIfSup: {poss.checkIfSup}" );
+                    if (!poss.isDefault)
+                    {
+                        if(npcToPlayerRelationhship.confidenceMeToThem == 0)
+                        {
+                            testPossToCheck.Add(poss);
+                        }
+                        if (npcToPlayerRelationhship.confidenceMeToThem > 0)
+                        {
+                            if (poss.checkIfSup)
+                            {
+                                testPossToCheck.Add(poss);
+                            }
+                        }
+                        else if (npcToPlayerRelationhship.confidenceMeToThem < 0)
+                        {
+                            if (!poss.checkIfSup)
+                            {
+                                testPossToCheck.Add(poss);
+                            }
+                        }
+                    }
+                }
+
+                if(npcToPlayerRelationhship.confidenceMeToThem >= 0)
+                {
+                    testPossToCheck = testPossToCheck.OrderByDescending(w => w.threshold).ToList();
+                }
+                else if (npcToPlayerRelationhship.confidenceMeToThem <= 0)
+                {
+                    testPossToCheck = testPossToCheck.OrderBy(w => w.threshold).ToList();
+
+                }
+
+                foreach (var poss in testPossToCheck)
+                {
+
+                    if (poss.checkIfSup)
+                    {
+                        if(npcToPlayerRelationhship.confidenceMeToThem >= poss.threshold)
+                        {
+                            nextBranch = GetBrancheByID( poss.branch );
+                            break;
+                        }
+                    }
+                    if (!poss.checkIfSup)
+                    {
+                        if (npcToPlayerRelationhship.confidenceMeToThem <= poss.threshold)
+                        {
+                            nextBranch = GetBrancheByID(poss.branch);
+                            break;
+                        }
+                    }
+                    
+                }
+
                 StartCoroutine(LoadBranches(nextBranch));
 
 
@@ -493,12 +550,10 @@ public class ConversationDisplayer : MonoBehaviour
         yield return new WaitUntil(() => endConversation);
 
         currentMessageList = new List<Conversation.Message>();
-        Debug.Log("StartFade:");
         StartCoroutine(loadPanel.Appear());
 
         yield return new WaitWhile(() => loadPanel.isFading);
 
-        Debug.Log("AfterFade: ");
 
         saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
         gameManager.nextConversation = conversation.nextConversation;
