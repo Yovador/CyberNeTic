@@ -36,6 +36,10 @@ public class ChoiceButton : ConversationButtons
 
             textInput.text = tempString;
         }
+        else
+        {
+            textInput.text = myText.text;
+        }
 
     }
 
