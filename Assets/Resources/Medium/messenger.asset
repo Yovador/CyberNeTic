@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a6723b94facd0648bfe130252f7591b, type: 3}
-  m_Name: sms
+  m_Name: messenger
   m_EditorClassIdentifier: 
   spaceBetweenMessages: 2.5
-  playerMessageBox: {fileID: 7272966043441959420, guid: 2f97c0e558148b1438412b358c1a595b, type: 3}
+  playerMessageBox: {fileID: 7272966043441959420, guid: 4e220b467c93c1343926edaf6103817c, type: 3}
   npcMessageBox: {fileID: 5532616446848884718, guid: d966a80c324fe8f47a19ba6f78bf03b8, type: 3}
   playerMessageBoxImage: {fileID: 7207647838909603615, guid: 8c89b7f2197b88d42bdf30fb4d2b039d, type: 3}
   npcMessageBoxImage: {fileID: 6216024009079243281, guid: 84bbdd166a2f39b448c3f64af9af4dcb, type: 3}
   background: {fileID: 848058901730201712, guid: b6a404a8a788c0a42acc2e33884b70f6, type: 3}
-  navBar: {fileID: 454831195708029934, guid: 3d2c90a0c7ffdc540b7c8b6387b4b6bf, type: 3}
-  footer: {fileID: 8402148764533746829, guid: 6ef94cba01af8214ea65a0bb2c2d896c, type: 3}
-  choiceButton: {fileID: 8568480440450106278, guid: 11b738b65639db245bc6616ff9140f9d, type: 3}
-  impossibleChoiceButton: {fileID: 7519917683848704902, guid: a2560a0a08abeb243a4a589fd16cae46, type: 3}
-  nextConvoButton: {fileID: 6655867024192596153, guid: ac9d27b394fa12146a70720ff4f03e32, type: 3}
-  dateAndHour: {fileID: 5532616446848884718, guid: 0b5436e6d7656804ca3ca977da2d94b6, type: 3}
+  navBar: {fileID: 454831195708029934, guid: 4e5c2c73bd8bbbc4a9d9d6fe41d24f06, type: 3}
+  footer: {fileID: 8402148764533746829, guid: 4877d592ff2cffb41b2bd5e9847e770b, type: 3}
+  choiceButton: {fileID: 8568480440450106278, guid: 64ca25f5e5d402f40935c0ea84f954cd, type: 3}
+  impossibleChoiceButton: {fileID: 7519917683848704902, guid: 7520deb184b609b49aef98502bbb5794, type: 3}
+  nextConvoButton: {fileID: 6655867024192596153, guid: bdf7643ffb38f1844bb403ec58812464, type: 3}
+  dateAndHour: {fileID: 5532616446848884718, guid: 0c1c4241eb29bfd4e8f8a922d9de43e7, type: 3}
   musicClip: {fileID: 8300000, guid: 3cc24a53cfd726e4c9451f21daac4537, type: 3}

@@ -159,6 +159,9 @@ public class ConversationDisplayer : MonoBehaviour
             medium = Resources.Load<Medium>(mediumPath);
         }
 
+        Debug.Log("medium post : " + medium);
+
+
         Instantiate(medium.background, transform).transform.SetSiblingIndex(0);
         Instantiate(medium.navBar, transform);
         footer = Instantiate(medium.footer, transform);
