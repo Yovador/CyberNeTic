@@ -43,15 +43,13 @@ public class MainMenu : MonoBehaviour
         {
             SetSection(startSection);
 
-            if (SaveManager.settings.speechHelp)
-                SpeechController.ReadText("Menu principal. Glisser vers le haut pour commencer.");
+            SpeechController.ReadText("Menu principal. Glisser vers le haut pour commencer.");
         }
         else
         {
             SetSection(menuSection);
 
-            if (SaveManager.settings.speechHelp)
-                SpeechController.ReadText("Menu principal.");
+            SpeechController.ReadText("Menu principal.");
         }
 
         GameObject.Find("MusicLoader").GetComponent<AudioSource>().PlayOneShot(music);
@@ -74,16 +72,12 @@ public class MainMenu : MonoBehaviour
         if (visible)
         {
             SetSection(settingsSection);
-
-            if (SaveManager.settings.speechHelp)
-                SpeechController.ReadText("Paramètres.");
+            SpeechController.ReadText("Paramètres.");
         }
         else
         {
             SetSection(menuSection);
-
-            if (SaveManager.settings.speechHelp)
-                SpeechController.ReadText("Accueil.");
+            SpeechController.ReadText("Accueil.");
         }
 
     }
@@ -93,16 +87,12 @@ public class MainMenu : MonoBehaviour
         if (visible)
         {
             SetSection(informationsSection);
-
-            if (SaveManager.settings.speechHelp)
-                SpeechController.ReadText("Prévention.");
+            SpeechController.ReadText("Prévention.");
         }
         else
         {
             SetSection(menuSection);
-
-            if (SaveManager.settings.speechHelp)
-                SpeechController.ReadText("Accueil.");
+            SpeechController.ReadText("Accueil.");
         }
     }
 }

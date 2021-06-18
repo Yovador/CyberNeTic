@@ -151,9 +151,7 @@ public class ConversationDisplayer : MonoBehaviour
         Medium medium;
 
         string mediumPath = $"Medium/{mediumID}";
-
         medium = Resources.Load<Medium>(mediumPath);
-
 
         if(medium == null)
         {
@@ -223,8 +221,7 @@ public class ConversationDisplayer : MonoBehaviour
             textComponent.text = message.content.data;
             messageBoxResizer.ResizeBox();
 
-            if (SaveManager.settings.speechHelp)
-                SpeechController.ReadText(message.content.data);
+            SpeechController.ReadText(message.content.data);
         }
 
 

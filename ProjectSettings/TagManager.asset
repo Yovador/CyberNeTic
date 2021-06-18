@@ -8,6 +8,7 @@ TagManager:
   - ContactName
   - footerRow
   - SendButtonSprite
+  - SpeechStatus
   layers:
   - Default
   - TransparentFX

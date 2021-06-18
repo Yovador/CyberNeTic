@@ -271,8 +271,6 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator ChangeMusicCoroutine (AudioClip nextMusic, float animationSpeed)
     {
-        Debug.Log("Starting fade animation");
-
         float startVolume = musicSource.volume;
         while (musicSource.volume > 0.01f)
         {
@@ -290,8 +288,6 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
         musicSource.volume = startVolume;
-
-        Debug.Log("Fin animation");
 
         yield return null;
     }
