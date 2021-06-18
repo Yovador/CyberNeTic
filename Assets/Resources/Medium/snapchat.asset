@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6723b94facd0648bfe130252f7591b, type: 3}
+  m_Name: snapchat
+  m_EditorClassIdentifier: 
+  spaceBetweenMessages: 2.5
+  playerMessageBox: {fileID: 7272966043441959420, guid: 949cf2e29278d53428c00d6a295ab6fa, type: 3}
+  npcMessageBox: {fileID: 5532616446848884718, guid: 7fc6456d6fe4e4d40a0333525b374874, type: 3}
+  playerMessageBoxImage: {fileID: 7207647838909603615, guid: 6dcb8732cf07afa479cfcbc883d2e877, type: 3}
+  npcMessageBoxImage: {fileID: 6216024009079243281, guid: c38d958ca05a0bb47a94566f2e472a29, type: 3}
+  background: {fileID: 848058901730201712, guid: 501ad5ae76218ce429ba826d1c6c34e7, type: 3}
+  navBar: {fileID: 454831195708029934, guid: 5b75d9a798db87440ac53e4e310684b3, type: 3}
+  footer: {fileID: 8402148764533746829, guid: ba8960baf62120141862f56a7cd2f84e, type: 3}
+  choiceButton: {fileID: 8568480440450106278, guid: 32a78fd4158f6124ca6ff7b33ff35e7f, type: 3}
+  impossibleChoiceButton: {fileID: 7519917683848704902, guid: 6537fba807ae1c84593d2f459cc3eb30, type: 3}
+  nextConvoButton: {fileID: 6655867024192596153, guid: 4afb634f51877b640b3bd253f671dd22, type: 3}
+  dateAndHour: {fileID: 5532616446848884718, guid: 57bf19c73147b204798e66c45c3c7727, type: 3}
+  musicClip: {fileID: 8300000, guid: 3cc24a53cfd726e4c9451f21daac4537, type: 3}
