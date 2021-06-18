@@ -57,6 +57,7 @@ public class ConversationDisplayer : MonoBehaviour
     public IEnumerator LaunchAConv(Conversation currentConversation, List<Conversation.Message> messagesList, string branchToLoad)
     {
         conversation = currentConversation;
+        currentConversation.DebugLogConversation();
         conversationFlux = GameObject.Find("ConversationFlux");
         medium = LoadMedium(conversation.medium);
         conversation.DebugLogConversation();
@@ -90,10 +91,17 @@ public class ConversationDisplayer : MonoBehaviour
 
         yield return new WaitUntil(() => footerLoaded);
 
-        scrollTransform.sizeDelta = new Vector2(0, ((3 * Screen.height)/100) + footerController.footerHeigth + Mathf.Abs(medium.navBar.GetComponent<RectTransform>().rect.y * 2));
+        Debug.Log("Scroll base : " + scrollTransform.sizeDelta);
+
+        scrollTransform.sizeDelta += new Vector2(0, ((3 * Screen.height)/100) + footerController.footerHeigth + Mathf.Abs(medium.navBar.GetComponent<RectTransform>().rect.y * 2));
+
+        Debug.Log("Adding footer, nav bar, and 5% of screen heigth : " + scrollTransform.sizeDelta);
 
 
         scrollTransform.sizeDelta += new Vector2(0, dateAndHour.GetComponent<RectTransform>().sizeDelta.y + screenSensitiveSpaceBetweenMessage);
+
+        Debug.Log("Adding dateNHour and SpaceBetweenMessage" + scrollTransform.sizeDelta);
+
 
         dateAndHour.GetComponentInChildren<TMP_Text>().text = GameManager.GetDateAndTimeToDisplay(conversation.date, conversation.time);
 
@@ -222,10 +230,14 @@ public class ConversationDisplayer : MonoBehaviour
 
 
         LayoutGroup rectTransform = messageBox.GetComponent<LayoutGroup>();
-        yield return null;
+        yield return new WaitUntil(() => rectTransform.preferredHeight != 0);
         
         float heigth = rectTransform.preferredHeight;
         float size = screenSensitiveSpaceBetweenMessage + heigth;
+
+        Debug.Log("Adding message heigth + spaceBetweenMessages" + scrollTransform.sizeDelta);
+
+
         scrollTransform.sizeDelta += new Vector2(0, size);
 
 
@@ -264,7 +276,6 @@ public class ConversationDisplayer : MonoBehaviour
     }
     private IEnumerator LoadBranches(Conversation.Branche branche )
     {
-
         canAddMessageOfPreviousBranch = true;
         currentBranch = branche.id;
         List<Conversation.Message> tempMessageList = new List<Conversation.Message>();
@@ -356,7 +367,6 @@ public class ConversationDisplayer : MonoBehaviour
                 newButton = Instantiate(medium.impossibleChoiceButton, footer.transform);
 
             }
-
             newButton.GetComponentInChildren<TMP_Text>().text = poss.message.content.data;
             if (poss.possible)
             {
@@ -365,7 +375,6 @@ public class ConversationDisplayer : MonoBehaviour
             newButton.name = "choiceButton" + i;
             buttonList.Add(newButton, poss);
         }
-
         List<GameObject> buttonGameObjects = new List<GameObject>(buttonList.Keys);
         footerController.DisplayChoices(buttonGameObjects);
 
@@ -393,6 +402,7 @@ public class ConversationDisplayer : MonoBehaviour
                 {
                     messageToAdd = newButton.Value.message;
                     StartCoroutine(LoadMessage(newButton.Value.message));
+                    scrollTransform.anchoredPosition3D -= new Vector3(0, scrollTransform.anchoredPosition3D.y, 0);
 
 
                     foreach (var relationship in npCharacter.relationships)
@@ -410,11 +420,11 @@ public class ConversationDisplayer : MonoBehaviour
 
             Destroy(newButton.Key);
         }
+        currentMessageList.Add(messageToAdd);
         yield return new WaitWhile(() => animationOn);
         yield return new WaitForSecondsRealtime(waitTime);
         StartCoroutine(LoadBranches(nextBranch));
         yield return new WaitWhile(() => currentMessageList.Count == 0);
-        currentMessageList.Add(messageToAdd);
         saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
 
     }

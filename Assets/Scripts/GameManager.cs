@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
     {
         GetCharacterSet();
         GetAllConversation();
-        nextConversation = firstConversation;
         saveManager.SaveGame(firstConversation, new List<Conversation.Message>(), charactersSet, null);
         StartCoroutine(StartGame());
     }
@@ -68,7 +67,6 @@ public class GameManager : MonoBehaviour
         branchToLoad = saveManager.LoadSave().currentBranch;
 
         StartCoroutine(conversationDisplayer.LaunchAConv(FindConvById(firstConversation), messageList, branchToLoad));
-        nextConversation = null;
         StartCoroutine(WaitToLaunchNextConversation());
     }
 
@@ -94,10 +92,21 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(1);
 
         TransitionText transitionText = GameObject.Find("TransitionText").GetComponent<TransitionText>();
-        Conversation nxtConv = FindConvById(nextConversation);
-        string date = GetDateAndTimeToDisplay(nxtConv.date, nxtConv.time);
-        string character1 = FirstLetterToUpper(GetCharacterByID(nxtConv.playerCharacter).firstName);
-        string character2 = FirstLetterToUpper(GetCharacterByID(nxtConv.npCharacter).firstName);
+        Conversation convToLoad;
+        Debug.Log(nextConversation);
+        if(nextConversation != null)
+        {
+            convToLoad = FindConvById(nextConversation);
+        }
+        else
+        {
+            convToLoad = FindConvById(firstConversation);
+        }
+        Debug.Log(convToLoad.id);
+
+        string date = GetDateAndTimeToDisplay(convToLoad.date, convToLoad.time);
+        string character1 = FirstLetterToUpper(GetCharacterByID(convToLoad.playerCharacter).firstName);
+        string character2 = FirstLetterToUpper(GetCharacterByID(convToLoad.npCharacter).firstName);
         transitionText.ChangeTransition(date, character1, character2);
 
         LoadingPanel loadingPanel = GameObject.Find("LoadingPanel").GetComponent<LoadingPanel>();
