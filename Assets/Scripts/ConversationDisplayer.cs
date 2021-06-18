@@ -176,7 +176,7 @@ public class ConversationDisplayer : MonoBehaviour
     private IEnumerator LoadMessage(Conversation.Message message)
     {
         GameObject messageBoxPrefab;
-
+        
         if(SaveManager.settings.speechHelp)
             SpeechController.StopReading();
 
@@ -347,7 +347,6 @@ public class ConversationDisplayer : MonoBehaviour
 
         StartCoroutine(MoveFooter(true));
 
-
         Dictionary<GameObject, Conversation.ChoicePossibility> buttonList = new Dictionary<GameObject, Conversation.ChoicePossibility>();
         List<string> buttonsTexts = new List<string>();
 
@@ -380,6 +379,17 @@ public class ConversationDisplayer : MonoBehaviour
         yield return new WaitWhile(() => animationOn);
         scrollRect.enabled = true;
 
+        if (SaveManager.settings.speechHelp)
+        {
+            string text = "Que souhaitez-vous répondre ?";
+            for (int i = 0; i < choicePossibilities.Count; i++)
+            {
+                text += (i + 1).ToString() + "    " + buttonsTexts[i];
+                yield return new WaitForSeconds(0.5f);
+            }
+
+            SpeechController.ReadText(text);
+        }
 
         yield return new WaitWhile(() => isInChoice);
 
@@ -419,6 +429,9 @@ public class ConversationDisplayer : MonoBehaviour
 
             Destroy(newButton.Key);
         }
+
+
+
         currentMessageList.Add(messageToAdd);
         yield return new WaitWhile(() => animationOn);
         yield return new WaitForSecondsRealtime(waitTime);
@@ -426,16 +439,7 @@ public class ConversationDisplayer : MonoBehaviour
         yield return new WaitWhile(() => currentMessageList.Count == 0);
         saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
 
-        if(SaveManager.settings.speechHelp)
-        {
-            string text = "Que souhaitez-vous répondre ?";
-            for (int i = 0; i < choicePossibilities.Count; i++)
-            {
-                text += (i + 1).ToString() + "    " + buttonsTexts[i];
-            }
 
-            SpeechController.ReadText(text);
-        }
     }
     private void LoadBranchingPoint(Conversation.BranchingPoint branchingPoint)
     {

@@ -8,7 +8,6 @@ public class ChoiceButton : ConversationButtons
     [HideInInspector]
     public Conversation.Branche branche { get; set; }
     private TMP_Text textInput;
-    private TMP_Text myText;
     string defaultTxt;
 
     protected override void Start()
@@ -17,7 +16,6 @@ public class ChoiceButton : ConversationButtons
 
         textInput = GameObject.Find("InputTxt").GetComponent<TMP_Text>();
         defaultTxt = textInput.text;
-        myText = GetComponentInChildren<TMP_Text>();
     }
 
     protected override void OnHold()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ConversationButtons : MonoBehaviour
 {
@@ -9,10 +10,13 @@ public class ConversationButtons : MonoBehaviour
     protected bool isHold = false;
     protected int waitIncrement = 0;
     protected int waitLimit = 60;
+    protected TMP_Text myText;
 
     virtual protected void Start()
     {
         conversationDisplayer = GameObject.Find("ConversationDisplayer").GetComponent<ConversationDisplayer>();
+        myText = GetComponentInChildren<TMP_Text>();
+
     }
 
     private void Update()
@@ -36,6 +40,8 @@ public class ConversationButtons : MonoBehaviour
     virtual public void OnPointerDown()
     {
         isHold = true;
+        if (SaveManager.settings.speechHelp)
+            SpeechController.ReadText("Vous appuyez sur : " + myText.text);
     }
 
     virtual public void OnPointerUp()
