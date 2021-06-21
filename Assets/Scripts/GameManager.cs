@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     private SaveManager saveManager = new SaveManager();
 
     public List<Conversation> conversations { get; set; } = new List<Conversation>();
-    public List<Character> charactersSet { get; set; } = new List<Character>();
+    static public List<Character> charactersSet { get; set; } = new List<Character>();
+    public static End end;
 
     [HideInInspector]
     public ConversationDisplayer conversationDisplayer { get; set; }
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
         BetterStreamingAssets.Initialize();
         GetAllConversation();
         GetCharacterSet();
+        GetEnd();
     }
 
     public void StartNewGame()
@@ -86,7 +88,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(WaitToLaunchNextConversation());
     }
 
-    public Character GetCharacterByID(string id)
+    static public Character GetCharacterByID(string id)
     {
         Character foundCharacter = null;
 
@@ -168,6 +170,12 @@ public class GameManager : MonoBehaviour
         {
             AudioSource musicSource = DDOL.instance.GetComponentInChildren<AudioSource>();
             musicSource.mute = true;
+
+            firstConversation = saveManager.LoadSave().currentConversation;
+            messageList = saveManager.LoadSave().currentMessageList;
+            branchToLoad = saveManager.LoadSave().currentBranch;
+            UpdateRelationships();
+
             SceneManager.LoadScene("EndScene");
         }
     }
@@ -190,6 +198,7 @@ public class GameManager : MonoBehaviour
                     Character.Relationship newRelation = new Character.Relationship();
                     newRelation.them = relationship.them;
                     newRelation.confidenceMeToThem = relationship.confidenceMeToThem;
+                    Debug.Log("Update relation : Me : "+ character.id + " Them : " + newRelation.them  + " value : " + newRelation.confidenceMeToThem);
                     character.relationships.Add(newRelation);
                 }
             }
@@ -223,6 +232,19 @@ public class GameManager : MonoBehaviour
             conversations.Add(jsonUnloader.LoadConversationFromJson(path));
         }
         conversations[0].DebugLogConversation();
+
+
+    }
+
+    private void GetEnd()
+    {
+
+        string[] paths = BetterStreamingAssets.GetFiles("end", "*.json", SearchOption.AllDirectories);
+
+        foreach (var path in paths)
+        {
+            end = jsonUnloader.LoadEndFromJson(path);   
+        }
 
 
     }

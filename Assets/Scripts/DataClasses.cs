@@ -196,6 +196,97 @@ public class Character
 
 }
 
+public class End
+{
+    public class Branche
+    {
+        public class Test
+        {
+            public class Result
+            {
+                public int value {get; set;}
+                public List<string> text { get; set; } = new List<string>();
+            }
+
+            public string characterTo { get; set; }
+            public string characterFrom { get; set; }
+            public Result bad { get; set; }
+            public Result neutral { get; set; }
+            public Result good { get; set; }
+        }
+        public List<string> text { get; set; } = new List<string>();
+        public Test test { get; set; }
+    }
+
+    public List<Branche> branches;
+
+    public void DebugLogEnd()
+    {
+        string logString = "";
+
+        logString += "End : \n";
+
+        foreach (var branche in branches)
+        {
+            logString += "\t Branch : \n";
+            logString += "\t\t Text : \n";
+            foreach (var text in branche.text)
+            {
+                logString += "\t\t\t";
+
+                logString += $" text : {text} ";
+
+                logString += "\n";
+            }
+
+            logString += "\t\t Test : \n";
+            logString += $"\t\t\tCharacterTo :{branche.test.characterTo}\n";
+            logString += $"\t\t\tCharacterFrom :{branche.test.characterFrom}\n";
+
+            logString += $"\t\t\tBad :\n";
+            logString += $"\t\t\t\tvalue :{branche.test.bad.value}\n";
+            logString += $"\t\t\t\ttext :\n";
+            foreach (var text in branche.test.bad.text)
+            {
+                logString += "\t\t\t\t";
+
+                logString += $"{text} ";
+
+                logString += "\n";
+            }
+
+            logString += $"\t\t\tNeutral :\n";
+            logString += $"\t\t\t\tvalue :{branche.test.neutral.value}\n";
+            logString += $"\t\t\t\ttext :\n";
+            foreach (var text in branche.test.neutral.text)
+            {
+                logString += "\t\t\t\t";
+
+                logString += $"{text} ";
+
+                logString += "\n";
+            }
+
+            logString += $"\t\t\tGood :\n";
+            logString += $"\t\t\t\tvalue :{branche.test.good.value}\n";
+            logString += $"\t\t\t\ttext :\n";
+            foreach (var text in branche.test.good.text)
+            {
+                logString += "\t\t\t\t";
+
+                logString += $"{text} ";
+
+                logString += "\n";
+            }
+
+
+        }
+        
+        Debug.Log(logString);
+
+    }
+
+}
 
 
 

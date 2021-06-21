@@ -85,8 +85,8 @@ public class ConversationDisplayer : MonoBehaviour
             messageLoaded = true;
         }
 
-        npCharacter = gameManager.GetCharacterByID(conversation.npCharacter);
-        playerCharacter = gameManager.GetCharacterByID(conversation.playerCharacter);
+        npCharacter = GameManager.GetCharacterByID(conversation.npCharacter);
+        playerCharacter = GameManager.GetCharacterByID(conversation.playerCharacter);
 
         yield return new WaitUntil(() => footerLoaded);
 
@@ -121,7 +121,7 @@ public class ConversationDisplayer : MonoBehaviour
         // Update header name
         GameObject.FindGameObjectWithTag("ContactName").GetComponent<TMP_Text>().text = $"{npCharacter.firstName} {npCharacter.lastName}" ;
 
-        saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
+        saveManager.SaveGame(conversation.id, currentMessageList, GameManager.charactersSet, currentBranch);
 
     }
     private IEnumerator LoadPreviousMessage(List<Conversation.Message> messagesToLoad)
@@ -478,7 +478,7 @@ public class ConversationDisplayer : MonoBehaviour
         yield return new WaitForSecondsRealtime(waitTime);
         StartCoroutine(LoadBranches(nextBranch));
         yield return new WaitWhile(() => currentMessageList.Count == 0);
-        saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
+        saveManager.SaveGame(conversation.id, currentMessageList, GameManager.charactersSet, currentBranch);
 
 
     }
@@ -599,7 +599,7 @@ public class ConversationDisplayer : MonoBehaviour
         yield return new WaitWhile(() => loadPanel.isFading);
 
 
-        saveManager.SaveGame(conversation.id, currentMessageList, gameManager.charactersSet, currentBranch);
+        saveManager.SaveGame(conversation.id, currentMessageList, GameManager.charactersSet, currentBranch);
         gameManager.nextConversation = conversation.nextConversation;
     }
     public void LoadProfilePicture(Image imageComponent, string character)

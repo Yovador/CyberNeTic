@@ -1,0 +1,27 @@
+{
+    "endBranches":[
+        {
+        "text":["bla", "bla", "bla"],
+        "test":
+            {
+                "characterFrom" : "victime",
+                "characterTo" : "coach",
+                "bad":{"value":-5, "text":["bad", "bad", "bad"] },
+                "neutral":{"value":null, "text":["neutral", "neutral", "neutral"] },
+                "good":{"value":5, "text":["good", "good", "good"] }
+            }
+        },
+        {
+        "text":["bloop", "bloop", "bloop"],
+        "test":
+            {
+                "characterFrom" : "victime",
+                "characterTo" : "mère",
+                "bad":{"value":-1, "text":["good", "good", "good"] },
+                "neutral":{"value":null, "text":["neutral", "neutral", "neutral"] },
+                "good":null
+            }
+        }
+        
+    ]
+}

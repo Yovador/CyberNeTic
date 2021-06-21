@@ -3,10 +3,10 @@
     "Parameters": {
         "id": "testnewtest",
         "startingBranch": "testnewtest-0",
-        "medium": "snapchat",
-        "playerCharacter": "victime",
-        "npCharacter": "coach",
-        "nextConversation": "testnewtest",
+        "medium": "sms",
+        "playerCharacter": "coach",
+        "npCharacter": "victime",
+        "nextConversation": "bruh",
         "date": "2021-06-23",
         "time": "08:53"
     },
@@ -28,31 +28,31 @@
                     {
                         "branch": "testnewtest-1",
                         "possible": true,
-                        "confidenceMod": "2",
+                        "confidenceMod": 5,
                         "message": {
                             "isNpc": false,
                             "content": {
                                 "type": "text",
-                                "data": "+2."
+                                "data": "+5."
                             }
                         }
                     },
                     {
                         "branch": "testnewtest-1",
                         "possible": true,
-                        "confidenceMod": "0",
+                        "confidenceMod": -5,
                         "message": {
                             "isNpc": false,
                             "content": {
                                 "type": "text",
-                                "data": "+0."
+                                "data": "-5."
                             }
                         }
                     },
                     {
                         "branch": "testnewtest-1",
                         "possible": true,
-                        "confidenceMod": "1",
+                        "confidenceMod": 1,
                         "message": {
                             "isNpc": false,
                             "content": {
@@ -64,7 +64,7 @@
                     {
                         "branch": "testnewtest-1",
                         "possible": true,
-                        "confidenceMod": "-2",
+                        "confidenceMod": -2,
                         "message": {
                             "isNpc": false,
                             "content": {
