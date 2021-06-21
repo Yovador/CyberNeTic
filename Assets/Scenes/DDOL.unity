@@ -259,7 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a758ebf3af7069458b40d6c55f1e287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lang: fr-FR
 --- !u!1 &1603325455
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,8 +302,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b570f6039c42db45a46ebd7da673df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstConversation: testnewtest
-  transitionTime: 0.1
+  firstConversation: demo
+  transitionTime: 4
+  transitionSound: {fileID: 8300000, guid: e52be18ea3e0f8045a33b8ffeff27ac5, type: 3}
+  endMusic: {fileID: 8300000, guid: 3355ad33e5218a544afb3cf9df5572bd, type: 3}
 --- !u!1 &1790538929
 GameObject:
   m_ObjectHideFlags: 0

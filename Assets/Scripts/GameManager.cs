@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour
     private bool inTransition = false;
 
     private AudioSource musicSource;
+    [SerializeField]
+    private AudioClip transitionSound;
+    [SerializeField]
+    private AudioClip endMusic;
 
     public static GameManager instance;
 
@@ -109,6 +113,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("TransitionScene");
         yield return new WaitForSecondsRealtime(1);
 
+        ChangeMusic(transitionSound, 0.1f);
+
         TransitionText transitionText = GameObject.Find("TransitionText").GetComponent<TransitionText>();
         Conversation convToLoad;
         Debug.Log(nextConversation);
@@ -168,8 +174,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            AudioSource musicSource = DDOL.instance.GetComponentInChildren<AudioSource>();
-            musicSource.mute = true;
+
+            ChangeMusic(endMusic, 1f);
 
             firstConversation = saveManager.LoadSave().currentConversation;
             messageList = saveManager.LoadSave().currentMessageList;

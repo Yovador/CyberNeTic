@@ -3,7 +3,7 @@
     "Parameters": {
         "id": "testnewtest",
         "startingBranch": "testnewtest-0",
-        "medium": "sms",
+        "medium": "messenger",
         "playerCharacter": "coach",
         "npCharacter": "victime",
         "nextConversation": "bruh",
@@ -27,7 +27,7 @@
                 "possibilities": [
                     {
                         "branch": "testnewtest-1",
-                        "possible": true,
+                        "possible": false,
                         "confidenceMod": 5,
                         "message": {
                             "isNpc": false,
