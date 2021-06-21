@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6723b94facd0648bfe130252f7591b, type: 3}
+  m_Name: whatsapp
+  m_EditorClassIdentifier: 
+  spaceBetweenMessages: 2.5
+  playerMessageBox: {fileID: 5532616446848884718, guid: 4f1e34cf8b0098e44b2c16ae0a02e166, type: 3}
+  npcMessageBox: {fileID: 5532616446848884718, guid: 537b7d414114f7e4080d66b11b76de56, type: 3}
+  playerMessageBoxImage: {fileID: 7207647838909603615, guid: 1ba907a205222664bae4e717ddaa8761, type: 3}
+  npcMessageBoxImage: {fileID: 6216024009079243281, guid: e27eb72277b9ed541ba24c909132a5a8, type: 3}
+  background: {fileID: 848058901730201712, guid: c25db417d9757734189779e476a880c4, type: 3}
+  navBar: {fileID: 454831195708029934, guid: 8f8e3da0cba136c4f942ddba39ad220e, type: 3}
+  footer: {fileID: 8402148764533746829, guid: 56d5c6b6ddb50fe4dbfa6dcb87ed4e4d, type: 3}
+  choiceButton: {fileID: 8568480440450106278, guid: 19fc3b15601001f468dd1ff8c8fe8dee, type: 3}
+  impossibleChoiceButton: {fileID: 7519917683848704902, guid: a4e577566d9387645b2f88ce328f1432, type: 3}
+  nextConvoButton: {fileID: 6655867024192596153, guid: c8b3b722a913aa24389d74c5a43f2632, type: 3}
+  dateAndHour: {fileID: 5532616446848884718, guid: 5f671fffa9f0ab54da43edfb3f403312, type: 3}
+  musicClip: {fileID: 8300000, guid: 3cc24a53cfd726e4c9451f21daac4537, type: 3}

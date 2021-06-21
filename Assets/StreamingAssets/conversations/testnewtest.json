@@ -3,7 +3,7 @@
     "Parameters": {
         "id": "testnewtest",
         "startingBranch": "testnewtest-0",
-        "medium": "sms",
+        "medium": "whatsapp",
         "playerCharacter": "coach",
         "npCharacter": "victime",
         "nextConversation": "bruh",
