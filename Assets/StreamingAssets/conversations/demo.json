@@ -3,7 +3,7 @@
     "Parameters": {
         "id": "demo",
         "startingBranch": "1-1-theo-sophie-0",
-        "medium": "whatsapp",
+        "medium": "snapchat",
         "playerCharacter": "collegue",
         "npCharacter": "victime",
         "nextConversation": "1-2-olivier-sophie",
@@ -98,7 +98,7 @@
                 "possibilities": [
                     {
                         "branch": "1-1-theo-sophie-3",
-                        "possible": true,
+                        "possible": false,
                         "confidenceMod": "0",
                         "message": {
                             "isNpc": false,
@@ -110,7 +110,7 @@
                     },
                     {
                         "branch": "1-1-theo-sophie-4",
-                        "possible": true,
+                        "possible": false,
                         "confidenceMod": "0",
                         "message": {
                             "isNpc": false,
