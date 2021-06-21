@@ -53,19 +53,19 @@ public class ChoiceButton : ConversationButtons
     protected override IEnumerator ButtonAction()
     {
         StartCoroutine(base.ButtonAction());
-
-        isHold = false;
+        if (SaveManager.settings.speechHelp)
+            yield return new WaitWhile(() => SpeechController.isReading);
+        
         GameObject.FindGameObjectWithTag("SendButtonSprite").GetComponent<Animator>().SetTrigger("Active");
         yield return new WaitForSecondsRealtime(0.3f);
         textInput.text = defaultTxt;
-        // Send button's animation
+        // Read button content
+
         conversationDisplayer.isInChoice = false;
         conversationDisplayer.nextBranch = branche;
         conversationDisplayer.choiceButton = this;
 
-        // Read button content
-        if (SaveManager.settings.speechHelp)
-            SpeechController.ReadText(GetComponentInChildren<TMP_Text>().text);
+
 
         // Send button's animation
         GameObject.FindGameObjectWithTag("SendButtonSprite").GetComponent<Animator>().SetTrigger("Active");

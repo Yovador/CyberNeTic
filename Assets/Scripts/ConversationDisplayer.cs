@@ -204,10 +204,43 @@ public class ConversationDisplayer : MonoBehaviour
             }
         }
 
+        if (SaveManager.settings.speechHelp)
+        {
+            if (!(message.content is ImageContent))
+            {
+                yield return new WaitWhile(() => SpeechController.isReading);
+                if (message.isNpc)
+                {
+                    SpeechController.ReadText($" {npCharacter.firstName} a envoyé : {message.content.data}");
+                }
+                else
+                {
+                    SpeechController.ReadText($" vous avez envoyé : {message.content.data}");
+                }
+                yield return new WaitWhile(() => SpeechController.isReading);
+            }
+            else
+            {
+                yield return new WaitWhile(() => SpeechController.isReading);
+                if (message.isNpc)
+                {
+                    SpeechController.ReadText($" {npCharacter.firstName} a envoyé : une image");
+                }
+                else
+                {
+                    SpeechController.ReadText($" vous avez envoyé : une image");
+                }
+                yield return new WaitWhile(() => SpeechController.isReading);
+            }
+
+        }
+
         GameObject messageBox = Instantiate(messageBoxPrefab, transform.Find("Scroll") );
         GameObject backgroungMessage = messageBox.transform.Find("Background").gameObject;
         MessageBoxResizer messageBoxResizer = backgroungMessage.GetComponent<MessageBoxResizer>();
         messageBox.GetComponent<AudioSource>().volume = GameManager.soundEffectVolume;
+
+
 
         if (message.content is ImageContent)
         {
@@ -221,8 +254,6 @@ public class ConversationDisplayer : MonoBehaviour
             TMP_Text textComponent = backgroungMessage.transform.Find("Text").GetComponent<TMP_Text>();
             textComponent.text = message.content.data;
             messageBoxResizer.ResizeBox();
-
-            SpeechController.ReadText(message.content.data);
         }
 
 
@@ -305,6 +336,8 @@ public class ConversationDisplayer : MonoBehaviour
     }
     private IEnumerator MoveFooter(bool isMoveUp)
     {
+        if (SaveManager.settings.speechHelp)
+            yield return new WaitWhile(() => SpeechController.isReading);
         animationOn = true;
 
         RectTransform rectTransform = footer.GetComponent<RectTransform>();
@@ -376,24 +409,32 @@ public class ConversationDisplayer : MonoBehaviour
         List<GameObject> buttonGameObjects = new List<GameObject>(buttonList.Keys);
         footerController.DisplayChoices(buttonGameObjects);
 
+        if (SaveManager.settings.speechHelp)
+        {
+            SpeechController.ReadText("Que souhaitez - vous répondre ?");
+
+            for (int i = 0; i < choicePossibilities.Count; i++)
+            {
+                yield return new WaitWhile(() => SpeechController.isReading);
+
+                SpeechController.ReadText($"Choix numéro : {(i + 1)}.");
+                yield return new WaitWhile(() => SpeechController.isReading);
+                yield return new WaitForSeconds(0.1f);
+                SpeechController.ReadText($"{buttonsTexts[i]}");
+
+                yield return new WaitWhile(() => SpeechController.isReading);
+            }
+
+        }
+
         yield return new WaitWhile(() => animationOn);
         scrollRect.enabled = true;
 
-        if (SaveManager.settings.speechHelp)
-        {
-            string text = "Que souhaitez-vous répondre ?";
-            for (int i = 0; i < choicePossibilities.Count; i++)
-            {
-                text += (i + 1).ToString() + "    " + buttonsTexts[i];
-                yield return new WaitForSeconds(0.5f);
-            }
-
-            SpeechController.ReadText(text);
-        }
 
         yield return new WaitWhile(() => isInChoice);
 
         scrollRect.enabled = false;
+
         StartCoroutine(MoveFooter(false));
         foreach (var newButton in buttonList)
         {

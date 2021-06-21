@@ -42,6 +42,7 @@ public class ConversationButtons : MonoBehaviour
         isHold = true;
         if (SaveManager.settings.speechHelp)
             SpeechController.ReadText("Vous appuyez sur : " + myText.text);
+
     }
 
     virtual public void OnPointerUp()
@@ -60,5 +61,7 @@ public class ConversationButtons : MonoBehaviour
     virtual protected IEnumerator ButtonAction()
     {
         yield return null;
+        if (SaveManager.settings.speechHelp)
+            yield return new WaitWhile(() => SpeechController.isReading);
     }
 }
