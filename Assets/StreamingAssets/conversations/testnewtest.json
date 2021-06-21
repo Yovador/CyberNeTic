@@ -27,7 +27,7 @@
                 "possibilities": [
                     {
                         "branch": "testnewtest-1",
-                        "possible": true,
+                        "possible": false,
                         "confidenceMod": 5,
                         "message": {
                             "isNpc": false,

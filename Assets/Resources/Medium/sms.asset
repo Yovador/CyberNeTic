@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spaceBetweenMessages: 2.5
   playerMessageBox: {fileID: 7272966043441959420, guid: 2f97c0e558148b1438412b358c1a595b, type: 3}
-  npcMessageBox: {fileID: 5532616446848884718, guid: d966a80c324fe8f47a19ba6f78bf03b8, type: 3}
-  playerMessageBoxImage: {fileID: 7207647838909603615, guid: 8c89b7f2197b88d42bdf30fb4d2b039d, type: 3}
-  npcMessageBoxImage: {fileID: 6216024009079243281, guid: 84bbdd166a2f39b448c3f64af9af4dcb, type: 3}
+  npcMessageBox: {fileID: 5532616446848884718, guid: 45534fa95f34c30499703fcbd66e54e7, type: 3}
+  playerMessageBoxImage: {fileID: 7207647838909603615, guid: cc727f5068d561c478a63aa91ecafc20, type: 3}
+  npcMessageBoxImage: {fileID: 6216024009079243281, guid: 813bc8db63aaae140a9d584429f525ea, type: 3}
   background: {fileID: 848058901730201712, guid: b6a404a8a788c0a42acc2e33884b70f6, type: 3}
   navBar: {fileID: 454831195708029934, guid: 3d2c90a0c7ffdc540b7c8b6387b4b6bf, type: 3}
   footer: {fileID: 8402148764533746829, guid: 6ef94cba01af8214ea65a0bb2c2d896c, type: 3}

@@ -57,6 +57,13 @@ public class EndManager : MonoBehaviour
                 StartCoroutine(loadingPanel.Disappear());
                 yield return new WaitWhile(() => loadingPanel.isFading);
 
+                if (SaveManager.settings.speechHelp)
+                {
+                    yield return new WaitWhile(() => SpeechController.isReading);
+                    SpeechController.ReadText(text);
+                    yield return new WaitWhile(() => SpeechController.isReading);
+                }
+
                 yield return new WaitForSecondsRealtime(timeBetweenEndText);
 
                 StartCoroutine(loadingPanel.Appear());
@@ -111,6 +118,13 @@ public class EndManager : MonoBehaviour
                 //Debug.Log("Text end : " + endText.text);
                 StartCoroutine(loadingPanel.Disappear());
                 yield return new WaitWhile(() => loadingPanel.isFading);
+
+                if (SaveManager.settings.speechHelp)
+                {
+                    yield return new WaitWhile(() => SpeechController.isReading);
+                    SpeechController.ReadText(text);
+                    yield return new WaitWhile(() => SpeechController.isReading);
+                }
 
                 yield return new WaitForSecondsRealtime(timeBetweenEndText);
 
