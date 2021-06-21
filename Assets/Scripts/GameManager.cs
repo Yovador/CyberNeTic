@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -128,6 +129,14 @@ public class GameManager : MonoBehaviour
         StartCoroutine(loadingPanel.Disappear());
 
         yield return new WaitWhile(() => loadingPanel.isFading);
+
+        if (SaveManager.settings.speechHelp)
+        {
+            yield return new WaitWhile(() => SpeechController.isReading);
+            SpeechController.ReadText(transitionText.gameObject.GetComponent<TMP_Text>().text);
+            yield return new WaitWhile(() => SpeechController.isReading);
+        }
+
         yield return new WaitForSecondsRealtime(transitionTime);
 
 

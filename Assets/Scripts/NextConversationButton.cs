@@ -24,6 +24,8 @@ public class NextConversationButton : ConversationButtons
     }
     protected override IEnumerator ButtonAction()
     {
+        if (SaveManager.settings.speechHelp)
+            yield return new WaitWhile(() => SpeechController.isReading);
         conversationDisplayer.endConversation = true;
         completionBackground.localPosition = defaultPosition;
         yield return null;

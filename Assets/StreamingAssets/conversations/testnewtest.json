@@ -17,8 +17,8 @@
                 {
                     "isNpc": true,
                     "content": {
-                        "type": "text",
-                        "data": "Choisir modifieur :."
+                        "type": "image",
+                        "data": "sophie.jpg"
                     }
                 }
             ],
