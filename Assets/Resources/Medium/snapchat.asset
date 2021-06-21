@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: snapchat
   m_EditorClassIdentifier: 
   spaceBetweenMessages: 2.5
-  playerMessageBox: {fileID: 7272966043441959420, guid: 949cf2e29278d53428c00d6a295ab6fa, type: 3}
+  playerMessageBox: {fileID: 5532616446848884718, guid: 949cf2e29278d53428c00d6a295ab6fa, type: 3}
   npcMessageBox: {fileID: 5532616446848884718, guid: 7fc6456d6fe4e4d40a0333525b374874, type: 3}
   playerMessageBoxImage: {fileID: 7207647838909603615, guid: 6dcb8732cf07afa479cfcbc883d2e877, type: 3}
   npcMessageBoxImage: {fileID: 6216024009079243281, guid: c38d958ca05a0bb47a94566f2e472a29, type: 3}
