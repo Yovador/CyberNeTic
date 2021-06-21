@@ -100,6 +100,36 @@ public class JsonUnloader
         public CharacterJson[] Characters; 
         public Relationship[] Relationships;
     }
+    [System.Serializable]
+    class EndTestContent
+    {
+        public int value;
+        public string[] text;
+    }
+
+    [System.Serializable]
+    class EndTest
+    {
+        public string characterTo;
+        public string characterFrom;
+        public EndTestContent bad;
+        public EndTestContent neutral;
+        public EndTestContent good;
+    }
+
+    [System.Serializable]
+    class EndBranche
+    {
+        public string[] text;
+        public EndTest test;
+    }
+
+
+    [System.Serializable]
+    class EndJson
+    {
+        public EndBranche[] endBranches;
+    }
 
     //Fonction retournant un objet de classe Conversation à partir d'un chemin vers un .json
     public Conversation LoadConversationFromJson(string jsonPath)
@@ -234,6 +264,68 @@ public class JsonUnloader
         return listFinal;
     }
 
+    public End LoadEndFromJson(string jsonPath)
+    {
+        EndJson endJson = JsonUtility.FromJson<EndJson>(Encoding.Default.GetString(LoadFromStreamingAssets(jsonPath)));
+        End end = new End();
+        List<End.Branche> endBranches = new List<End.Branche>();
+        foreach (var branche in endJson.endBranches)
+        {
+            End.Branche newBranch = new End.Branche();
+            newBranch.text = new List<string>(branche.text);
+            End.Branche.Test test = new End.Branche.Test();
+            test.characterFrom = branche.test.characterFrom;
+            test.characterTo = branche.test.characterTo;
+            End.Branche.Test.Result bad = new End.Branche.Test.Result();
+            bad.value = 0;
+            bad.text = new List<string>();
+            if(branche.test.bad != null)
+            {
+                bad.value = branche.test.bad.value;
+                if(branche.test.bad.text != null)
+                {
+                    bad.text = new List<string>(branche.test.bad.text);
+                }
+            }
+
+            End.Branche.Test.Result neutral = new End.Branche.Test.Result();
+            neutral.value = 0;
+            neutral.text = new List<string>();
+            if (branche.test.neutral != null)
+            {
+                neutral.value = branche.test.neutral.value;
+                if (branche.test.neutral.text != null)
+                {
+                    neutral.text = new List<string>(branche.test.neutral.text);
+                }
+            }
+
+            End.Branche.Test.Result good = new End.Branche.Test.Result();
+            good.value = 0;
+            good.text = new List<string>();
+            if (branche.test.good != null)
+            {
+                good.value = branche.test.good.value;
+                if (branche.test.good.text != null)
+                {
+                    good.text = new List<string>(branche.test.good.text);
+                }
+
+            }
+
+            test.bad = bad;
+            test.neutral = neutral;
+            test.good = good;
+
+            newBranch.test = test;
+
+            endBranches.Add(newBranch);
+        }
+        end.branches = endBranches;
+
+        return end;
+       
+    }
 
     static public byte[] LoadFromStreamingAssets(string path)
     {
