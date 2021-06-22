@@ -701,7 +701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc0b090a74eb63428ce75380dbbeb5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenEndText: 2
+  timeBetweenEndText: 4
 --- !u!328 &1933593941
 VideoPlayer:
   m_ObjectHideFlags: 0

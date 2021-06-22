@@ -9,6 +9,7 @@ TagManager:
   - footerRow
   - SendButtonSprite
   - SpeechStatus
+  - StarMessageBody
   layers:
   - Default
   - TransparentFX
