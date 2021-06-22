@@ -28,7 +28,7 @@ public class SpeechController : MonoBehaviour
     // Actions
     public static void ReadText (string text)
     {
-        if(!isReading && SaveManager.settings.speechHelp)
+        if (!isReading && SaveManager.settings.speechHelp)
         {
             OnReadingStart();
             TextToSpeech.instance.StartSpeak(text);
