@@ -3,7 +3,7 @@
     "Parameters": {
         "id": "demo",
         "startingBranch": "1-1-theo-sophie-0",
-        "medium": "whatsapp",
+        "medium": "snapchat",
         "playerCharacter": "collegue",
         "npCharacter": "victime",
         "nextConversation": "1-2-olivier-sophie",
@@ -18,7 +18,7 @@
                     "isNpc": true,
                     "content": {
                         "type": "text",
-                        "data": "Hey, désolée de te déranger si tard. Ma voiture m’a lâchée ce soir en rentrant. Virginie m’a dit que tu habitais dans le coin. Est-ce que ce serait possible de m’emmener demain s’il te plaît ?  "
+                        "data": "🙏🙏🙏Hey, désolée de te déranger si tard. Ma voiture m’a lâchée ce soir en rentrant. Virginie m’a dit que tu habitais dans le coin. Est-ce que ce serait possible de m’emmener demain s’il te plaît ?  "
                     }
                 },
                 {
@@ -40,7 +40,7 @@
                             "isNpc": false,
                             "content": {
                                 "type": "text",
-                                "data": "Yes, mais va falloir que tu te lèves tôt. Je viens te prendre vers 8h15. On devra juste déposer ma fille au passage"
+                                "data": "🙏🙏Yes, mais va falloir que tu te lèves tôt. Je viens te prendre vers 8h15. On devra juste déposer ma fille au passage"
                             }
                         }
                     },
