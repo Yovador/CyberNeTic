@@ -1,27 +1,46 @@
 {
     "endBranches":[
         {
-        "text":["bla", "bla", "bla"],
+        "text":["Samedi 33 Janvier \n 10h00 du matin"],
+        "test":
+            {
+                "characterFrom" : "victime",
+                "characterTo" : "amie",
+                "bad":null,
+                "neutral":{"value":null, "text":["Sophie va porter plainte \n Elle n'est pas accompagnée d'Angélique"] },
+                "good":{"value":4, "text":["Sophie va porter plainte \n Elle est accompagnée d'Angélique"] }
+            }
+        },
+        {
+        "test":
+            {
+                "characterFrom" : "victime",
+                "characterTo" : "mere",
+                "bad":null,
+                "neutral":{"value":null, "text":["Sophie explique à Patricia la situation \n Sa mère la soutient dans sa démarche"] },
+                "good":{"value":2, "text":["Sophie explique à Patricia la situation \n Les deux prévoient un weekend ensemble pour se vider la tête"] }
+            }
+        },
+        {
         "test":
             {
                 "characterFrom" : "victime",
                 "characterTo" : "coach",
-                "bad":{"value":-5, "text":["bad", "bad", "bad"] },
-                "neutral":{"value":null, "text":["neutral", "neutral", "neutral"] },
-                "good":{"value":5, "text":["good", "good", "good"] }
+                "bad":{"value":6, "text":["Sophie contacte Olivier à propos de la compétition \n Elle n'y participera pas"] },
+                "neutral":{"value":null, "text":["Sophie contacte Olivier à propos de la compétition \n Elle ne participera pas, mais viendra aider à la buvette"] },
+                "good":{"value":9, "text":["Sophie contacte Olivier à propos de la compétition \n Elle y participera"] }
             }
         },
         {
-        "text":["bloop", "bloop", "bloop"],
-        "test":
-            {
-                "characterFrom" : "victime",
-                "characterTo" : "mère",
-                "bad":{"value":-1, "text":["good", "good", "good"] },
-                "neutral":{"value":null, "text":["neutral", "neutral", "neutral"] },
-                "good":null
+            "test":
+                {
+                    "characterFrom" : "victime",
+                    "characterTo" : "collegue",
+                    "bad":{"value":0, "text":["Sophie a discuté avec Théo du boulot \n Elle a décidé de démissionner"] },
+                    "neutral":{"value":null, "text":["Sophie a discuté avec Théo du boulot \n Elle a décidé de prolonger ses congés"] },
+                    "good":{"value":4, "text":["Sophie a discuté avec Théo du boulot \n Elle a décidé de revenir Lundi"] }
+                }
             }
-        }
         
     ]
 }
