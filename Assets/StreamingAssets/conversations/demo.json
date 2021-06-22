@@ -46,7 +46,7 @@
                     },
                     {
                         "branch": "1-1-theo-sophie-1",
-                        "possible": true,
+                        "possible": false,
                         "confidenceMod": "-1",
                         "message": {
                             "isNpc": false,
