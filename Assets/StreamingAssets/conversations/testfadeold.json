@@ -1,1 +1,0 @@
-{"version":0.3,"Parameters":{"id":"testfade","startingBranch":"testfade-0","medium":"sms","playerCharacter":"victime","npCharacter":"coach","nextConversation":"testfade","date":"2021-06-09","time":"09:51"},"Branches":[{"id":"testfade-0","messagesList":[],"branchingPoint":{"type":"stop","possibilities":[]}}]}
