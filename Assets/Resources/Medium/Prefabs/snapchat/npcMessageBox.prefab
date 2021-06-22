@@ -308,7 +308,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TUGDAL LE SECOND
+  m_text: NAME
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d89a7c18f7ffe9443b64c00cb059fce7, type: 2}
   m_sharedMaterial: {fileID: 4694978778344592537, guid: d89a7c18f7ffe9443b64c00cb059fce7, type: 2}
