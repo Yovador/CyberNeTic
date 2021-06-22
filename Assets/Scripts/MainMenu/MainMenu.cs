@@ -57,7 +57,13 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
-        currentSection.Frame();
+        if(currentSection != null)
+            currentSection.Frame();
+        else
+        {
+            Debug.LogError("Current section is null! Switching to start section");
+            SetSection(startSection);
+        }
     }
 
     // Buttons
