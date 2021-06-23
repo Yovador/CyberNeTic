@@ -314,11 +314,16 @@ public class ConversationDisplayer : MonoBehaviour
         List<Conversation.Message> tempMessageList = new List<Conversation.Message>();
         foreach (var message in branche.messagesList)
         {
+            if (SaveManager.settings.speechHelp)
+            {
+                yield return new WaitWhile(() => SpeechController.isReading);
+            }
             yield return new WaitWhile(() => animationOn);
             tempMessageList.Add(message);
             StartCoroutine(LoadMessage(message));
             yield return new WaitForSecondsRealtime(timeBetweenMessage);
             yield return new WaitWhile(() => animationOn);
+
 
         }
 
@@ -394,8 +399,28 @@ public class ConversationDisplayer : MonoBehaviour
         if (!gameManager.tutorialPlayed)
         {
 
+            if (SaveManager.settings.speechHelp)
+            {
+                yield return new WaitWhile(() => SpeechController.isReading);
+            }
+
             gameManager.tutorialPlayed = true;
             currentTutorialPanel = Instantiate(tutorialPanel, transform);
+
+
+            if (SaveManager.settings.speechHelp)
+            {
+                TMP_Text[] textChildren = currentTutorialPanel.transform.Find("Background").GetComponentsInChildren<TMP_Text>();
+                foreach (var txt in textChildren)
+                {
+                    SpeechController.ReadText(txt.text);
+                    yield return new WaitWhile(() => SpeechController.isReading);
+                }
+                SpeechController.ReadText(currentTutorialPanel.GetComponentInChildren< TMP_Text>().text);
+
+
+                yield return new WaitWhile(() => SpeechController.isReading);
+            }
 
         }
 
