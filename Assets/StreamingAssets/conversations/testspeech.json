@@ -3,7 +3,7 @@
     "Parameters": {
         "id": "testspeech",
         "startingBranch": "testspeech-0",
-        "medium": "messenger",
+        "medium": "whatsapp",
         "playerCharacter": "coach",
         "npCharacter": "victime",
         "nextConversation": "end",
@@ -17,8 +17,29 @@
                 {
                     "isNpc": true,
                     "content": {
+                        "type": "image",
+                        "data": "sophie.jpg"
+                    }
+                },
+                {
+                    "isNpc": true,
+                    "content": {
                         "type": "text",
-                        "data": "Ceci est un message"
+                        "data": "sophie.jpg"
+                    }
+                },
+                {
+                    "isNpc": false,
+                    "content": {
+                        "type": "image",
+                        "data": "sophie.jpg"
+                    }
+                },
+                {
+                    "isNpc": false,
+                    "content": {
+                        "type": "text",
+                        "data": "sophie.jpg"
                     }
                 }
             ],
