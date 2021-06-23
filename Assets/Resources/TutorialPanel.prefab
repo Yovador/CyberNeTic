@@ -171,7 +171,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Pour r\xE9pondre rester appuy\xE9 sur le message de votre choix jusqu'\xE0
-    ce qu'il s'envoie."
+    ce qu'il s'envoie.\nVos choix influeront l'histoire !"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 55e0aef0c0daca64ba6f4be3c18e43d2, type: 2}
   m_sharedMaterial: {fileID: -7348047843092383148, guid: 55e0aef0c0daca64ba6f4be3c18e43d2, type: 2}
