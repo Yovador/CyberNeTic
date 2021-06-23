@@ -1,25 +1,47 @@
 {
     "endBranches":[
         {
-        "text":["bla", "bla", "bla"],
+        "text":["Samedi 2 Février \n 10h00 du matin", "Sophie va porter plainte" ],
+        "test":
+            {
+                "characterFrom" : "victime",
+                "characterTo" : "amie",
+                "bad":null,
+                "neutral":{"value":null, "text":["Elle n'est pas accompagnée d'Angélique"] },
+                "good":{"value":4, "text":["Elle est accompagnée d'Angélique"] }
+            }
+        },
+        {
+        "text":["Sophie explique à Patricia la situation"],
+        "test":
+            {
+                "characterFrom" : "victime",
+                "characterTo" : "mere",
+                "bad":null,
+                "neutral":{"value":null, "text":["Sa mère la soutient dans sa démarche"] },
+                "good":{"value":2, "text":["Les deux prévoient un weekend ensemble pour se vider la tête"] }
+            }
+        },
+        {
+        "text":["Sophie contacte Olivier à propos de la compétition"],
         "test":
             {
                 "characterFrom" : "victime",
                 "characterTo" : "coach",
-                "bad":{"value":-5, "text":["bad", "bad", "bad"] },
-                "neutral":{"value":null, "text":["neutral", "neutral", "neutral"] },
-                "good":{"value":5, "text":["good", "good", "good"] }
+                "bad":{"value":6, "text":[" Elle n'y participera pas"] },
+                "neutral":{"value":null, "text":["Elle ne participera pas, mais viendra aider à la buvette"] },
+                "good":{"value":9, "text":["SElle y participera"] }
             }
         },
         {
-        "text":["bloop", "bloop", "bloop"],
+        "text":["Sophie a discuté avec Théo du boulot"],
         "test":
             {
                 "characterFrom" : "victime",
-                "characterTo" : "mère",
-                "bad":{"value":-1, "text":["good", "good", "good"] },
-                "neutral":{"value":null, "text":["neutral", "neutral", "neutral"] },
-                "good":null
+                "characterTo" : "collegue",
+                "bad":{"value":0, "text":["Elle a décidé de démissionner"] },
+                "neutral":{"value":null, "text":["Elle a décidé de prolonger ses congés"] },
+                "good":{"value":4, "text":["Elle a décidé de revenir Lundi"] }
             }
         }
         
