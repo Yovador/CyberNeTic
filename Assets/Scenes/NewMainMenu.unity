@@ -8058,7 +8058,7 @@ MonoBehaviour:
   settingsSection: {fileID: 877033657}
   informationsSection: {fileID: 84154248}
   newGameSection: {fileID: 615010461}
-  music: {fileID: 8300000, guid: 3355ad33e5218a544afb3cf9df5572bd, type: 3}
+  music: {fileID: 8300000, guid: 781dad3e77d53314b841eed0b1dbf2db, type: 3}
 --- !u!1 &1358626606
 GameObject:
   m_ObjectHideFlags: 0
