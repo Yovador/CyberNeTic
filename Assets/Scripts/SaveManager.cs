@@ -73,6 +73,7 @@ public class SaveManager
         public float readSpeed = 0.5f;
         public int colorBlind = 0;
         public bool speechHelp = false;
+        public bool vibrations = true;
     }
     public static PlayerSettings settings = new PlayerSettings();
 
@@ -81,9 +82,9 @@ public class SaveManager
         PlayerPrefs.SetFloat("volumeEffects", settings.volumeEffects);
         PlayerPrefs.SetFloat("volumeMusic", settings.volumeMusic);
         PlayerPrefs.SetFloat("readSpeed", settings.readSpeed);
-        //PlayerPrefs.SetInt("colorBlind", settings.colorBlind ? 1 : 0);
         PlayerPrefs.SetInt("colorBlind", settings.colorBlind);
         PlayerPrefs.SetInt("speechHelp", settings.speechHelp ? 1 : 0);
+        PlayerPrefs.SetInt("vibrations", settings.vibrations ? 1 : 0);
     }
 
     public static void LoadSettings()
@@ -93,6 +94,7 @@ public class SaveManager
         settings.readSpeed = PlayerPrefs.GetFloat("readSpeed", 0.5f);
         settings.colorBlind = PlayerPrefs.GetInt("colorBlind", 0);
         settings.speechHelp = PlayerPrefs.GetInt("speechHelp", 0) > 0;
+        settings.vibrations = PlayerPrefs.GetInt("vibrations", 0) > 0;
     }
 
     #endregion
