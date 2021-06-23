@@ -9,7 +9,6 @@ public class NewGameButton : MenuButton
         StartCoroutine(base.LaunchSequence());
         yield return new WaitWhile(() => loadingPanel.isFading);
 
-
         gameManager.StartNewGame();
         yield return null;
     }

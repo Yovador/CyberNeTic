@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public SectionMainMenu startSection, menuSection, settingsSection, informationsSection;
+    public NewGameSectionMainMenu newGameSection;
     [Space]
     public AudioClip music;
     
@@ -52,7 +53,10 @@ public class MainMenu : MonoBehaviour
             SpeechController.ReadText("Menu principal.");
         }
 
-        GameObject.Find("MusicLoader").GetComponent<AudioSource>().PlayOneShot(music);
+        if(SaveManager.sessionGameStarted)
+            GameManager.instance.ChangeMusic(music, 0.1f);
+        else
+            GameManager.instance.ChangeMusic(music, 100f);
     }
 
     private void Update()
@@ -70,7 +74,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         SaveManager.sessionGameStarted = true;
-        SceneManager.LoadScene("MainMenu");
+        newGameSection.OpenPanel();
     }
 
     public void SettingsVisible (bool visible)
