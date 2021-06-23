@@ -10,7 +10,7 @@ public class ConversationDisplayer : MonoBehaviour
     [SerializeField]
     private string defaultMedium;
     [SerializeField]
-    public float waitTime;
+    public float timeBetweenMessage;
     private Medium medium;
     private Conversation conversation;
     private SaveManager saveManager = new SaveManager();
@@ -42,8 +42,11 @@ public class ConversationDisplayer : MonoBehaviour
     private LoadingPanel loadPanel;
     private float screenSensitiveSpaceBetweenMessage;
     private FooterController footerController;
+    [HideInInspector]
     public bool footerLoaded = false;
     private bool messageLoaded = false;
+    [SerializeField]
+    GameObject tutorialPanel;
 
     public void Start()
     {
@@ -308,7 +311,7 @@ public class ConversationDisplayer : MonoBehaviour
             yield return new WaitWhile(() => animationOn);
             tempMessageList.Add(message);
             StartCoroutine(LoadMessage(message));
-            yield return new WaitForSecondsRealtime(waitTime);
+            yield return new WaitForSecondsRealtime(timeBetweenMessage);
             yield return new WaitWhile(() => animationOn);
 
         }
@@ -372,6 +375,18 @@ public class ConversationDisplayer : MonoBehaviour
     }
     private IEnumerator LoadChoiceBranching(List<Conversation.Possibility> choicePossibilities)
     {
+
+
+
+        GameObject currentTutorialPanel = null;
+        if (!gameManager.tutorialPlayed)
+        {
+
+            gameManager.tutorialPlayed = true;
+            currentTutorialPanel = Instantiate(tutorialPanel, transform);
+
+        }
+
         yield return null;
         Conversation.Branche branch = GetBrancheByID(choicePossibilities[0].branch);
 
@@ -425,8 +440,39 @@ public class ConversationDisplayer : MonoBehaviour
         }
 
         yield return new WaitWhile(() => animationOn);
-        scrollRect.enabled = true;
 
+        if(currentTutorialPanel != null)
+        {
+            if(Input.touchSupported)
+            {
+                bool isTouching = false;
+                while (!isTouching)
+                {
+                    if (Input.touchCount == 1)
+                    {
+                        if (Input.GetTouch(0).phase == TouchPhase.Began)
+                        {
+                            isTouching = true;
+                        }
+                    }
+
+                    yield return null;
+                }
+            }
+            else
+            {
+                while (!Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    yield return null;
+                }
+            }
+
+            currentTutorialPanel.SetActive(false);
+
+            yield return new WaitWhile(() => currentTutorialPanel.activeSelf);
+        }
+
+        scrollRect.enabled = true;
 
         yield return new WaitWhile(() => isInChoice);
 
@@ -472,7 +518,7 @@ public class ConversationDisplayer : MonoBehaviour
 
         currentMessageList.Add(messageToAdd);
         yield return new WaitWhile(() => animationOn);
-        yield return new WaitForSecondsRealtime(waitTime);
+        yield return new WaitForSecondsRealtime(timeBetweenMessage);
         StartCoroutine(LoadBranches(nextBranch));
         yield return new WaitWhile(() => currentMessageList.Count == 0);
         saveManager.SaveGame(conversation.id, currentMessageList, GameManager.charactersSet, currentBranch);

@@ -114,11 +114,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultMedium: sms
-  waitTime: 0
+  timeBetweenMessage: 0.2
   endConversation: 0
   messageSpeed: 5
   choiceButton: {fileID: 0}
   footerLoaded: 0
+  tutorialPanel: {fileID: 8260570535133386603, guid: 70e2d8399a62a3f46845c62d7cb826ef, type: 3}
 --- !u!1 &1311733294083018756
 GameObject:
   m_ObjectHideFlags: 0
