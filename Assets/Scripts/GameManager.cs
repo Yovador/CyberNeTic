@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
     private AudioClip endMusic;
 
     public static GameManager instance;
+    [HideInInspector]
+    public bool tutorialPlayed = false;
 
     private void Awake()
     {
@@ -68,11 +70,13 @@ public class GameManager : MonoBehaviour
         GetCharacterSet();
         GetAllConversation();
         saveManager.SaveGame(firstConversation, new List<Conversation.Message>(), charactersSet, null);
+        tutorialPlayed = false;
         StartCoroutine(StartGame());
     }
 
     public void ContinueGame()
     {
+        tutorialPlayed = true;
         StartCoroutine(StartGame());
     }
 
@@ -344,7 +348,7 @@ public class GameManager : MonoBehaviour
             ConversationDisplayer displayer = FindObjectOfType<ConversationDisplayer>();
             if (displayer != null)
             {
-                displayer.waitTime = maxWaitTime - (SaveManager.settings.readSpeed * maxWaitTime);
+                displayer.timeBetweenMessage = maxWaitTime - (SaveManager.settings.readSpeed * maxWaitTime);
             }
         }
 

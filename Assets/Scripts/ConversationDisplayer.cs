@@ -10,7 +10,7 @@ public class ConversationDisplayer : MonoBehaviour
     [SerializeField]
     private string defaultMedium;
     [SerializeField]
-    public float waitTime;
+    public float timeBetweenMessage;
     private Medium medium;
     private Conversation conversation;
     private SaveManager saveManager = new SaveManager();
@@ -42,8 +42,11 @@ public class ConversationDisplayer : MonoBehaviour
     private LoadingPanel loadPanel;
     private float screenSensitiveSpaceBetweenMessage;
     private FooterController footerController;
+    [HideInInspector]
     public bool footerLoaded = false;
     private bool messageLoaded = false;
+    [SerializeField]
+    GameObject tutorialPanel;
 
     public void Start()
     {
@@ -56,6 +59,12 @@ public class ConversationDisplayer : MonoBehaviour
     public IEnumerator LaunchAConv(Conversation currentConversation, List<Conversation.Message> messagesList, string branchToLoad)
     {
         conversation = currentConversation;
+
+        if(saveManager.LoadSave().currentConversation != conversation.id)
+        {
+            saveManager.SaveGame(conversation.id, currentMessageList, GameManager.charactersSet, currentBranch);
+        }
+
         currentConversation.DebugLogConversation();
         conversationFlux = GameObject.Find("ConversationFlux");
         medium = LoadMedium(conversation.medium);
@@ -308,15 +317,21 @@ public class ConversationDisplayer : MonoBehaviour
             yield return new WaitWhile(() => animationOn);
             tempMessageList.Add(message);
             StartCoroutine(LoadMessage(message));
-            yield return new WaitForSecondsRealtime(waitTime);
+            yield return new WaitForSecondsRealtime(timeBetweenMessage);
             yield return new WaitWhile(() => animationOn);
 
         }
 
+        if(currentMessageList.Count == 0)
+        {
+            currentMessageList.AddRange(tempMessageList);
+        }
         LoadBranchingPoint(branche.branchingPoint);
-        yield return new WaitUntil(() => canAddMessageOfPreviousBranch);
-
-        currentMessageList.AddRange(tempMessageList);
+        if (currentMessageList.Count > 0)
+        {
+            yield return new WaitUntil(() => canAddMessageOfPreviousBranch);
+            currentMessageList.AddRange(tempMessageList);
+        }
 
     }
     private Conversation.Branche GetBrancheByID (string id)
@@ -372,6 +387,18 @@ public class ConversationDisplayer : MonoBehaviour
     }
     private IEnumerator LoadChoiceBranching(List<Conversation.Possibility> choicePossibilities)
     {
+
+
+
+        GameObject currentTutorialPanel = null;
+        if (!gameManager.tutorialPlayed)
+        {
+
+            gameManager.tutorialPlayed = true;
+            currentTutorialPanel = Instantiate(tutorialPanel, transform);
+
+        }
+
         yield return null;
         Conversation.Branche branch = GetBrancheByID(choicePossibilities[0].branch);
 
@@ -425,8 +452,39 @@ public class ConversationDisplayer : MonoBehaviour
         }
 
         yield return new WaitWhile(() => animationOn);
-        scrollRect.enabled = true;
 
+        if(currentTutorialPanel != null)
+        {
+            if(Input.touchSupported)
+            {
+                bool isTouching = false;
+                while (!isTouching)
+                {
+                    if (Input.touchCount == 1)
+                    {
+                        if (Input.GetTouch(0).phase == TouchPhase.Began)
+                        {
+                            isTouching = true;
+                        }
+                    }
+
+                    yield return null;
+                }
+            }
+            else
+            {
+                while (!Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    yield return null;
+                }
+            }
+
+            currentTutorialPanel.SetActive(false);
+
+            yield return new WaitWhile(() => currentTutorialPanel.activeSelf);
+        }
+
+        scrollRect.enabled = true;
 
         yield return new WaitWhile(() => isInChoice);
 
@@ -472,7 +530,7 @@ public class ConversationDisplayer : MonoBehaviour
 
         currentMessageList.Add(messageToAdd);
         yield return new WaitWhile(() => animationOn);
-        yield return new WaitForSecondsRealtime(waitTime);
+        yield return new WaitForSecondsRealtime(timeBetweenMessage);
         StartCoroutine(LoadBranches(nextBranch));
         yield return new WaitWhile(() => currentMessageList.Count == 0);
         saveManager.SaveGame(conversation.id, currentMessageList, GameManager.charactersSet, currentBranch);
@@ -596,7 +654,6 @@ public class ConversationDisplayer : MonoBehaviour
         yield return new WaitWhile(() => loadPanel.isFading);
 
 
-        saveManager.SaveGame(conversation.id, currentMessageList, GameManager.charactersSet, currentBranch);
         gameManager.nextConversation = conversation.nextConversation;
     }
     public void LoadProfilePicture(Image imageComponent, string character)
