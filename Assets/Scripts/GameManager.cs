@@ -8,7 +8,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private string firstConversation;
+    public string firstConversation;
     private string branchToLoad = null;
     private JsonUnloader jsonUnloader = new JsonUnloader();
 

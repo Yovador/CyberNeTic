@@ -15,8 +15,8 @@ public class ConversationDisplayer : MonoBehaviour
     private Conversation conversation;
     private SaveManager saveManager = new SaveManager();
     private GameObject conversationFlux;
-    private Character npCharacter;
-    private Character playerCharacter;
+    public Character npCharacter;
+    public Character playerCharacter;
     private Character.Relationship npcToPlayerRelationhship;
     private GameObject footer;
     [HideInInspector]
@@ -117,9 +117,6 @@ public class ConversationDisplayer : MonoBehaviour
                 npcToPlayerRelationhship = relationship;
             }
         }
-
-        // Update header name
-        GameObject.FindGameObjectWithTag("ContactName").GetComponent<TMP_Text>().text = $"{npCharacter.firstName} {npCharacter.lastName}" ;
 
         saveManager.SaveGame(conversation.id, currentMessageList, GameManager.charactersSet, currentBranch);
 
@@ -237,7 +234,7 @@ public class ConversationDisplayer : MonoBehaviour
 
         GameObject messageBox = Instantiate(messageBoxPrefab, transform.Find("Scroll") );
         GameObject backgroungMessage = messageBox.transform.Find("Background").gameObject;
-        MessageBoxResizer messageBoxResizer = backgroungMessage.GetComponent<MessageBoxResizer>();
+        TextBoxResizer messageBoxResizer = backgroungMessage.GetComponent<TextBoxResizer>();
         messageBox.GetComponent<AudioSource>().volume = GameManager.soundEffectVolume;
 
 

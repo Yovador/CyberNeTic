@@ -115,6 +115,21 @@ public class Conversation
 
     public List<Branche> branches { get; set; } = new List<Branche>();
 
+
+    public Message GetFirstMessage()
+    {
+        Message foundMessage = null;
+        foreach (var branche in branches)
+        {
+            if(branche.id == startingBranch)
+            {
+                foundMessage = branche.messagesList[0];
+            }
+        }
+        return foundMessage;
+    }
+
+
     //Fonction affichant dans la console les informations de la conversation
     public void DebugLogConversation()
     {
@@ -176,6 +191,7 @@ public class Character
     public string firstName { get; set; }
     public string lastName { get; set; }
     public List<Relationship> relationships { get; set; } = new List<Relationship>();
+
 
     //Fonction affichant dans la console les informations du personnage
     public void DebugLogCharacter()
