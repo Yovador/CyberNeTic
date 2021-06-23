@@ -29,12 +29,16 @@ public class ConversationButtons : MonoBehaviour
         {
             StartCoroutine(ButtonAction());
             waitIncrement = 0;
+            isHold = false;
         }
     }
 
     virtual protected void OnHold()
     {
-        waitIncrement++;
+        if (waitIncrement <= waitLimit)
+        {
+            waitIncrement++;
+        }
     }
 
     virtual public void OnPointerDown()

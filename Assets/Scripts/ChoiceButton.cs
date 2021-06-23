@@ -23,6 +23,7 @@ public class ChoiceButton : ConversationButtons
         base.OnHold();
 
         int numberOfLetter = Mathf.RoundToInt((myText.text.Length * waitIncrement) / waitLimit);
+        Debug.Log("Num letter " + numberOfLetter + " waitIncrement " + waitIncrement);
         if (numberOfLetter < myText.text.Length)
         {
             string tempString = "" + myText.text[0];
