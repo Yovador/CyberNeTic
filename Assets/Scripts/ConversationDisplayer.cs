@@ -59,6 +59,12 @@ public class ConversationDisplayer : MonoBehaviour
     public IEnumerator LaunchAConv(Conversation currentConversation, List<Conversation.Message> messagesList, string branchToLoad)
     {
         conversation = currentConversation;
+
+        if(saveManager.LoadSave().currentConversation != conversation.id)
+        {
+            saveManager.SaveGame(conversation.id, currentMessageList, GameManager.charactersSet, currentBranch);
+        }
+
         currentConversation.DebugLogConversation();
         conversationFlux = GameObject.Find("ConversationFlux");
         medium = LoadMedium(conversation.medium);
@@ -316,10 +322,16 @@ public class ConversationDisplayer : MonoBehaviour
 
         }
 
+        if(currentMessageList.Count == 0)
+        {
+            currentMessageList.AddRange(tempMessageList);
+        }
         LoadBranchingPoint(branche.branchingPoint);
-        yield return new WaitUntil(() => canAddMessageOfPreviousBranch);
-
-        currentMessageList.AddRange(tempMessageList);
+        if (currentMessageList.Count > 0)
+        {
+            yield return new WaitUntil(() => canAddMessageOfPreviousBranch);
+            currentMessageList.AddRange(tempMessageList);
+        }
 
     }
     private Conversation.Branche GetBrancheByID (string id)
@@ -642,7 +654,6 @@ public class ConversationDisplayer : MonoBehaviour
         yield return new WaitWhile(() => loadPanel.isFading);
 
 
-        saveManager.SaveGame(conversation.id, currentMessageList, GameManager.charactersSet, currentBranch);
         gameManager.nextConversation = conversation.nextConversation;
     }
     public void LoadProfilePicture(Image imageComponent, string character)
