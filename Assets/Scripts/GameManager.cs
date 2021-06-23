@@ -281,7 +281,20 @@ public class GameManager : MonoBehaviour
             string dayName = FirstLetterToUpper(culture.DateTimeFormat.GetDayName(parsedDate.DayOfWeek));
             int dayNumber = parsedDate.Day;
             string monthName = culture.DateTimeFormat.GetMonthName(parsedDate.Month);
-            var timeDay = $"{parsedDate.TimeOfDay.Hours}:{parsedDate.TimeOfDay.Minutes} ";
+            int hours = parsedDate.TimeOfDay.Hours;
+            int minutes = parsedDate.TimeOfDay.Minutes;
+
+            string hoursShown = hours.ToString();
+            string minutesShown = minutes.ToString();
+            if(hours < 10)
+            {
+                hoursShown = "0" + hours.ToString();
+            }
+            if (minutes < 10)
+            {
+                minutesShown = "0" + minutes.ToString();
+            }
+            var timeDay = $"{hoursShown}:{minutesShown} ";
 
             display = $"{dayName} {dayNumber} {monthName} • {timeDay}";
         }
