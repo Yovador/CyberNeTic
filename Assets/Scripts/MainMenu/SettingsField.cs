@@ -5,14 +5,16 @@ public abstract class SettingsField : MonoBehaviour
 {
     private Slider slider;
 
+    public float min, max;
+
     public delegate void Changed();
     public event Changed OnChanged;
 
     protected void Init()
     {
         slider = GetComponentInChildren<Slider>();
-        slider.minValue = 0;
-        slider.maxValue = 1;
+        slider.minValue = min;
+        slider.maxValue = max;
 
         UpdateUI();
     }

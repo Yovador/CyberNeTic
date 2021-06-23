@@ -29,7 +29,6 @@ public class SettingsSectionMainMenu : SectionMainMenu
         colorBlindField.OnChanged -= OnColorBlindChange;
         volumeEffectsField.OnChanged -= OnVolumeChanged;
         volumeMusicField.OnChanged -= OnVolumeChanged;
-        Debug.Log("Vibrations? : " + SaveManager.settings.vibrations);
 
         base.Exit();
     }

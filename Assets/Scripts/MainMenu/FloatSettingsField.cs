@@ -7,7 +7,6 @@ public class FloatSettingsField : SettingsField
     private void Awake()
     {
         base.Init();
-
         SetSliderValue(value);
     }
 
