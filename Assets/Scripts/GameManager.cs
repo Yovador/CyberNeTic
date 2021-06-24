@@ -356,6 +356,7 @@ public class GameManager : MonoBehaviour
 
     public static void ApplySettingsToScene()
     {
+        // Read speed
         if(SceneManager.GetActiveScene().name == "ConversationScene")
         {
             ConversationDisplayer displayer = FindObjectOfType<ConversationDisplayer>();
@@ -365,9 +366,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        // Volumes
         UpdateSourceVolume(SaveManager.settings.volumeMusic, SaveManager.settings.volumeEffects);
-
-        UpdateColorBlindFilter(SaveManager.settings.colorBlind);
     }
 
     public static void UpdateSourceVolume (float music, float effects)
@@ -380,23 +380,6 @@ public class GameManager : MonoBehaviour
             musicSource.volume = musicVolume;
         }
         soundEffectVolume = effects;
-    }
-
-    public static void UpdateColorBlindFilter(int colorBlindType)
-    {
-        Wilberforce.Colorblind colorblindScript = Camera.main.GetComponent<Wilberforce.Colorblind>();
-
-        if (colorblindScript != null)
-        {
-            if(colorBlindType > 0)
-            {
-                colorblindScript.enabled = true;
-                colorblindScript.Type = colorBlindType;
-            }else
-            {
-                colorblindScript.enabled = false;
-            }
-        }
     }
     #endregion
 }
