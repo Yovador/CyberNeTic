@@ -39,7 +39,7 @@ public class EndManager : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(timeBetweenEndText);
         StartCoroutine(loadingPanel.Disappear());
-        videoPlayer.SetDirectAudioVolume(0, GameManager.musicVolume);
+        videoPlayer.SetDirectAudioVolume(0, 0);
         videoPlayer.Play();
         Debug.LogWarning("END");
     }
