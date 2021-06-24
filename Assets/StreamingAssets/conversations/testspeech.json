@@ -3,7 +3,7 @@
     "Parameters": {
         "id": "testspeech",
         "startingBranch": "testspeech-0",
-        "medium": "snapchat",
+        "medium": "whatsapp",
         "playerCharacter": "coach",
         "npCharacter": "victime",
         "nextConversation": "1-1-e-sophie",
@@ -14,25 +14,12 @@
         {
             "id": "testspeech-0",
             "messagesList": [
-                {
-                    "isNpc": true,
-                    "content": {
-                        "type": "image",
-                        "data": "sophie.jpg"
-                    }
-                },
+
                 {
                     "isNpc": true,
                     "content": {
                         "type": "text",
                         "data": "rffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-                    }
-                },
-                {
-                    "isNpc": false,
-                    "content": {
-                        "type": "image",
-                        "data": "sophie.jpg"
                     }
                 },
                 {
@@ -44,7 +31,7 @@
                 }
             ],
             "branchingPoint": {
-                "type": "stop",
+                "type": "choice",
                 "possibilities": [
                     {
                         "branch": "testspeech-1",
