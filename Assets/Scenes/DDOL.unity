@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b570f6039c42db45a46ebd7da673df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstConversation: testspeech
+  firstConversation: 1-1-theo-sophie
   transitionTime: 5
   transitionSound: {fileID: 8300000, guid: e52be18ea3e0f8045a33b8ffeff27ac5, type: 3}
   endMusic: {fileID: 8300000, guid: 781dad3e77d53314b841eed0b1dbf2db, type: 3}

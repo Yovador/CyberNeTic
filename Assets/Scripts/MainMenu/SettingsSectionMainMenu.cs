@@ -5,7 +5,6 @@ using TMPro;
 public class SettingsSectionMainMenu : SectionMainMenu
 {
     public FloatSettingsField volumeEffectsField, volumeMusicField, readSpeedField;
-    public DropdownSettingsField colorBlindField;
     public BoolSettingsField speechHelpField, vibrationsField;
     [Space]
     public TMP_Text versionText;
@@ -17,7 +16,6 @@ public class SettingsSectionMainMenu : SectionMainMenu
 
         base.Land();
 
-        colorBlindField.OnChanged += OnColorBlindChange;
         volumeEffectsField.OnChanged += OnVolumeChanged;
         volumeMusicField.OnChanged += OnVolumeChanged;
 
@@ -26,7 +24,6 @@ public class SettingsSectionMainMenu : SectionMainMenu
 
     public override void Exit()
     {
-        colorBlindField.OnChanged -= OnColorBlindChange;
         volumeEffectsField.OnChanged -= OnVolumeChanged;
         volumeMusicField.OnChanged -= OnVolumeChanged;
 
@@ -38,7 +35,6 @@ public class SettingsSectionMainMenu : SectionMainMenu
         SaveManager.settings.volumeEffects = volumeEffectsField.GetValue();
         SaveManager.settings.volumeMusic = volumeMusicField.GetValue();
         SaveManager.settings.readSpeed = readSpeedField.GetValue();
-        SaveManager.settings.colorBlind = colorBlindField.GetValue();
         SaveManager.settings.speechHelp = speechHelpField.GetValue();
         SaveManager.settings.vibrations = vibrationsField.GetValue();
 
@@ -50,7 +46,6 @@ public class SettingsSectionMainMenu : SectionMainMenu
         volumeEffectsField.SetValue(SaveManager.settings.volumeEffects);
         volumeMusicField.SetValue(SaveManager.settings.volumeMusic);
         readSpeedField.SetValue(SaveManager.settings.readSpeed);
-        colorBlindField.SetValue(SaveManager.settings.colorBlind);
         speechHelpField.SetValue(SaveManager.settings.speechHelp);
         vibrationsField.SetValue(SaveManager.settings.vibrations);
     }
@@ -59,10 +54,4 @@ public class SettingsSectionMainMenu : SectionMainMenu
     {
         GameManager.UpdateSourceVolume(volumeMusicField.GetValue(), volumeEffectsField.GetValue());
     }
-
-    private void OnColorBlindChange()
-    {
-        GameManager.UpdateColorBlindFilter(colorBlindField.GetValue());
-    }
-
 }
