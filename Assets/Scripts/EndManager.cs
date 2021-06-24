@@ -135,6 +135,7 @@ public class EndManager : MonoBehaviour
 
         }
         endText.gameObject.SetActive(false);
+        endText.transform.parent.gameObject.SetActive(false);
         testShown = true;
 
     }

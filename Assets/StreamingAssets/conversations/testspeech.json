@@ -44,7 +44,7 @@
                 }
             ],
             "branchingPoint": {
-                "type": "choice",
+                "type": "stop",
                 "possibilities": [
                     {
                         "branch": "testspeech-1",
