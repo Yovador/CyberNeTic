@@ -60,10 +60,7 @@ public class ConversationDisplayer : MonoBehaviour
     {
         conversation = currentConversation;
 
-        if(saveManager.LoadSave().currentConversation != conversation.id)
-        {
-            saveManager.SaveGame(conversation.id, currentMessageList, GameManager.charactersSet, currentBranch);
-        }
+
 
         currentConversation.DebugLogConversation();
         conversationFlux = GameObject.Find("ConversationFlux");
@@ -78,6 +75,11 @@ public class ConversationDisplayer : MonoBehaviour
 
         GameObject dateAndHour = Instantiate(medium.dateAndHour, conversationFlux.transform);
         dateAndHour.transform.SetParent(conversationFlux.transform);
+
+        if (saveManager.LoadSave().currentConversation != conversation.id)
+        {
+            saveManager.SaveGame(conversation.id, currentMessageList, GameManager.charactersSet, currentBranch);
+        }
 
         if (branchToLoad != null)
         {

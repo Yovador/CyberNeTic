@@ -34,7 +34,10 @@ public class ImpossibleButtonChoice : ConversationButtons
     IEnumerator StartVibrate()
     {
         vibrate = true;
-        Handheld.Vibrate();
+        if (SaveManager.settings.vibrations)
+        {
+            Handheld.Vibrate();
+        }
         yield return new WaitForSecondsRealtime(shakeWaitTime);
         vibrate = false;
     }

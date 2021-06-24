@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FloatSettingsField : SettingsField
 {
-    private float value = 0.0f;
+    private float value = 0f;
 
     private void Awake()
     {
