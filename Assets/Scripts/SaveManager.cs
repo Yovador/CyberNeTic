@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveManager
 {
     #region Game save
-    private string saveName = $"gamedata1.save";
+    private static string saveName = $"gamedata1.save";
     [System.Serializable]
     public class Save
     {
@@ -52,12 +52,20 @@ public class SaveManager
         Save save = null;
         if (File.Exists(savePath))
         {
+            // Read save
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(savePath, FileMode.Open);
             save = (Save)bf.Deserialize(file);
             file.Close();
         }
         return save;
+    }
+
+    // Look for a save
+    public static bool SaveExists()
+    {
+        string savePath = Path.GetFullPath(Path.Combine(Application.persistentDataPath, saveName));
+        return File.Exists(savePath);
     }
 
     #endregion

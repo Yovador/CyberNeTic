@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NewGameSectionMainMenu : MonoBehaviour
 {
+    public Button continueButton;
+
     private Animator animator;
 
     private void Awake()
@@ -11,11 +14,16 @@ public class NewGameSectionMainMenu : MonoBehaviour
 
     public void OpenPanel()
     {
+        // Open animation
         animator.SetBool("IsOpen", true);
+        
+        // Show "Continue button" if a save exists
+        continueButton.gameObject.SetActive(SaveManager.SaveExists());
     }
 
     public void ClosePanel()
     {
+        // Close animation
         animator.SetBool("IsOpen", false);
     }
 
