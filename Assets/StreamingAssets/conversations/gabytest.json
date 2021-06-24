@@ -1,0 +1,560 @@
+{
+    "version": 0.4,
+    "Parameters": {
+        "id": "gabytest",
+        "startingBranch": "1-1-theo-sophie-0",
+        "medium": "whatsapp",
+        "playerCharacter": "collegue",
+        "npCharacter": "victime",
+        "nextConversation": "1-2-olivier-sophie",
+        "date": "2019-01-17",
+        "time": "18:30"
+    },
+    "Branches": [
+        {
+            "id": "1-1-theo-sophie-0",
+            "messagesList": [ 
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Hey, désolée de te déranger si tard. Ma voiture m’a lâchée ce soir en rentrant. Virginie m’a dit que tu habitais dans le coin. Est-ce que ce serait possible de m’emmener demain s’il te plaît ?  "
+                    }
+                },
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Ma caisse est déjà chez le garagiste mais je la récupère que dans 2 jours. Je serai vraiment reconnaissante. Je veux pas te déranger, après si tu peux pas, tu peux pas. Merci d’avance."
+                    }
+                }
+            ],
+            "branchingPoint": {
+                "type": "choice",
+                "possibilities": [
+                    {
+                        "branch": "1-1-theo-sophie-2",
+                        "possible": true,
+                        "confidenceMod": "1",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "Yes, mais va falloir que tu te lèves tôt. Je viens te prendre vers 8h15. On devra juste déposer ma fille au passage"
+                            }
+                        }
+                    },
+                    {
+                        "branch": "1-1-theo-sophie-1",
+                        "possible": true,
+                        "confidenceMod": "-1",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "Ça va être difficile, je dois déjà emmener ma fille Lilou à la maternelle. Je suis désolé. "
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1-1-theo-sophie-1",
+            "messagesList": [
+                {
+                    "isNpc": false,
+                    "content": {
+                        "type": "text",
+                        "data": "Tu peux encore demander à Virgile, il est un peu plus loin mais je crois qu’il passe à côté "
+                    }
+                },
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "C’est pas grave, merci quand même. Je vais voir avec lui. À demain."
+                    }
+                }
+            ],
+            "branchingPoint": {
+                "type": "stop",
+                "possibilities": []
+            }
+        },
+        {
+            "id": "1-1-theo-sophie-2",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Aha, y a pas de soucis 😄 Merci beaucoup, je pensais jamais pouvoir y arriver... Tu me sauves la vie 🙏"
+                    }
+                }
+            ],
+            "branchingPoint": {
+                "type": "choice",
+                "possibilities": [
+                    {
+                        "branch": "1-1-theo-sophie-3",
+                        "possible": true,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "Normal, entre collègues il faut savoir s’entraider"
+                            }
+                        }
+                    },
+                    {
+                        "branch": "1-1-theo-sophie-4",
+                        "possible": true,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "T’inquiète pas c’est normal !\nJ’ai pas envie de finir en vieux croûton 😁"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1-1-theo-sophie-3",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Merci encore !"
+                    }
+                },
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Rendez-vous demain 8h alors ! ✌"
+                    }
+                },
+                {
+                    "isNpc": false,
+                    "content": {
+                        "type": "text",
+                        "data": "À demain !"
+                    }
+                }
+            ],
+            "branchingPoint": {
+                "type": "stop",
+                "possibilities": []
+            }
+        },
+        {
+            "id": "1-1-theo-sophie-4",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "On espère tous ne pas finir en vieux croûtons comme les Pichard 😂"
+                    }
+                }
+            ],
+            "branchingPoint": {
+                "type": "choice",
+                "possibilities": [
+                    {
+                        "branch": "1-1-theo-sophie-5",
+                        "possible": true,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "Comment ça ?"
+                            }
+                        }
+                    },
+                    {
+                        "branch": "1-1-theo-sophie-9",
+                        "possible": true,
+                        "confidenceMod": "1",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "Je les supporte plus ceux-là... 0 politesse, ils ne veulent entendre que ce qu’ils veulent"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1-1-theo-sophie-5",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Tu es pas au courant ? Ils ont laissé un commentaire sur la page en nous insultant... N’importe quoi"
+                    }
+                },
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Att je vais te chercher ça"
+                    }
+                },
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "“ÉTABLISSEMENT A FUIR !!!! DU GRAND N’IMPORTE QUOI !! PRIX TROP CHERS ET UNE ATTENTE INTERMINABLE ! UNE FOIS LES MEUBLES ONT JUSTE ÉTÉ DEPOSÉS DEVANT LA MAISON ! AUCUNE AIDE ! VOUS PAYEZ VOUS VOUS DÉMERDEZ TOUT SEUL ! N’IMPORTE QUOI !!!!”"
+                    }
+                }
+            ],
+            "branchingPoint": {
+                "type": "choice",
+                "possibilities": [
+                    {
+                        "branch": "1-1-theo-sophie-6",
+                        "possible": true,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "Ah ouais, très énervé... et très faux aussi 😤"
+                            }
+                        }
+                    },
+                    {
+                        "branch": "1-1-theo-sophie-6",
+                        "possible": true,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "C’est eux qui ont décidé de prendre l’option la moins chère en même temps"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1-1-theo-sophie-6",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Toute une histoire... Heureusement qu’on ne les reverra jamais"
+                    }
+                },
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Il se fait tard, je vais y aller. Bonne nuit et oublie pas de venir me chercher  "
+                    }
+                }
+            ],
+            "branchingPoint": {
+                "type": "choice",
+                "possibilities": [
+                    {
+                        "branch": "1-1-theo-sophie-7",
+                        "possible": true,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "Bonne nuit à toi aussi ! À demain !"
+                            }
+                        }
+                    },
+                    {
+                        "branch": "1-1-theo-sophie-8",
+                        "possible": true,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "On sait jamais une panne de réveil est si vite arrivée. "
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1-1-theo-sophie-7",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "À demain ! 🙌"
+                    }
+                }
+            ],
+            "branchingPoint": {
+                "type": "stop",
+                "possibilities": []
+            }
+        },
+        {
+            "id": "1-1-theo-sophie-8",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "😭😭😭"
+                    }
+                },
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "À demain, vieux croûton 😁 "
+                    }
+                }
+            ],
+            "branchingPoint": {
+                "type": "stop",
+                "possibilities": []
+            }
+        },
+        {
+            "id": "1-1-theo-sophie-9",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Tellement... Ça me rappelle la fois où ils sont venus se plaindre qu’il y avait des vis en plus fournies avec le meuble"
+                    }
+                },
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Ils sont venus se plaindre des vis de sécu ! Incroyable !"
+                    }
+                },
+                {
+                    "isNpc": false,
+                    "content": {
+                        "type": "text",
+                        "data": "Faut que je te raconte une anecdote à ce sujet !"
+                    }
+                }
+            ],
+            "branchingPoint": {
+                "type": "choice",
+                "possibilities": [
+                    {
+                        "branch": "1-1-theo-sophie-10",
+                        "possible": true,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "L’autre fois, ils ont ramené une commode en parfait état parce qu’elle avait l’air plus grande sur la photo..."
+                            }
+                        }
+                    },
+                    {
+                        "branch": "1-1-theo-sophie-11",
+                        "possible": true,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "L’autre fois, ils ont ramené un meuble qu’ils avaient repeint"
+                            }
+                        }
+                    },
+                    {
+                        "branch": "1-1-theo-sophie-12",
+                        "possible": true,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "L’autre fois, ils ont ramené un placard scié en 2"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1-1-theo-sophie-10",
+            "messagesList": [
+                {
+                    "isNpc": false,
+                    "content": {
+                        "type": "text",
+                        "data": "Les mesures sont toujours notées à côté des meubles, en gras..."
+                    }
+                }
+            ],
+            "branchingPoint": {
+                "type": "change",
+                "possibilities": [
+                    {
+                        "branch": "1-1-theo-sophie-13"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1-1-theo-sophie-11",
+            "messagesList": [
+                {
+                    "isNpc": false,
+                    "content": {
+                        "type": "text",
+                        "data": "La couleur qu’ils avaient utilisée ne leur plaisait plus"
+                    }
+                }
+            ],
+            "branchingPoint": {
+                "type": "change",
+                "possibilities": [
+                    {
+                        "branch": "1-1-theo-sophie-13"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1-1-theo-sophie-12",
+            "messagesList": [
+                {
+                    "isNpc": false,
+                    "content": {
+                        "type": "text",
+                        "data": "Ils ont voulu le raccourcir parce qu’il ne rentrait pas dans l’espace qu’ils voulaient"
+                    }
+                }
+            ],
+            "branchingPoint": {
+                "type": "change",
+                "possibilities": [
+                    {
+                        "branch": "1-1-theo-sophie-13"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1-1-theo-sophie-15",
+            "messagesList": [],
+            "branchingPoint": {
+                "type": "stop",
+                "possibilities": []
+            }
+        },
+        {
+            "id": "1-1-theo-sophie-13",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Aha, NON !!! 😭😭😭"
+                    }
+                },
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "On en a vu de toutes les couleurs avec eux, c’est fou"
+                    }
+                }
+            ],
+            "branchingPoint": {
+                "type": "choice",
+                "possibilities": [
+                    {
+                        "branch": "1-1-theo-sophie-14",
+                        "possible": true,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "Je sais pas comment on a fait pour les supporter"
+                            }
+                        }
+                    },
+                    {
+                        "branch": "1-1-theo-sophie-14",
+                        "possible": true,
+                        "confidenceMod": "0",
+                        "message": {
+                            "isNpc": false,
+                            "content": {
+                                "type": "text",
+                                "data": "J’arrive pas à croire qu’ils nous ont payés le bon montant à la fin 😅"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1-1-theo-sophie-14",
+            "messagesList": [
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Moi, non plus 😂 mais c’était intense. Maintenant, on est préparé à tout GRÂCE À EUX"
+                    }
+                },
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Tu m’as bien fait marrer. Merci de m’avoir remonté le moral 😄 Et surtout merci  d’avoir accepté de m’emmener demain. "
+                    }
+                },
+                {
+                    "isNpc": true,
+                    "content": {
+                        "type": "text",
+                        "data": "Sur ce, je te laisse. Je te souhaite une bonne nuit et à demain 🙌"
+                    }
+                },
+                {
+                    "isNpc": false,
+                    "content": {
+                        "type": "text",
+                        "data": "Bonne nuit à toi aussi ! À demain !"
+                    }
+                }
+            ],
+            "branchingPoint": {
+                "type": "stop",
+                "possibilities": []
+            }
+        }
+    ]
+}
