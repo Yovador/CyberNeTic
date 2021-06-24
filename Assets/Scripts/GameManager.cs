@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("TransitionScene");
         yield return new WaitForSecondsRealtime(1);
 
-        ChangeMusic(transitionSound, 0.1f);
+        ChangeMusic(transitionSound, 0.5f);
 
         TransitionText transitionText = GameObject.Find("TransitionText").GetComponent<TransitionText>();
         Conversation convToLoad;
